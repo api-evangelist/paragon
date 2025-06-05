@@ -25,6 +25,22 @@ common:
   - url: https://github.com/useparagon
     name: GitHub Organization
     type: GitHubOrganization
+  - name: Paragon | Embedded Integration Platform for Developers
+    description: 'null'
+    url: https://www.useparagon.com/integrations
+    type: Integrations
+  - name: Paragon Documentation
+    description: 'null'
+    url: https://docs.useparagon.com/overview
+    type: Documentation
+  - name: Paragon Embedded iPaaS | Blog
+    description: 'null'
+    url: https://www.useparagon.com/blog
+    type: Blog
+  - name: Paragon Status
+    description: 'null'
+    url: https://status.useparagon.com/
+    type: Status
 created: '2025-06-05'
 modified: '2025-06-05'
 position: Consuming
