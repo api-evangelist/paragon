@@ -28,7 +28,7 @@ The all-in-one platform developers rely on to build, ship, and manage native pro
 
 #### Tags:
 
- - API
+ - Integrations, Embedded SaaS Integration
 
 #### Properties
 
