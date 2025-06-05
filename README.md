@@ -21,7 +21,7 @@ Paragon enables companies to build products that integrate with the SaaS ecosyst
 ## APIs
 
 ### Proxy API
-null
+Once your users have connected their third-party app accounts in the Connect Portal, you can access their app account via the Proxy API. The Proxy API allows you to directly access any of the third-party providers API methods. With the SDK, you can use paragon.request to send an API request to a third-party app on behalf of one of your Connected Users. Along with Workflows, the Proxy API is one of two primary ways to build integrations with Paragon.
 
 **Human URL:** [https://docs.useparagon.com/apis/making-api-requests](https://docs.useparagon.com/apis/making-api-requests)
 
@@ -34,7 +34,7 @@ null
 
 - [Documentation](https://docs.useparagon.com/apis/making-api-requests)
 ### Users API
-null
+The Users API allows you to query and modify the state of your Connected Users and their integrations. The API includes REST endpoints (and matching SDK functions) for identifying what integrations your user has enabled, disconnecting integrations, and disabling workflows. The API also allows your application to associate metadata with a Connected User.
 
 **Human URL:** [https://docs.useparagon.com/apis/users](https://docs.useparagon.com/apis/users)
 
@@ -47,7 +47,7 @@ null
 
 - [Documentation](https://docs.useparagon.com/apis/users)
 ### Task History API
-null
+The Task History API allows you to query your users usage of integration workflows and access data from historical workflow executions. The Task History API can be used to analyze integration usage or pull information about historical workflow executions into your application.
 
 **Human URL:** [https://docs.useparagon.com/apis/task-history](https://docs.useparagon.com/apis/task-history)
 
