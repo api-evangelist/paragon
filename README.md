@@ -1,17 +1,17 @@
-# Prismatic (prismatic)
-The most efficient way to build, deploy, and manage integrations. Prismatic empowers everyone on your team with integration tools for devs and non-devs alike. 
+# Paragon (paragon)
+Paragon enables companies to build products that integrate with the SaaS ecosystem. With Paragon, software companies can integrate with hundreds of different SaaS apps in minutes while providing their customers with a seamless, unified integration experience.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/prismatic/refs/heads/main/apis.yml)
+**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/paragon/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Index 
-- **Position:** Consumer 
+- **Type:** Contract 
+- **Position:** Consuming 
 - **Access:** 3rd-Party 
 
 ## Tags:
 
- - Integrations, Embedded SaaS Integration, Workflows, Connectors
+ - Integrations, Embedded SaaS Integration
 
 ## Timestamps
 
@@ -20,36 +20,85 @@ The most efficient way to build, deploy, and manage integrations. Prismatic empo
 
 ## APIs
 
-### Prismatics GraphQL API
-Prismatic provides a GraphQL-based API for you to build, deploy, and support your integrations programmatically. While we recommend that new users use the web app or Prismatic CLI tool to manage Prismatic resources, developer users will likely want to use the API to script out integration management.
+### Paragon
+The all-in-one platform developers rely on to build, ship, and manage native product integrations 
 
-**Human URL:** [https://prismatic.io/docs/api/](https://prismatic.io/docs/api/)
+**Human URL:** [ https://www.useparagon.com/]( https://www.useparagon.com/)
 
 
 #### Tags:
 
- - Integrations, Embedded SaaS Integration, Workflows, Connectors
+ - API
 
 #### Properties
 
-- [Documentation](https://prismatic.io/docs/api/)
-- [Authentication](https://prismatic.io/docs/api/authentication/)
-- [Pagination](https://prismatic.io/docs/api/pagination/)
-- [Authentication](https://prismatic.io/docs/api/authentication/)
+- [Documentation]( https://www.useparagon.com/)
+### Proxy API
+null
+
+**Human URL:** [https://docs.useparagon.com/apis/making-api-requests](https://docs.useparagon.com/apis/making-api-requests)
+
+
+#### Tags:
+
+ - No Tags
+
+#### Properties
+
+- [Documentation](https://docs.useparagon.com/apis/making-api-requests)
+### Users API
+null
+
+**Human URL:** [https://docs.useparagon.com/apis/users](https://docs.useparagon.com/apis/users)
+
+
+#### Tags:
+
+ - No Tags
+
+#### Properties
+
+- [Documentation](https://docs.useparagon.com/apis/users)
+### Task History API
+null
+
+**Human URL:** [https://docs.useparagon.com/apis/task-history](https://docs.useparagon.com/apis/task-history)
+
+
+#### Tags:
+
+ - No Tags
+
+#### Properties
+
+- [Documentation](https://docs.useparagon.com/apis/task-history)
 
 ## Common Properties
 
-- [SDKs](https://prismatic.io/docs/custom-connectors/)
-- [CI/CD](https://prismatic.io/docs/api/ci-cd-system/)
-- [GitHubActions](https://prismatic.io/docs/api/github-actions/)
-- [CLI](https://prismatic.io/docs/cli/)
-- [ChangeLog](https://prismatic.io/docs/changelog/)
-- [Explorer](https://prismatic.io/docs/explorer/)
-- [GettingStarted](https://prismatic.io/docs/integrations/low-code-integration-designer/get-started/first-integration/)
-- [PrivacyPolicy](https://prismatic.io/legal/privacy/)
-- [TermsOfService](https://prismatic.io/legal/terms/)
-- [Security](https://prismatic.io/legal/security/)
-- [GitHubOrganization](https://github.com/prismatic-io)
+- [GitHubOrganization](https://github.com/useparagon)
+- [Integrations](https://www.useparagon.com/integrations)
+- [Documentation](https://docs.useparagon.com/overview)
+- [Blog](https://www.useparagon.com/blog)
+- [Status](https://status.useparagon.com/)
+- [UseCases](https://www.useparagon.com/use-case/library)
+- [UseCases](https://www.useparagon.com/use-case/library)
+- [SDKs](https://docs.useparagon.com/getting-started/installing-the-connect-sdk)
+- [Authentication](https://docs.useparagon.com/connect-portal/overview)
+- [Webhooks](https://docs.useparagon.com/resources/custom-webhooks)
+- [RBAC](https://docs.useparagon.com/managing-account/role-based-access-control)
+- [ServiceLevelAgreement](https://docs.useparagon.com/billing/concurrency-limits)
+- [Security](https://docs.useparagon.com/security/security)
+- [Trust](https://security.useparagon.com/)
+- [Trust](https://security.useparagon.com/)
+- [GDPR](https://docs.useparagon.com/security/gdpr)
+- [Support](https://docs.useparagon.com/support/contacting-support)
+- [Workflows](https://docs.useparagon.com/workflows/overview)
+- [Integrations](https://docs.useparagon.com/resources/integrations)
+- [ChangeLog](https://docs.useparagon.com/changelog/product-updates)
+- [SignUp](https://dashboard.useparagon.com/signup)
+- [Login](https://dashboard.useparagon.com/login)
+- [TermsOfService](https://www.useparagon.com/terms-of-service)
+- [Customers](https://www.useparagon.com/customers)
 
 ## Maintainers
 
