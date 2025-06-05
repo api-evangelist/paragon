@@ -14,6 +14,30 @@ apis:
     description: >-
       The all-in-one platform developers rely on to build, ship, and manage
       native product integrations 
+  - aid: paragon:proxy-api
+    name: Proxy API
+    description: 'null'
+    humanURL: https://docs.useparagon.com/apis/making-api-requests
+    tags: []
+    properties:
+      - type: Documentation
+        url: https://docs.useparagon.com/apis/making-api-requests
+  - aid: paragon:users-api
+    name: Users API
+    description: 'null'
+    humanURL: https://docs.useparagon.com/apis/users
+    tags: []
+    properties:
+      - type: Documentation
+        url: https://docs.useparagon.com/apis/users
+  - aid: paragon:task-history-api
+    name: Task History API
+    description: 'null'
+    humanURL: https://docs.useparagon.com/apis/task-history
+    tags: []
+    properties:
+      - type: Documentation
+        url: https://docs.useparagon.com/apis/task-history
 name: Paragon
 tags:
   - Integrations
@@ -25,22 +49,38 @@ common:
   - url: https://github.com/useparagon
     name: GitHub Organization
     type: GitHubOrganization
-  - name: Paragon | Embedded Integration Platform for Developers
-    description: 'null'
-    url: https://www.useparagon.com/integrations
+  - url: https://www.useparagon.com/integrations
+    name: Paragon | Embedded Integration Platform for Developers
     type: Integrations
-  - name: Paragon Documentation
     description: 'null'
-    url: https://docs.useparagon.com/overview
+  - url: https://docs.useparagon.com/overview
+    name: Paragon Documentation
     type: Documentation
-  - name: Paragon Embedded iPaaS | Blog
     description: 'null'
-    url: https://www.useparagon.com/blog
+  - url: https://www.useparagon.com/blog
+    name: Paragon Embedded iPaaS | Blog
     type: Blog
-  - name: Paragon Status
     description: 'null'
-    url: https://status.useparagon.com/
+  - url: https://status.useparagon.com/
+    name: Paragon Status
     type: Status
+    description: 'null'
+  - name: Powered by Paragon | Embedded iPaaS
+    description: 'null'
+    url: https://www.useparagon.com/use-case/library
+    type: UseCases
+  - name: Installing the SDK - Paragon Documentation
+    description: 'null'
+    url: https://docs.useparagon.com/getting-started/installing-the-connect-sdk
+    type: SDKs
+  - name: Overview - Paragon Documentation
+    description: 'null'
+    url: https://docs.useparagon.com/connect-portal/overview
+    type: Authentication
+  - name: Custom Webhooks - Paragon Documentation
+    description: 'null'
+    url: https://docs.useparagon.com/resources/custom-webhooks
+    type: Webhooks
 created: '2025-06-05'
 modified: '2025-06-05'
 position: Consuming
