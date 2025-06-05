@@ -2,42 +2,30 @@ aid: paragon
 url: >-
   https://raw.githubusercontent.com/api-evangelist/paragon/refs/heads/main/apis.yml
 apis:
-  - aid: paragon:paragon
-    name: Paragon
-    tags:
-      - Integrations
-      - Embedded SaaS Integration
-    humanURL: ' https://www.useparagon.com/'
-    properties:
-      - url: ' https://www.useparagon.com/'
-        type: Documentation
-    description: >-
-      The all-in-one platform developers rely on to build, ship, and manage
-      native product integrations 
   - aid: paragon:proxy-api
     name: Proxy API
-    description: 'null'
-    humanURL: https://docs.useparagon.com/apis/making-api-requests
     tags: []
+    humanURL: https://docs.useparagon.com/apis/making-api-requests
     properties:
-      - type: Documentation
-        url: https://docs.useparagon.com/apis/making-api-requests
+      - url: https://docs.useparagon.com/apis/making-api-requests
+        type: Documentation
+    description: 'null'
   - aid: paragon:users-api
     name: Users API
-    description: 'null'
-    humanURL: https://docs.useparagon.com/apis/users
     tags: []
+    humanURL: https://docs.useparagon.com/apis/users
     properties:
-      - type: Documentation
-        url: https://docs.useparagon.com/apis/users
+      - url: https://docs.useparagon.com/apis/users
+        type: Documentation
+    description: 'null'
   - aid: paragon:task-history-api
     name: Task History API
-    description: 'null'
-    humanURL: https://docs.useparagon.com/apis/task-history
     tags: []
+    humanURL: https://docs.useparagon.com/apis/task-history
     properties:
-      - type: Documentation
-        url: https://docs.useparagon.com/apis/task-history
+      - url: https://docs.useparagon.com/apis/task-history
+        type: Documentation
+    description: 'null'
 name: Paragon
 tags:
   - Integrations
@@ -65,22 +53,22 @@ common:
     name: Paragon Status
     type: Status
     description: 'null'
-  - name: Powered by Paragon | Embedded iPaaS
-    description: 'null'
-    url: https://www.useparagon.com/use-case/library
+  - url: https://www.useparagon.com/use-case/library
+    name: Powered by Paragon | Embedded iPaaS
     type: UseCases
-  - name: Installing the SDK - Paragon Documentation
     description: 'null'
-    url: https://docs.useparagon.com/getting-started/installing-the-connect-sdk
+  - url: https://docs.useparagon.com/getting-started/installing-the-connect-sdk
+    name: Installing the SDK - Paragon Documentation
     type: SDKs
-  - name: Overview - Paragon Documentation
     description: 'null'
-    url: https://docs.useparagon.com/connect-portal/overview
+  - url: https://docs.useparagon.com/connect-portal/overview
+    name: Overview - Paragon Documentation
     type: Authentication
-  - name: Custom Webhooks - Paragon Documentation
     description: 'null'
-    url: https://docs.useparagon.com/resources/custom-webhooks
+  - url: https://docs.useparagon.com/resources/custom-webhooks
+    name: Custom Webhooks - Paragon Documentation
     type: Webhooks
+    description: 'null'
 created: '2025-06-05'
 modified: '2025-06-05'
 position: Consuming
