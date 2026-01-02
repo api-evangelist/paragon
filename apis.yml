@@ -40,7 +40,7 @@ apis:
 name: Paragon
 tags:
   - Integrations
-  - Embedded SaaS
+  - Embedded iPaaS
 type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
