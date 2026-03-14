@@ -1,0 +1,307 @@
+openapi: 3.1.0
+info:
+  title: Paragon Users API
+  description: >-
+    The Users API allows you to query and modify the state of your Connected
+    Users and their integrations. The API includes REST endpoints for identifying
+    what integrations your user has enabled, disconnecting integrations, disabling
+    workflows, and associating metadata with a Connected User.
+  version: 1.0.0
+  contact:
+    name: Paragon
+    url: https://www.useparagon.com
+  license:
+    name: Proprietary
+    url: https://www.useparagon.com/terms-of-service
+servers:
+  - url: https://api.useparagon.com
+    description: Paragon API (Cloud)
+security:
+  - bearerAuth: []
+paths:
+  /projects/{projectId}/sdk/me:
+    get:
+      operationId: getUser
+      summary: Get current user
+      description: >-
+        Returns the authenticated Connected User's details, including their user
+        ID, authentication status, enabled integrations, and associated metadata.
+        Equivalent to the SDK function paragon.getUser().
+      tags:
+        - Users
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: Your Paragon Project ID.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved user details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized. Invalid or missing Paragon User Token.
+    patch:
+      operationId: updateUser
+      summary: Update user metadata
+      description: >-
+        Updates the authenticated Connected User's metadata. You can associate
+        arbitrary key-value metadata with a Connected User. Equivalent to the
+        SDK function paragon.setMetadata().
+      tags:
+        - Users
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: Your Paragon Project ID.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: The metadata to set on the Connected User.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                meta:
+                  type: object
+                  description: >-
+                    Key-value pairs of metadata to associate with the Connected
+                    User.
+                  additionalProperties:
+                    type: string
+                  example:
+                    Email: user@example.com
+                    Plan: enterprise
+      responses:
+        '200':
+          description: Successfully updated user metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized. Invalid or missing Paragon User Token.
+  /projects/{projectId}/sdk/integrations:
+    get:
+      operationId: getIntegrations
+      summary: Get project integrations
+      description: >-
+        Returns the list of integrations available in the project, including
+        their enabled status for the authenticated Connected User.
+      tags:
+        - Integrations
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: Your Paragon Project ID.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved integrations.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Integration'
+        '401':
+          description: Unauthorized. Invalid or missing Paragon User Token.
+  /projects/{projectId}/sdk/integrations/{integrationId}:
+    delete:
+      operationId: disconnectIntegration
+      summary: Disconnect an integration
+      description: >-
+        Disconnects an integration for the authenticated Connected User. When an
+        integration is disconnected, workflows for that integration will stop
+        running for the user and any saved User Settings will be cleared.
+        Equivalent to the SDK function paragon.uninstallIntegration().
+      tags:
+        - Integrations
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: Your Paragon Project ID.
+          schema:
+            type: string
+        - name: integrationId
+          in: path
+          required: true
+          description: The ID of the integration to disconnect.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully disconnected the integration.
+        '401':
+          description: Unauthorized. Invalid or missing Paragon User Token.
+        '404':
+          description: Integration not found.
+  /projects/{projectId}/sdk/credentials:
+    get:
+      operationId: getCredentials
+      summary: Get user credentials
+      description: >-
+        Returns the Connect credentials for the authenticated Connected User.
+      tags:
+        - Credentials
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: Your Paragon Project ID.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved credentials.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Credential'
+        '401':
+          description: Unauthorized. Invalid or missing Paragon User Token.
+  /projects/{projectId}/sdk/credentials/{credentialId}:
+    patch:
+      operationId: updateCredential
+      summary: Update a credential
+      description: >-
+        Updates a specific Connect credential for the authenticated Connected
+        User.
+      tags:
+        - Credentials
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: Your Paragon Project ID.
+          schema:
+            type: string
+        - name: credentialId
+          in: path
+          required: true
+          description: The ID of the Connect credential to update.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: The credential fields to update.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                accessToken:
+                  type: string
+                  description: The new access token value.
+                refreshToken:
+                  type: string
+                  description: The new refresh token value.
+      responses:
+        '200':
+          description: Successfully updated the credential.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credential'
+        '401':
+          description: Unauthorized. Invalid or missing Paragon User Token.
+        '404':
+          description: Credential not found.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Paragon User Token. A signed JWT token used to authenticate a Connected
+        User.
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the Connected User.
+        meta:
+          type: object
+          description: Metadata associated with the Connected User.
+          additionalProperties:
+            type: string
+        authenticated:
+          type: boolean
+          description: Whether the user is currently authenticated.
+        integrations:
+          type: object
+          description: >-
+            A map of integration types to their status for this user.
+          additionalProperties:
+            $ref: '#/components/schemas/UserIntegration'
+    UserIntegration:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether the integration is enabled for this user.
+        credentialStatus:
+          type: string
+          description: The status of the integration credential.
+          enum:
+            - VALID
+            - INVALID
+            - EXPIRED
+        providerId:
+          type: string
+          description: The provider-specific user ID.
+    Integration:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the integration.
+        name:
+          type: string
+          description: The display name of the integration.
+        type:
+          type: string
+          description: The integration type identifier (e.g., salesforce, hubspot).
+        enabled:
+          type: boolean
+          description: Whether the integration is enabled for the authenticated user.
+        icon:
+          type: string
+          description: URL to the integration icon.
+    Credential:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the credential.
+        integrationId:
+          type: string
+          description: The integration this credential belongs to.
+        status:
+          type: string
+          description: The current status of the credential.
+          enum:
+            - VALID
+            - INVALID
+            - EXPIRED
+tags:
+  - name: Users
+    description: Manage Connected User details and metadata.
+  - name: Integrations
+    description: Query and manage user integrations.
+  - name: Credentials
+    description: Manage user Connect credentials.

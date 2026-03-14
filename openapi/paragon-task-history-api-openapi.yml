@@ -1,0 +1,213 @@
+openapi: 3.1.0
+info:
+  title: Paragon Task History API
+  description: >-
+    The Task History API allows you to query your users' usage of integration
+    workflows and access data from historical workflow executions. The Task
+    History API can be used to analyze integration usage or pull information
+    about historical workflow executions into your application. Available for
+    Paragon customers on Enterprise plans. Rate limited to 1,000 requests per 10
+    minutes.
+  version: 1.0.0
+  contact:
+    name: Paragon
+    url: https://www.useparagon.com
+  license:
+    name: Proprietary
+    url: https://www.useparagon.com/terms-of-service
+servers:
+  - url: https://api.useparagon.com
+    description: Paragon API (Cloud)
+security:
+  - apiKeyAuth: []
+paths:
+  /projects/{projectId}/task-history/workflow-executions:
+    get:
+      operationId: getWorkflowExecutions
+      summary: Get workflow executions
+      description: >-
+        Search through historical workflow executions with filtering options.
+        Returns paginated results with up to 100 records per page. If additional
+        pages are available, the response will include a nextLink URL to
+        retrieve the next page.
+      tags:
+        - Task History
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: Your Paragon Project ID.
+          schema:
+            type: string
+        - name: integration
+          in: query
+          required: false
+          description: >-
+            Filter by integration name (e.g., salesforce, hubspot).
+          schema:
+            type: string
+        - name: workflowId
+          in: query
+          required: false
+          description: Filter by workflow ID.
+          schema:
+            type: string
+        - name: userId
+          in: query
+          required: false
+          description: Filter by Connected User ID.
+          schema:
+            type: string
+        - name: status
+          in: query
+          required: false
+          description: Filter by execution status.
+          schema:
+            type: string
+            enum:
+              - SUCCEEDED
+              - FAILED
+        - name: afterDate
+          in: query
+          required: false
+          description: >-
+            Filter executions that started after this date (ISO 8601 format).
+          schema:
+            type: string
+            format: date-time
+        - name: beforeDate
+          in: query
+          required: false
+          description: >-
+            Filter executions that started before this date (ISO 8601 format).
+          schema:
+            type: string
+            format: date-time
+        - name: sortBy
+          in: query
+          required: false
+          description: Sort order for the results.
+          schema:
+            type: string
+            enum:
+              - ASC
+              - DESC
+        - name: offset
+          in: query
+          required: false
+          description: Pagination offset for retrieving additional pages.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successfully retrieved workflow executions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowExecutionList'
+        '401':
+          description: Unauthorized. Invalid or missing API Key.
+        '429':
+          description: >-
+            Rate limit exceeded. The Task History API has a rate limit of 1,000
+            requests per 10 minutes.
+  /projects/{projectId}/task-history/workflow-executions/{executionId}/replay:
+    post:
+      operationId: replayWorkflowExecution
+      summary: Replay a workflow execution
+      description: >-
+        Replays a specific workflow execution using the same version of the
+        workflow that the execution originally ran with. This endpoint is in beta
+        and may not be suitable for use in production applications.
+      tags:
+        - Task History
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: Your Paragon Project ID.
+          schema:
+            type: string
+        - name: executionId
+          in: path
+          required: true
+          description: The ID of the workflow execution to replay.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully replayed the workflow execution.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowExecution'
+        '401':
+          description: Unauthorized. Invalid or missing API Key.
+        '404':
+          description: Workflow execution not found.
+        '429':
+          description: >-
+            Rate limit exceeded. The Task History API has a rate limit of 1,000
+            requests per 10 minutes.
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Paragon API Key. The Task History API authorizes with a project-level
+        API Key instead of a Paragon User Token. API Keys provide access to all
+        Connected Users in the project they are created in.
+  schemas:
+    WorkflowExecutionList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowExecution'
+        total:
+          type: integer
+          description: Total number of workflow executions matching the query.
+        nextLink:
+          type: string
+          nullable: true
+          description: >-
+            URL to retrieve the next page of results. Null if there are no more
+            pages.
+    WorkflowExecution:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the workflow execution.
+        userId:
+          type: string
+          description: The Connected User ID associated with this execution.
+        workflowId:
+          type: string
+          description: The workflow ID that was executed.
+        status:
+          type: string
+          description: The status of the workflow execution.
+          enum:
+            - SUCCEEDED
+            - FAILED
+        taskCount:
+          type: integer
+          description: The number of tasks executed in this workflow run.
+        runDuration:
+          type: integer
+          description: The duration of the workflow execution in milliseconds.
+        dateStarted:
+          type: string
+          format: date-time
+          description: The date and time the workflow execution started.
+        dateEnded:
+          type: string
+          format: date-time
+          description: The date and time the workflow execution ended.
+tags:
+  - name: Task History
+    description: >-
+      Query historical workflow executions and replay specific executions.
