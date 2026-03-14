@@ -13,6 +13,8 @@ apis:
         type: Documentation
       - url: openapi/paragon-proxy-api-openapi.yml
         type: OpenAPI
+      - url: json-ld/paragon-context.jsonld
+        type: JSONLD
     description: "Once your users have connected their third-party app accounts in the Connect Portal, you can access their app account via the Proxy API. The Proxy API allows you to directly access any of the third-party provider\x19s API methods. With the SDK, you can use paragon.request to send an API request to a third-party app on behalf of one of your Connected Users. Along with Workflows, the Proxy API is one of two primary ways to build integrations with Paragon."
   - aid: paragon:users-api
     name: Users API
@@ -25,6 +27,14 @@ apis:
         type: Documentation
       - url: openapi/paragon-users-api-openapi.yml
         type: OpenAPI
+      - url: json-schema/user.json
+        type: JSONSchema
+      - url: json-schema/integration.json
+        type: JSONSchema
+      - url: json-schema/credential.json
+        type: JSONSchema
+      - url: json-ld/paragon-context.jsonld
+        type: JSONLD
     description: >-
       The Users API allows you to query and modify the state of your Connected
       Users and their integrations. The API includes REST endpoints (and
@@ -42,6 +52,12 @@ apis:
         type: Documentation
       - url: openapi/paragon-task-history-api-openapi.yml
         type: OpenAPI
+      - url: json-schema/workflow-execution.json
+        type: JSONSchema
+      - url: json-schema/workflow-execution-list.json
+        type: JSONSchema
+      - url: json-ld/paragon-context.jsonld
+        type: JSONLD
     description: "The Task History API allows you to query your users\x19 usage of integration workflows and access data from historical workflow executions. The Task History API can be used to analyze integration usage or pull information about historical workflow executions into your application."
 name: Paragon
 tags:

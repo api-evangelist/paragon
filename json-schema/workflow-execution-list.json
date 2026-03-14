@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/paragon/blob/main/json-schema/workflow-execution-list.json",
+  "title": "Paragon Workflow Execution List",
+  "description": "A paginated list of workflow executions returned by the Task History API.",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "description": "Array of workflow execution records.",
+      "items": {
+        "$ref": "https://github.com/api-evangelist/paragon/blob/main/json-schema/workflow-execution.json"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "description": "Total number of workflow executions matching the query."
+    },
+    "nextLink": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL to retrieve the next page of results. Null if there are no more pages."
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/paragon/blob/main/json-schema/workflow-execution.json",
+  "title": "Paragon Workflow Execution",
+  "description": "A Workflow Execution represents a single historical run of an integration workflow, including its status, duration, and task count.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier for the workflow execution."
+    },
+    "userId": {
+      "type": "string",
+      "description": "The Connected User ID associated with this execution."
+    },
+    "workflowId": {
+      "type": "string",
+      "description": "The workflow ID that was executed."
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the workflow execution.",
+      "enum": ["SUCCEEDED", "FAILED"]
+    },
+    "taskCount": {
+      "type": "integer",
+      "description": "The number of tasks executed in this workflow run."
+    },
+    "runDuration": {
+      "type": "integer",
+      "description": "The duration of the workflow execution in milliseconds."
+    },
+    "dateStarted": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the workflow execution started (ISO 8601)."
+    },
+    "dateEnded": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the workflow execution ended (ISO 8601)."
+    }
+  }
+}

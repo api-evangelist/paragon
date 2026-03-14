@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/paragon/blob/main/json-schema/user.json",
+  "title": "Paragon Connected User",
+  "description": "A Connected User represents an end-user of your application who has authenticated and connected third-party integrations through Paragon.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier for the Connected User."
+    },
+    "meta": {
+      "type": "object",
+      "description": "Arbitrary key-value metadata associated with the Connected User.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "authenticated": {
+      "type": "boolean",
+      "description": "Whether the user is currently authenticated with Paragon."
+    },
+    "integrations": {
+      "type": "object",
+      "description": "A map of integration types to their status for this user.",
+      "additionalProperties": {
+        "$ref": "#/$defs/UserIntegration"
+      }
+    }
+  },
+  "$defs": {
+    "UserIntegration": {
+      "type": "object",
+      "description": "The status of a specific integration for a Connected User.",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether the integration is enabled for this user."
+        },
+        "credentialStatus": {
+          "type": "string",
+          "description": "The status of the integration credential.",
+          "enum": ["VALID", "INVALID", "EXPIRED"]
+        },
+        "providerId": {
+          "type": "string",
+          "description": "The provider-specific user ID."
+        }
+      }
+    }
+  }
+}

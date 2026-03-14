@@ -1,0 +1,69 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "paragon": "https://docs.useparagon.com/apis/",
+    "User": {
+      "@id": "paragon:users",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "meta": "https://schema.org/additionalProperty",
+        "authenticated": "https://schema.org/actionStatus",
+        "integrations": "https://schema.org/hasPart"
+      }
+    },
+    "UserIntegration": {
+      "@id": "paragon:users#integration",
+      "@context": {
+        "enabled": "https://schema.org/actionStatus",
+        "credentialStatus": "https://schema.org/status",
+        "providerId": "https://schema.org/identifier"
+      }
+    },
+    "Integration": {
+      "@id": "paragon:users#integrations",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "name": "https://schema.org/name",
+        "type": "https://schema.org/category",
+        "enabled": "https://schema.org/actionStatus",
+        "icon": "https://schema.org/image"
+      }
+    },
+    "Credential": {
+      "@id": "paragon:users#credentials",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "integrationId": {
+          "@id": "paragon:users#integrations",
+          "@type": "@id"
+        },
+        "status": "https://schema.org/status"
+      }
+    },
+    "WorkflowExecution": {
+      "@id": "paragon:task-history",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "userId": {
+          "@id": "paragon:users",
+          "@type": "@id"
+        },
+        "workflowId": "https://schema.org/identifier",
+        "status": "https://schema.org/status",
+        "taskCount": "https://schema.org/size",
+        "runDuration": "https://schema.org/duration",
+        "dateStarted": "https://schema.org/startDate",
+        "dateEnded": "https://schema.org/endDate"
+      }
+    },
+    "ProxyRequest": {
+      "@id": "paragon:making-api-requests",
+      "@context": {
+        "projectId": "https://schema.org/identifier",
+        "integrationType": "https://schema.org/category",
+        "integrationId": "https://schema.org/identifier",
+        "apiPath": "https://schema.org/urlTemplate"
+      }
+    }
+  }
+}

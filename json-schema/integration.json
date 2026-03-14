@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/paragon/blob/main/json-schema/integration.json",
+  "title": "Paragon Integration",
+  "description": "An Integration represents a third-party SaaS application that can be connected and configured through Paragon's Connect Portal.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier for the integration."
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the integration (e.g., Salesforce, HubSpot)."
+    },
+    "type": {
+      "type": "string",
+      "description": "The integration type identifier used in API paths (e.g., salesforce, hubspot)."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the integration is enabled for the authenticated user."
+    },
+    "icon": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the integration icon."
+    }
+  }
+}
