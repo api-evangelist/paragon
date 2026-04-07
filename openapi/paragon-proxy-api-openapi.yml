@@ -260,8 +260,8 @@ paths:
         Send a GET request to a custom integration API on behalf of a Connected
         User.
       tags:
-        - Proxy
         - Custom Integrations
+        - Proxy
       parameters:
         - name: projectId
           in: path
@@ -301,8 +301,8 @@ paths:
         Send a POST request to a custom integration API on behalf of a Connected
         User.
       tags:
-        - Proxy
         - Custom Integrations
+        - Proxy
       parameters:
         - name: projectId
           in: path
@@ -350,7 +350,7 @@ components:
         Paragon User Token. Authenticate with a signed JWT token for the
         Connected User.
 tags:
-  - name: Proxy
-    description: Proxy requests to third-party integration APIs.
   - name: Custom Integrations
     description: Proxy requests to custom integration APIs.
+  - name: Proxy
+    description: Proxy requests to third-party integration APIs.

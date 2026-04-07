@@ -299,9 +299,9 @@ components:
             - INVALID
             - EXPIRED
 tags:
-  - name: Users
-    description: Manage Connected User details and metadata.
-  - name: Integrations
-    description: Query and manage user integrations.
   - name: Credentials
     description: Manage user Connect credentials.
+  - name: Integrations
+    description: Query and manage user integrations.
+  - name: Users
+    description: Manage Connected User details and metadata.

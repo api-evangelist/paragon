@@ -5,8 +5,8 @@ apis:
   - aid: paragon:proxy-api
     name: Proxy API
     tags:
-      - Integrations
       - Embedded SaaS
+      - Integrations
     humanURL: https://docs.useparagon.com/apis/making-api-requests
     properties:
       - url: https://docs.useparagon.com/apis/making-api-requests
@@ -19,8 +19,8 @@ apis:
   - aid: paragon:users-api
     name: Users API
     tags:
-      - Integrations
       - Embedded SaaS
+      - Integrations
     humanURL: https://docs.useparagon.com/apis/users
     properties:
       - url: https://docs.useparagon.com/apis/users
@@ -44,8 +44,8 @@ apis:
   - aid: paragon:task-history-api
     name: Task History API
     tags:
-      - Integrations
       - Embedded SaaS
+      - Integrations
     humanURL: https://docs.useparagon.com/apis/task-history
     properties:
       - url: https://docs.useparagon.com/apis/task-history
@@ -61,8 +61,8 @@ apis:
     description: "The Task History API allows you to query your users\x19 usage of integration workflows and access data from historical workflow executions. The Task History API can be used to analyze integration usage or pull information about historical workflow executions into your application."
 name: Paragon
 tags:
-  - Integrations
   - Embedded iPaaS
+  - Integrations
 type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
