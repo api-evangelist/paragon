@@ -22,7 +22,7 @@ paths:
   /projects/{projectId}/sdk/me:
     get:
       operationId: getUser
-      summary: Get current user
+      summary: Paragon Get current user
       description: >-
         Returns the authenticated Connected User's details, including their user
         ID, authentication status, enabled integrations, and associated metadata.
@@ -47,7 +47,7 @@ paths:
           description: Unauthorized. Invalid or missing Paragon User Token.
     patch:
       operationId: updateUser
-      summary: Update user metadata
+      summary: Paragon Update user metadata
       description: >-
         Updates the authenticated Connected User's metadata. You can associate
         arbitrary key-value metadata with a Connected User. Equivalent to the
@@ -91,7 +91,7 @@ paths:
   /projects/{projectId}/sdk/integrations:
     get:
       operationId: getIntegrations
-      summary: Get project integrations
+      summary: Paragon Get project integrations
       description: >-
         Returns the list of integrations available in the project, including
         their enabled status for the authenticated Connected User.
@@ -118,7 +118,7 @@ paths:
   /projects/{projectId}/sdk/integrations/{integrationId}:
     delete:
       operationId: disconnectIntegration
-      summary: Disconnect an integration
+      summary: Paragon Disconnect an integration
       description: >-
         Disconnects an integration for the authenticated Connected User. When an
         integration is disconnected, workflows for that integration will stop
@@ -149,7 +149,7 @@ paths:
   /projects/{projectId}/sdk/credentials:
     get:
       operationId: getCredentials
-      summary: Get user credentials
+      summary: Paragon Get user credentials
       description: >-
         Returns the Connect credentials for the authenticated Connected User.
       tags:
@@ -175,7 +175,7 @@ paths:
   /projects/{projectId}/sdk/credentials/{credentialId}:
     patch:
       operationId: updateCredential
-      summary: Update a credential
+      summary: Paragon Update a credential
       description: >-
         Updates a specific Connect credential for the authenticated Connected
         User.

@@ -24,7 +24,7 @@ paths:
   /projects/{projectId}/sdk/proxy/{integrationType}/{apiPath}:
     get:
       operationId: proxyGetRequest
-      summary: Proxy GET request to integration
+      summary: Paragon Proxy GET request to integration
       description: >-
         Send a GET request to a third-party integration API on behalf of a
         Connected User. The request is proxied through Paragon to the
@@ -68,7 +68,7 @@ paths:
           description: Rate limit exceeded.
     post:
       operationId: proxyPostRequest
-      summary: Proxy POST request to integration
+      summary: Paragon Proxy POST request to integration
       description: >-
         Send a POST request to a third-party integration API on behalf of a
         Connected User.
@@ -116,7 +116,7 @@ paths:
           description: Rate limit exceeded.
     put:
       operationId: proxyPutRequest
-      summary: Proxy PUT request to integration
+      summary: Paragon Proxy PUT request to integration
       description: >-
         Send a PUT request to a third-party integration API on behalf of a
         Connected User.
@@ -164,7 +164,7 @@ paths:
           description: Rate limit exceeded.
     patch:
       operationId: proxyPatchRequest
-      summary: Proxy PATCH request to integration
+      summary: Paragon Proxy PATCH request to integration
       description: >-
         Send a PATCH request to a third-party integration API on behalf of a
         Connected User.
@@ -212,7 +212,7 @@ paths:
           description: Rate limit exceeded.
     delete:
       operationId: proxyDeleteRequest
-      summary: Proxy DELETE request to integration
+      summary: Paragon Proxy DELETE request to integration
       description: >-
         Send a DELETE request to a third-party integration API on behalf of a
         Connected User.
@@ -255,7 +255,7 @@ paths:
   /projects/{projectId}/sdk/proxy/custom/{integrationId}/{apiPath}:
     get:
       operationId: proxyCustomGetRequest
-      summary: Proxy GET request to custom integration
+      summary: Paragon Proxy GET request to custom integration
       description: >-
         Send a GET request to a custom integration API on behalf of a Connected
         User.
@@ -296,7 +296,7 @@ paths:
           description: Rate limit exceeded.
     post:
       operationId: proxyCustomPostRequest
-      summary: Proxy POST request to custom integration
+      summary: Paragon Proxy POST request to custom integration
       description: >-
         Send a POST request to a custom integration API on behalf of a Connected
         User.

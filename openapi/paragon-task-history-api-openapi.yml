@@ -24,7 +24,7 @@ paths:
   /projects/{projectId}/task-history/workflow-executions:
     get:
       operationId: getWorkflowExecutions
-      summary: Get workflow executions
+      summary: Paragon Get workflow executions
       description: >-
         Search through historical workflow executions with filtering options.
         Returns paginated results with up to 100 records per page. If additional
@@ -114,7 +114,7 @@ paths:
   /projects/{projectId}/task-history/workflow-executions/{executionId}/replay:
     post:
       operationId: replayWorkflowExecution
-      summary: Replay a workflow execution
+      summary: Paragon Replay a workflow execution
       description: >-
         Replays a specific workflow execution using the same version of the
         workflow that the execution originally ran with. This endpoint is in beta
