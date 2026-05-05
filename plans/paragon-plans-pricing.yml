@@ -1,0 +1,57 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Paragon
+providerId: paragon
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Embedded Integrations
+  - iPaaS
+description: Paragon embedded iPaaS — Platform / Enterprise tiers, custom-quoted by tenants.
+sources:
+  - https://www.useparagon.com/pricing
+plans:
+  - id: paragon-platform
+    name: Platform
+    type: enterprise
+    description: Custom pricing scales with Connected Users (tenants).
+    entries:
+      - label: Annual (custom)
+        name: annual
+        type: subscription
+        metric: year
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Unlimited integrations
+      - name: Fully managed authentication
+      - name: Managed Sync, ActionKit, Workflows
+      - name: Embedded UX or Headless SDK
+      - name: Event Logs
+  - id: paragon-enterprise
+    name: Enterprise
+    type: enterprise
+    description: Custom pricing.
+    entries:
+      - label: Annual (custom)
+        name: annual
+        type: subscription
+        metric: year
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Self-host / forward-deploy
+      - name: Dynamic Field Mapping
+      - name: Priority Support + SLAs
+      - name: SAML SSO
+      - name: Professional Services
