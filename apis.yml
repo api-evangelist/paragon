@@ -327,6 +327,107 @@ position: Consuming
 description: Paragon enables companies to build products that integrate with the SaaS ecosystem. With
   Paragon, software companies can integrate with hundreds of different SaaS apps in minutes while providing
   their customers with a seamless, unified integration experience.
+integrations:
+  - name: Salesforce
+  - name: HubSpot
+  - name: Microsoft Dynamics 365 Sales
+  - name: Pipedrive
+  - name: Zoho CRM
+  - name: Zendesk Sell
+  - name: Insightly
+  - name: Copper
+  - name: Keap
+  - name: Freshsales
+  - name: Google Drive
+  - name: Dropbox
+  - name: Microsoft SharePoint
+  - name: Box
+  - name: OneDrive
+  - name: Notion
+  - name: OneNote
+  - name: Confluence
+  - name: Google Docs
+  - name: Coda
+  - name: Quip
+  - name: Emarsys
+  - name: Slack
+  - name: Microsoft Teams
+  - name: Zoom
+  - name: WhatsApp
+  - name: Outreach
+  - name: Gong
+  - name: Salesloft
+  - name: Apollo.io
+  - name: JIRA
+  - name: Asana
+  - name: Trello
+  - name: Monday.com
+  - name: Azure DevOps
+  - name: ClickUp
+  - name: Linear
+  - name: GitHub
+  - name: Productboard
+  - name: Airtable
+  - name: Hive
+  - name: Shortcut
+  - name: Todoist
+  - name: Intercom
+  - name: Zendesk
+  - name: ServiceNow
+  - name: Freshdesk
+  - name: Gainsight
+  - name: Front
+  - name: PagerDuty
+  - name: Vimeo
+  - name: Klaviyo
+  - name: MailChimp
+  - name: Marketo
+  - name: Pardot
+  - name: Oracle Eloqua
+  - name: BETA Sailthru
+  - name: ActiveCampaign
+  - name: Google Sheets
+  - name: Google Calendar
+  - name: Microsoft Outlook
+  - name: Calendly
+  - name: Gmail
+  - name: Miro
+  - name: iManage
+  - name: OpenAi
+  - name: Excel
+  - name: Figma
+  - name: Stack Overflow for Teams
+  - name: Typeform
+  - name: BETA Vanta
+  - name: Google Analytics
+  - name: Google Search Console
+  - name: Mixpanel
+  - name: Google Analytics GA4
+  - name: Heap
+  - name: QuickBooks
+  - name: Xero
+  - name: Sage Intacct
+  - name: NetSuite
+  - name: Dynamics 365 Business Central
+  - name: BETA SAP S/4HANA
+  - name: BETA Oracle Financials Cloud
+  - name: BETA Dynamics 365 Finance
+  - name: Sage Accounting
+  - name: Unleashed
+  - name: Shopify
+  - name: WooCommerce
+  - name: Adobe Commerce
+  - name: Facebook Ads
+  - name: Google Campaign Manager
+  - name: Google Ads
+  - name: Google Ad Manager
+  - name: TikTok Ads
+  - name: DocuSign
+  - name: PandaDoc
+  - name: Dropbox Sign
+  - name: Adobe Acrobat Sign
+  - name: BETA Amplitude
+  - name: Tableau
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
