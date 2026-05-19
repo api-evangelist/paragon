@@ -14,11 +14,7 @@ apis:
         type: OpenAPI
       - url: json-ld/paragon-context.jsonld
         type: JSONLD
-    description: "Once your users have connected their third-party app accounts in the Connect Portal,\
-      \ you can access their app account via the Proxy API. The Proxy API allows you to directly access\
-      \ any of the third-party provider\x19s API methods. With the SDK, you can use paragon.request to\
-      \ send an API request to a third-party app on behalf of one of your Connected Users. Along with\
-      \ Workflows, the Proxy API is one of two primary ways to build integrations with Paragon."
+    description: "Once your users have connected their third-party app accounts in the Connect Portal, you can access their app account via the Proxy API. The Proxy API allows you to directly access any of the third-party provider\x19s API methods. With the SDK, you can use paragon.request to send an API request to a third-party app on behalf of one of your Connected Users. Along with Workflows, the Proxy API is one of two primary ways to build integrations with Paragon."
   - aid: paragon:users-api
     name: Users API
     tags:
@@ -38,10 +34,7 @@ apis:
         type: JSONSchema
       - url: json-ld/paragon-context.jsonld
         type: JSONLD
-    description: The Users API allows you to query and modify the state of your Connected Users and their
-      integrations. The API includes REST endpoints (and matching SDK functions) for identifying what
-      integrations your user has enabled, disconnecting integrations, and disabling workflows. The API
-      also allows your application to associate metadata with a Connected User.
+    description: The Users API allows you to query and modify the state of your Connected Users and their integrations. The API includes REST endpoints (and matching SDK functions) for identifying what integrations your user has enabled, disconnecting integrations, and disabling workflows. The API also allows your application to associate metadata with a Connected User.
   - aid: paragon:task-history-api
     name: Task History API
     tags:
@@ -59,9 +52,7 @@ apis:
         type: JSONSchema
       - url: json-ld/paragon-context.jsonld
         type: JSONLD
-    description: "The Task History API allows you to query your users\x19 usage of integration workflows\
-      \ and access data from historical workflow executions. The Task History API can be used to analyze\
-      \ integration usage or pull information about historical workflow executions into your application."
+    description: "The Task History API allows you to query your users\x19 usage of integration workflows and access data from historical workflow executions. The Task History API can be used to analyze integration usage or pull information about historical workflow executions into your application."
 name: Paragon
 tags:
   - Embedded iPaaS
@@ -321,12 +312,16 @@ common:
     sources:
       - https://www.useparagon.com/pricing
     updated: '2026-05-04'
+  - name: MCP Server
+    url: https://github.com/useparagon/paragon-mcp
+    type: MCPServer
+  - name: Agent Skills
+    url: https://github.com/useparagon/paragon-ai-skills
+    type: AgentSkill
 created: '2025-06-05T00:00:00.000Z'
-modified: '2026-05-04'
+modified: '2026-05-19'
 position: Consuming
-description: Paragon enables companies to build products that integrate with the SaaS ecosystem. With
-  Paragon, software companies can integrate with hundreds of different SaaS apps in minutes while providing
-  their customers with a seamless, unified integration experience.
+description: Paragon enables companies to build products that integrate with the SaaS ecosystem. With Paragon, software companies can integrate with hundreds of different SaaS apps in minutes while providing their customers with a seamless, unified integration experience.
 integrations:
   - name: Salesforce
   - name: HubSpot
