@@ -1,0 +1,177 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Paragon Task History API — Task History
+  description: 'Paragon Task History API — Task History. 2 operations. Lead operation: Paragon Get workflow executions. Self-contained
+    Naftiko capability covering one Paragon business surface.'
+  tags:
+  - Paragon
+  - Task History
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PARAGON_API_KEY: PARAGON_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: task-history-task-history
+    baseUri: https://api.useparagon.com
+    description: Paragon Task History API — Task History business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-projectId-task-history-workflow-executions
+      path: /projects/{projectId}/task-history/workflow-executions
+      operations:
+      - name: getworkflowexecutions
+        method: GET
+        description: Paragon Get workflow executions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          description: Your Paragon Project ID.
+          required: true
+        - name: integration
+          in: query
+          type: string
+          description: Filter by integration name (e.g., salesforce, hubspot).
+        - name: workflowId
+          in: query
+          type: string
+          description: Filter by workflow ID.
+        - name: userId
+          in: query
+          type: string
+          description: Filter by Connected User ID.
+        - name: status
+          in: query
+          type: string
+          description: Filter by execution status.
+        - name: afterDate
+          in: query
+          type: string
+          description: Filter executions that started after this date (ISO 8601 format).
+        - name: beforeDate
+          in: query
+          type: string
+          description: Filter executions that started before this date (ISO 8601 format).
+        - name: sortBy
+          in: query
+          type: string
+          description: Sort order for the results.
+        - name: offset
+          in: query
+          type: integer
+          description: Pagination offset for retrieving additional pages.
+    - name: projects-projectId-task-history-workflow-executions-executionId-replay
+      path: /projects/{projectId}/task-history/workflow-executions/{executionId}/replay
+      operations:
+      - name: replayworkflowexecution
+        method: POST
+        description: Paragon Replay a workflow execution
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          description: Your Paragon Project ID.
+          required: true
+        - name: executionId
+          in: path
+          type: string
+          description: The ID of the workflow execution to replay.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PARAGON_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: task-history-task-history-rest
+    port: 8080
+    description: REST adapter for Paragon Task History API — Task History. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/projects/{projectid}/task-history/workflow-executions
+      name: projects-projectid-task-history-workflow-executions
+      description: REST surface for projects-projectId-task-history-workflow-executions.
+      operations:
+      - method: GET
+        name: getworkflowexecutions
+        description: Paragon Get workflow executions
+        call: task-history-task-history.getworkflowexecutions
+        with:
+          projectId: rest.projectId
+          integration: rest.integration
+          workflowId: rest.workflowId
+          userId: rest.userId
+          status: rest.status
+          afterDate: rest.afterDate
+          beforeDate: rest.beforeDate
+          sortBy: rest.sortBy
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectid}/task-history/workflow-executions/{executionid}/replay
+      name: projects-projectid-task-history-workflow-executions-executionid-replay
+      description: REST surface for projects-projectId-task-history-workflow-executions-executionId-replay.
+      operations:
+      - method: POST
+        name: replayworkflowexecution
+        description: Paragon Replay a workflow execution
+        call: task-history-task-history.replayworkflowexecution
+        with:
+          projectId: rest.projectId
+          executionId: rest.executionId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: task-history-task-history-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Paragon Task History API — Task History. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: paragon-get-workflow-executions
+      description: Paragon Get workflow executions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: task-history-task-history.getworkflowexecutions
+      with:
+        projectId: tools.projectId
+        integration: tools.integration
+        workflowId: tools.workflowId
+        userId: tools.userId
+        status: tools.status
+        afterDate: tools.afterDate
+        beforeDate: tools.beforeDate
+        sortBy: tools.sortBy
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paragon-replay-workflow-execution
+      description: Paragon Replay a workflow execution
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: task-history-task-history.replayworkflowexecution
+      with:
+        projectId: tools.projectId
+        executionId: tools.executionId
+      outputParameters:
+      - type: object
+        mapping: $.

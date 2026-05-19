@@ -1,0 +1,129 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Paragon Users API — Integrations
+  description: 'Paragon Users API — Integrations. 2 operations. Lead operation: Paragon Get project integrations. Self-contained
+    Naftiko capability covering one Paragon business surface.'
+  tags:
+  - Paragon
+  - Integrations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PARAGON_API_KEY: PARAGON_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: users-integrations
+    baseUri: https://api.useparagon.com
+    description: Paragon Users API — Integrations business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-projectId-sdk-integrations
+      path: /projects/{projectId}/sdk/integrations
+      operations:
+      - name: getintegrations
+        method: GET
+        description: Paragon Get project integrations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          description: Your Paragon Project ID.
+          required: true
+    - name: projects-projectId-sdk-integrations-integrationId
+      path: /projects/{projectId}/sdk/integrations/{integrationId}
+      operations:
+      - name: disconnectintegration
+        method: DELETE
+        description: Paragon Disconnect an integration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          description: Your Paragon Project ID.
+          required: true
+        - name: integrationId
+          in: path
+          type: string
+          description: The ID of the integration to disconnect.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.PARAGON_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: users-integrations-rest
+    port: 8080
+    description: REST adapter for Paragon Users API — Integrations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/projects/{projectid}/sdk/integrations
+      name: projects-projectid-sdk-integrations
+      description: REST surface for projects-projectId-sdk-integrations.
+      operations:
+      - method: GET
+        name: getintegrations
+        description: Paragon Get project integrations
+        call: users-integrations.getintegrations
+        with:
+          projectId: rest.projectId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectid}/sdk/integrations/{integrationid}
+      name: projects-projectid-sdk-integrations-integrationid
+      description: REST surface for projects-projectId-sdk-integrations-integrationId.
+      operations:
+      - method: DELETE
+        name: disconnectintegration
+        description: Paragon Disconnect an integration
+        call: users-integrations.disconnectintegration
+        with:
+          projectId: rest.projectId
+          integrationId: rest.integrationId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: users-integrations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Paragon Users API — Integrations. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: paragon-get-project-integrations
+      description: Paragon Get project integrations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: users-integrations.getintegrations
+      with:
+        projectId: tools.projectId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: paragon-disconnect-integration
+      description: Paragon Disconnect an integration
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: users-integrations.disconnectintegration
+      with:
+        projectId: tools.projectId
+        integrationId: tools.integrationId
+      outputParameters:
+      - type: object
+        mapping: $.
