@@ -4,15 +4,20 @@ schema: https://www.finops.org/framework/
 provider: Paragon
 providerId: paragon
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-22'
 reconciled: true
 tags:
   - FinOps
   - FOCUS
   - Embedded Integrations
-description: FOCUS-aligned FinOps for Paragon.
+  - Integration Infrastructure
+description: >-
+  FOCUS-aligned FinOps view of Paragon. Paragon prices per workspace with
+  scaling based on Connected Users (tenants); meters extend across workflow
+  executions, ActionKit calls, trigger subscriptions, and Managed Sync records.
 sources:
   - https://www.useparagon.com/pricing
+  - https://docs.useparagon.com/billing/concurrency-limits
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -20,14 +25,14 @@ alignedWith:
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 publisherName: Paragon
-serviceCategory: Embedded Integrations
+serviceCategory: Integration Infrastructure
 billingModel:
   pricingCategory: Custom by Connected Users
   billingFrequency: Monthly
   billingCurrency: USD
 focusColumns:
   ServiceName: Paragon
-  ServiceCategory: Embedded Integrations
+  ServiceCategory: Integration Infrastructure
   ProviderName: Paragon
   PublisherName: Paragon
   BillingCurrency: USD
@@ -38,18 +43,27 @@ meters:
   - name: workflow_executions
     unit: execution
     aggregation: sum
-  - name: active_integrations
-    unit: integration-month
-    aggregation: max
+  - name: step_executions
+    unit: step
+    aggregation: sum
   - name: actionkit_calls
     unit: call
     aggregation: sum
+  - name: trigger_events_delivered
+    unit: event
+    aggregation: sum
+  - name: managed_sync_records
+    unit: record
+    aggregation: max
+  - name: active_integrations
+    unit: integration-month
+    aggregation: max
 principles:
   - name: Visibility
-    description: Track Paragon consumption monthly.
+    description: Track Connected Users, executions, ActionKit calls, and Managed Sync record counts monthly.
   - name: Allocation
-    description: Tag usage to teams/cost centers.
+    description: Tag usage to tenant cohorts / product lines / customer segments.
   - name: Optimization
-    description: Right-size; reclaim unused entitlements.
+    description: Right-size concurrency tier; deprecate idle triggers and disabled syncs.
   - name: Accountability
-    description: Set spend alerts; quarterly review.
+    description: Set per-tenant spend alerts; review quarterly with sales counterpart.

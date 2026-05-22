@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/paragon/main/json-schema/access-check.json",
+  "title": "Paragon Permissions Access Check",
+  "description": "A ReBAC-style access check tuple (subject, relation, object) evaluated by the Paragon Permissions API over synced records.",
+  "type": "object",
+  "required": ["subject", "relation", "object"],
+  "properties": {
+    "subject": { "type": "string" },
+    "relation": {
+      "type": "string",
+      "description": "Relation to check (e.g., viewer, editor, owner)."
+    },
+    "object": {
+      "type": "string",
+      "description": "Object identifier (e.g., file:abc123)."
+    }
+  }
+}

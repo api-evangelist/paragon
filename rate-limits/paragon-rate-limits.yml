@@ -4,15 +4,20 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Paragon
 providerId: paragon
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-22'
 reconciled: true
 tags:
   - Rate Limiting
+  - Concurrency
   - Embedded Integrations
-description: Paragon API rate limits per workspace.
+description: >-
+  Paragon API rate limits and concurrency SLAs per workspace. Concurrency is
+  measured as the number of step executions that can run at a given time across
+  all Connected Users; over-limit executions are queued with `Not Started`
+  status.
 sources:
   - https://www.useparagon.com/pricing
-  - https://docs.useparagon.com/api/rate-limits
+  - https://docs.useparagon.com/billing/concurrency-limits
 headers:
   retryAfter: Retry-After
 responseCodes:
@@ -23,12 +28,25 @@ limits:
     metric: requests_per_minute
     limit: 600
     timeFrame: minute
-  - name: Workflow executions
-    scope: workspace
-    metric: concurrent
-    limit: tier-based
   - name: ActionKit API
     scope: workspace
     metric: requests_per_second
     limit: 50
     timeFrame: second
+  - name: Task History API
+    scope: workspace
+    metric: requests_per_10_minutes
+    limit: 1000
+    timeFrame: 10m
+  - name: Workflow Step Executions — Trial
+    scope: workspace
+    metric: concurrent
+    limit: 5
+  - name: Workflow Step Executions — Pro
+    scope: workspace
+    metric: concurrent
+    limit: 20
+  - name: Workflow Step Executions — Enterprise
+    scope: workspace
+    metric: concurrent
+    limit: 1000

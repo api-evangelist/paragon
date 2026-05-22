@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/paragon/main/json-schema/synced-record.json",
+  "title": "Paragon Managed Sync Record",
+  "description": "A normalized record produced by a Paragon Managed Sync pipeline. Records carry source data plus permissions captured from the source system, enabling permissions-aware RAG retrieval.",
+  "type": "object",
+  "required": ["id", "integration", "syncType"],
+  "properties": {
+    "id": { "type": "string" },
+    "integration": { "type": "string" },
+    "syncType": {
+      "type": "string",
+      "description": "The sync pipeline type (e.g., files, contacts, deals, tickets)."
+    },
+    "sourceId": { "type": "string" },
+    "data": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "permissions": {
+      "type": "object",
+      "description": "Source-system permissions captured for this record.",
+      "additionalProperties": true
+    },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

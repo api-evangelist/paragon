@@ -1,0 +1,20 @@
+{
+  "request": {
+    "trigger": "SLACK_MESSAGE_RECEIVED",
+    "parameters": {
+      "channelId": "C0123456789"
+    },
+    "deliveryUrl": "https://app.example.com/paragon/webhooks/slack"
+  },
+  "response": {
+    "id": "sub_01HX9Z6RTC3K6E1S8R8R6PB4DA",
+    "userId": "user_abc123",
+    "trigger": "SLACK_MESSAGE_RECEIVED",
+    "integration": "slack",
+    "parameters": {
+      "channelId": "C0123456789"
+    },
+    "deliveryUrl": "https://app.example.com/paragon/webhooks/slack",
+    "createdAt": "2026-05-22T15:04:05Z"
+  }
+}

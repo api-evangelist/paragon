@@ -1,0 +1,17 @@
+{
+  "action": "SLACK_SEND_MESSAGE",
+  "input": {
+    "channelId": "C0123456789",
+    "text": "Hello from a Paragon ActionKit agent."
+  },
+  "output": {
+    "ok": true,
+    "channel": "C0123456789",
+    "ts": "1747900800.000100",
+    "message": {
+      "text": "Hello from a Paragon ActionKit agent.",
+      "user": "U0123456789"
+    }
+  },
+  "integration": "slack"
+}

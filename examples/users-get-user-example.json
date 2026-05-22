@@ -1,0 +1,24 @@
+{
+  "userId": "user_abc123",
+  "authenticated": true,
+  "meta": {
+    "Name": "Sean V",
+    "Email": "sean@useparagon.com",
+    "AccountType": "Pro"
+  },
+  "integrations": {
+    "salesforce": {
+      "enabled": true,
+      "credentialStatus": "VALID",
+      "providerData": {
+        "instanceUrl": "https://example.my.salesforce.com"
+      },
+      "providerId": "0055g00000ABCDEAAA"
+    },
+    "slack": {
+      "enabled": true,
+      "credentialStatus": "VALID",
+      "providerId": "T0123456789"
+    }
+  }
+}

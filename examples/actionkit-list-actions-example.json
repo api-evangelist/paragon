@@ -1,0 +1,30 @@
+{
+  "actions": [
+    {
+      "name": "SLACK_SEND_MESSAGE",
+      "description": "Send a message to a Slack channel as the Connected User.",
+      "integration": "slack",
+      "parameters": {
+        "type": "object",
+        "required": ["channelId", "text"],
+        "properties": {
+          "channelId": { "type": "string" },
+          "text": { "type": "string" }
+        }
+      }
+    },
+    {
+      "name": "SALESFORCE_CREATE_RECORD",
+      "description": "Create a Salesforce record in the specified object.",
+      "integration": "salesforce",
+      "parameters": {
+        "type": "object",
+        "required": ["object", "fields"],
+        "properties": {
+          "object": { "type": "string" },
+          "fields": { "type": "object" }
+        }
+      }
+    }
+  ]
+}

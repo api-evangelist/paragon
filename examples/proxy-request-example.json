@@ -1,0 +1,15 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://proxy.useparagon.com/projects/{projectId}/sdk/proxy/salesforce/services/data/v59.0/sobjects/Account/0015g00001AbCdEAAQ",
+    "headers": {
+      "Authorization": "Bearer <PARAGON_USER_TOKEN>"
+    }
+  },
+  "response": {
+    "Id": "0015g00001AbCdEAAQ",
+    "Name": "Acme Corp",
+    "Industry": "Technology",
+    "AnnualRevenue": 50000000
+  }
+}

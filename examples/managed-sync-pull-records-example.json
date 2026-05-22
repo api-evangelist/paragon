@@ -1,0 +1,22 @@
+{
+  "records": [
+    {
+      "id": "rec_01HX9Z7Q4DPMHC2BC9R1Q1F2GH",
+      "integration": "googleDrive",
+      "syncType": "files",
+      "sourceId": "1AbCdEfGhIjKlMnOpQrStUvWxYz",
+      "data": {
+        "name": "Q2 Strategy.pdf",
+        "mimeType": "application/pdf",
+        "size": 482311,
+        "webViewLink": "https://drive.google.com/file/d/1AbCdEfGhIjKlMnOpQrStUvWxYz/view"
+      },
+      "permissions": {
+        "owners": ["user@example.com"],
+        "viewers": ["team-list@example.com"]
+      },
+      "updatedAt": "2026-05-20T18:22:00Z"
+    }
+  ],
+  "nextCursor": "eyJvZmZzZXQiOjEwMH0="
+}

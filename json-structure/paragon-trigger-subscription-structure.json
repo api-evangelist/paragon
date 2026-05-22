@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/schema/v0/",
+  "title": "Paragon Trigger Subscription",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "userId": { "type": "string" },
+    "trigger": { "type": "string" },
+    "integration": { "type": "string" },
+    "parameters": { "type": "object" },
+    "deliveryUrl": { "type": "string", "format": "uri" },
+    "createdAt": { "type": "string", "format": "date-time" }
+  },
+  "required": ["id", "trigger"]
+}

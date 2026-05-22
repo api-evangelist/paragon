@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/schema/v0/",
+  "title": "Paragon ActionKit Action",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "integration": { "type": "string" },
+    "parameters": { "type": "object" }
+  },
+  "required": ["name", "integration"]
+}

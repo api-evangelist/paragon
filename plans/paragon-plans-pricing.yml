@@ -4,19 +4,51 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Paragon
 providerId: paragon
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-22'
 reconciled: true
 tags:
   - Embedded Integrations
+  - Integration Infrastructure
   - iPaaS
-description: Paragon embedded iPaaS — Platform / Enterprise tiers, custom-quoted by tenants.
+description: >-
+  Paragon Integration Infrastructure Platform — Pro / Platform / Enterprise
+  tiers. Pricing is custom-quoted and scales with the number of Connected Users
+  (tenants). All tiers include the full product surface (Connect Portal,
+  Workflows, ActionKit, Triggers, Managed Sync, Proxy API).
 sources:
   - https://www.useparagon.com/pricing
+  - https://docs.useparagon.com/billing/concurrency-limits
 plans:
+  - id: paragon-pro
+    name: Pro
+    type: subscription
+    description: Standard cloud plan with full product access and 90-day task history retention.
+    entries:
+      - label: Annual (custom)
+        name: annual
+        type: subscription
+        metric: year
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: true
+    elements:
+      - name: Unlimited integrations and custom connectors
+      - name: Fully managed authentication (OAuth 2.0, API Key, custom)
+      - name: Connect Portal (embedded or headless)
+      - name: Workflows
+      - name: ActionKit (Tools + Triggers)
+      - name: Managed Sync (Files, CRM, Ticketing)
+      - name: Proxy API
+      - name: Event Logs
+      - name: 90-day task history retention
+      - name: 20 step-execution concurrency
   - id: paragon-platform
     name: Platform
     type: enterprise
-    description: Custom pricing scales with Connected Users (tenants).
+    description: Custom pricing scaling with Connected Users (tenants). Full platform access.
     entries:
       - label: Annual (custom)
         name: annual
@@ -27,17 +59,16 @@ plans:
         geo: global
         unit: 1
         price: custom
-        userMultiplied: false
+        userMultiplied: true
     elements:
-      - name: Unlimited integrations
-      - name: Fully managed authentication
-      - name: Managed Sync, ActionKit, Workflows
-      - name: Embedded UX or Headless SDK
-      - name: Event Logs
+      - name: Everything in Pro
+      - name: Higher step-execution concurrency
+      - name: Dedicated solutions engineering
+      - name: Production support
   - id: paragon-enterprise
     name: Enterprise
     type: enterprise
-    description: Custom pricing.
+    description: Self-host / forward-deploy with HIPAA, dedicated support, and unlimited task history.
     entries:
       - label: Annual (custom)
         name: annual
@@ -48,10 +79,14 @@ plans:
         geo: global
         unit: 1
         price: custom
-        userMultiplied: false
+        userMultiplied: true
     elements:
-      - name: Self-host / forward-deploy
+      - name: Everything in Platform
+      - name: Self-host / forward-deploy (AWS on-prem)
       - name: Dynamic Field Mapping
-      - name: Priority Support + SLAs
       - name: SAML SSO
+      - name: HIPAA-eligible deployment
+      - name: Up to 1,000 step-execution concurrency
+      - name: Unlimited task history retention
+      - name: Priority Support + SLAs
       - name: Professional Services

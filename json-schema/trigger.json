@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/paragon/main/json-schema/trigger.json",
+  "title": "Paragon Trigger",
+  "description": "A pre-built event trigger exposed by Paragon ActionKit Triggers API. Subscribing a Connected User to a trigger delivers third-party integration events to a webhook URL.",
+  "type": "object",
+  "required": ["name", "integration"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Trigger identifier (e.g., SLACK_MESSAGE_RECEIVED, GOOGLE_CALENDAR_NEW_EVENT)."
+    },
+    "description": {
+      "type": "string"
+    },
+    "integration": {
+      "type": "string"
+    },
+    "parameters": {
+      "type": "object",
+      "description": "JSON Schema describing the parameters required to subscribe.",
+      "additionalProperties": true
+    }
+  }
+}

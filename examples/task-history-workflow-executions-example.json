@@ -1,0 +1,18 @@
+{
+  "workflowExecutions": [
+    {
+      "id": "317a396c-1b87-4f3a-9b4f-93e1e6b6f311",
+      "userId": "user_abc123",
+      "workflowId": "wf_8a8c7f1e",
+      "integration": "salesforce",
+      "status": "SUCCEEDED",
+      "taskCount": 14,
+      "runDuration": 4231,
+      "dateStarted": "2026-05-21T09:42:10Z",
+      "dateEnded": "2026-05-21T09:42:14Z",
+      "stepExecutions": []
+    }
+  ],
+  "nextLink": "/workflow-executions?offset=100",
+  "total": 14295
+}

@@ -1,452 +1,617 @@
 aid: paragon
 url: https://raw.githubusercontent.com/api-evangelist/paragon/refs/heads/main/apis.yml
-apis:
-- aid: paragon:proxy-api
-  name: Proxy API
-  tags:
-  - Embedded SaaS
-  - Integrations
-  humanURL: https://docs.useparagon.com/apis/making-api-requests
-  properties:
-  - url: https://docs.useparagon.com/apis/making-api-requests
-    type: Documentation
-  - url: openapi/paragon-proxy-api-openapi.yml
-    type: OpenAPI
-  - url: json-ld/paragon-context.jsonld
-    type: JSONLD
-  - type: NaftikoCapability
-    url: capabilities/proxy-custom-integrations.yaml
-  - type: NaftikoCapability
-    url: capabilities/proxy-proxy.yaml
-  description: "Once your users have connected their third-party app accounts in the Connect Portal, you can access their\
-    \ app account via the Proxy API. The Proxy API allows you to directly access any of the third-party provider\x19s API\
-    \ methods. With the SDK, you can use paragon.request to send an API request to a third-party app on behalf of one of your\
-    \ Connected Users. Along with Workflows, the Proxy API is one of two primary ways to build integrations with Paragon."
-- aid: paragon:users-api
-  name: Users API
-  tags:
-  - Embedded SaaS
-  - Integrations
-  humanURL: https://docs.useparagon.com/apis/users
-  properties:
-  - url: https://docs.useparagon.com/apis/users
-    type: Documentation
-  - url: openapi/paragon-users-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/user.json
-    type: JSONSchema
-  - url: json-schema/integration.json
-    type: JSONSchema
-  - url: json-schema/credential.json
-    type: JSONSchema
-  - url: json-ld/paragon-context.jsonld
-    type: JSONLD
-  - type: NaftikoCapability
-    url: capabilities/users-credentials.yaml
-  - type: NaftikoCapability
-    url: capabilities/users-integrations.yaml
-  - type: NaftikoCapability
-    url: capabilities/users-users.yaml
-  description: The Users API allows you to query and modify the state of your Connected Users and their integrations. The
-    API includes REST endpoints (and matching SDK functions) for identifying what integrations your user has enabled, disconnecting
-    integrations, and disabling workflows. The API also allows your application to associate metadata with a Connected User.
-- aid: paragon:task-history-api
-  name: Task History API
-  tags:
-  - Embedded SaaS
-  - Integrations
-  humanURL: https://docs.useparagon.com/apis/task-history
-  properties:
-  - url: https://docs.useparagon.com/apis/task-history
-    type: Documentation
-  - url: openapi/paragon-task-history-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/workflow-execution.json
-    type: JSONSchema
-  - url: json-schema/workflow-execution-list.json
-    type: JSONSchema
-  - url: json-ld/paragon-context.jsonld
-    type: JSONLD
-  - type: NaftikoCapability
-    url: capabilities/task-history-task-history.yaml
-  description: "The Task History API allows you to query your users\x19 usage of integration workflows and access data from\
-    \ historical workflow executions. The Task History API can be used to analyze integration usage or pull information about\
-    \ historical workflow executions into your application."
 name: Paragon
 tags:
-- Embedded iPaaS
-- Integrations
+  - Embedded Integrations
+  - Integration Infrastructure
+  - iPaaS
+  - AI Agents
+  - MCP
+  - Integrations
 kind: contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
+position: Consuming
+created: '2025-06-05T00:00:00.000Z'
+modified: '2026-05-22'
+specificationVersion: '0.19'
+description: >-
+  Paragon is the Integration Infrastructure Platform for B2B SaaS and AI
+  products. The platform combines Connect Portal (managed user authentication
+  for 130+ SaaS apps), Workflows (event-driven async orchestration), ActionKit
+  (Universal API + MCP server giving AI agents synchronous CRUD access to
+  Integration Tools), Triggers (event subscriptions), Managed Sync (normalized
+  RAG-grade data ingestion with a permissions graph), the Proxy API (direct
+  passthrough to third-party APIs on behalf of Connected Users), the Users
+  API, and the Task History API.
+apis:
+  - aid: paragon:proxy-api
+    name: Proxy API
+    tags:
+      - Embedded Integrations
+      - Proxy
+      - Integrations
+    humanURL: https://docs.useparagon.com/apis/making-api-requests
+    properties:
+      - type: Documentation
+        url: https://docs.useparagon.com/apis/making-api-requests
+      - type: OpenAPI
+        url: openapi/paragon-proxy-api-openapi.yml
+      - type: JSONLD
+        url: json-ld/paragon-context.jsonld
+      - type: NaftikoCapability
+        url: capabilities/proxy-custom-integrations.yaml
+      - type: NaftikoCapability
+        url: capabilities/proxy-proxy.yaml
+      - type: Example
+        url: examples/proxy-request-example.json
+    description: >-
+      Send requests directly to an integration provider, on behalf of Connected
+      Users. The Proxy API allows you to access any third-party provider's API
+      methods via Paragon's managed credential handling. Supports any HTTP verb
+      and accepts JSON request bodies. Along with Workflows, the Proxy API is
+      one of two primary ways to build integrations with Paragon.
+  - aid: paragon:users-api
+    name: Users API
+    tags:
+      - Embedded Integrations
+      - Users
+      - Integrations
+    humanURL: https://docs.useparagon.com/apis/users
+    properties:
+      - type: Documentation
+        url: https://docs.useparagon.com/apis/users
+      - type: OpenAPI
+        url: openapi/paragon-users-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/user.json
+      - type: JSONSchema
+        url: json-schema/integration.json
+      - type: JSONSchema
+        url: json-schema/credential.json
+      - type: JSONLD
+        url: json-ld/paragon-context.jsonld
+      - type: NaftikoCapability
+        url: capabilities/users-credentials.yaml
+      - type: NaftikoCapability
+        url: capabilities/users-integrations.yaml
+      - type: NaftikoCapability
+        url: capabilities/users-users.yaml
+      - type: Example
+        url: examples/users-get-user-example.json
+    description: >-
+      The Users API allows you to query and modify the state of your Connected
+      Users and their integrations. Endpoints cover retrieving user info,
+      setting metadata, listing and disconnecting integrations, and managing
+      Connect credentials. SDK functions like paragon.authenticate(),
+      paragon.setMetadata(), and paragon.uninstallIntegration() map to these
+      endpoints.
+  - aid: paragon:task-history-api
+    name: Task History API
+    tags:
+      - Embedded Integrations
+      - Task History
+      - Workflows
+      - Integrations
+    humanURL: https://docs.useparagon.com/apis/task-history
+    properties:
+      - type: Documentation
+        url: https://docs.useparagon.com/apis/task-history
+      - type: OpenAPI
+        url: openapi/paragon-task-history-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/workflow-execution.json
+      - type: JSONSchema
+        url: json-schema/workflow-execution-list.json
+      - type: JSONLD
+        url: json-ld/paragon-context.jsonld
+      - type: NaftikoCapability
+        url: capabilities/task-history-task-history.yaml
+      - type: Example
+        url: examples/task-history-workflow-executions-example.json
+    description: >-
+      The Task History API allows you to query your users' usage of integration
+      workflows and access data from historical workflow executions. Includes
+      endpoints to list and inspect workflow executions, drill into step
+      executions, and replay failed runs. Available on Enterprise plans; rate
+      limited to 1,000 requests per 10 minutes.
+  - aid: paragon:actionkit-api
+    name: ActionKit API
+    tags:
+      - ActionKit
+      - AI Agents
+      - MCP
+      - Tools
+      - Integrations
+    humanURL: https://docs.useparagon.com/actionkit/overview
+    properties:
+      - type: Documentation
+        url: https://docs.useparagon.com/actionkit/overview
+      - type: OpenAPI
+        url: openapi/paragon-actionkit-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/action.json
+      - type: JSONLD
+        url: json-ld/paragon-context.jsonld
+      - type: NaftikoCapability
+        url: capabilities/actionkit-tools.yaml
+      - type: MCPServer
+        url: https://github.com/useparagon/paragon-mcp
+      - type: Example
+        url: examples/actionkit-list-actions-example.json
+      - type: Example
+        url: examples/actionkit-run-action-example.json
+    description: >-
+      "ActionKit is an API to give your AI agent or app access to Paragon's
+      catalog of pre-built Integration Tools and Triggers." Exposes a Universal
+      API for listing and executing synchronous CRUD actions across 130+ SaaS
+      integrations, and is paired with the Paragon MCP server (github.com/useparagon/paragon-mcp)
+      so agents can call these tools via the Model Context Protocol. Rate
+      limited to 50 requests per second per workspace.
+  - aid: paragon:triggers-api
+    name: Triggers API
+    tags:
+      - ActionKit
+      - Triggers
+      - Webhooks
+      - AI Agents
+      - Integrations
+    humanURL: https://docs.useparagon.com/actionkit/triggers/overview
+    properties:
+      - type: Documentation
+        url: https://docs.useparagon.com/actionkit/triggers/overview
+      - type: OpenAPI
+        url: openapi/paragon-triggers-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/trigger.json
+      - type: JSONSchema
+        url: json-schema/trigger-subscription.json
+      - type: JSONLD
+        url: json-ld/paragon-context.jsonld
+      - type: NaftikoCapability
+        url: capabilities/actionkit-triggers.yaml
+      - type: Example
+        url: examples/triggers-subscribe-example.json
+    description: >-
+      The Triggers API (Beta) lets you "subscribe to events from your users'
+      integrations, using our catalog of pre-built triggers or Custom Webhooks."
+      Exposes discovery, subscription, update, and unsubscribe operations for
+      events such as `SLACK_MESSAGE_RECEIVED` or `GOOGLE_CALENDAR_NEW_EVENT`
+      across 130+ integrations. Authenticates with the Paragon User Token JWT.
+  - aid: paragon:managed-sync-api
+    name: Managed Sync API
+    tags:
+      - Managed Sync
+      - RAG
+      - Data Ingestion
+      - Integrations
+    humanURL: https://docs.useparagon.com/managed-sync/overview
+    properties:
+      - type: Documentation
+        url: https://docs.useparagon.com/managed-sync/overview
+      - type: OpenAPI
+        url: openapi/paragon-managed-sync-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/synced-record.json
+      - type: JSONSchema
+        url: json-schema/sync-status.json
+      - type: JSONSchema
+        url: json-schema/access-check.json
+      - type: JSONLD
+        url: json-ld/paragon-context.jsonld
+      - type: NaftikoCapability
+        url: capabilities/managed-sync-sync.yaml
+      - type: NaftikoCapability
+        url: capabilities/managed-sync-permissions.yaml
+      - type: Example
+        url: examples/managed-sync-pull-records-example.json
+      - type: Example
+        url: examples/permissions-check-access-example.json
+    description: >-
+      "Managed Sync provides pipelines to sync data from your users' integration
+      sources to your app or RAG pipeline." Covers File Storage (Google Drive,
+      Box, OneDrive, S3, Dropbox, SharePoint), CRM, and Ticketing sources, with
+      normalized schemas and a ReBAC-style permissions graph (check-access,
+      batch-check, list-users, list-objects, expand) so applications can enforce
+      source-system permissions when retrieving content for retrieval-augmented
+      generation.
 common:
-- type: LinkedIn
-  url: https://www.linkedin.com/company/paragon
-- url: https://github.com/useparagon
-  name: GitHub Organization
-  type: GitHubOrganization
-- url: https://www.useparagon.com/integrations
-  name: Paragon | Embedded Integration Platform for Developers
-  type: Integrations
-  description: 'null'
-- url: https://docs.useparagon.com/overview
-  name: Paragon Documentation
-  type: Documentation
-  description: 'null'
-- url: https://www.useparagon.com/blog
-  name: Paragon Embedded iPaaS | Blog
-  type: Blog
-  description: 'null'
-- url: https://status.useparagon.com/
-  name: Paragon Status
-  type: StatusPage
-  description: 'null'
-- url: https://www.useparagon.com/use-case/library
-  name: Powered by Paragon | Embedded iPaaS
-  type: UseCases
-  description: 'null'
-- url: https://docs.useparagon.com/getting-started/installing-the-connect-sdk
-  name: Installing the SDK - Paragon Documentation
-  type: SDKs
-  description: 'null'
-- url: https://docs.useparagon.com/connect-portal/overview
-  name: Overview - Paragon Documentation
-  type: Authentication
-  description: 'null'
-- url: https://docs.useparagon.com/resources/custom-webhooks
-  name: Custom Webhooks - Paragon Documentation
-  type: Webhooks
-  description: 'null'
-- url: https://docs.useparagon.com/managing-account/role-based-access-control
-  name: Role Based Access Control - Paragon Documentation
-  type: RBAC
-  description: 'null'
-- url: https://docs.useparagon.com/billing/concurrency-limits
-  name: Concurrency SLA - Paragon Documentation
-  type: ServiceLevelAgreement
-  description: 'null'
-- url: https://docs.useparagon.com/security/security
-  name: Security - Paragon Documentation
-  type: Security
-  description: 'null'
-- url: https://security.useparagon.com/
-  name: Trust Center - Paragon
-  type: Trust
-  description: 'null'
-- url: https://docs.useparagon.com/security/gdpr
-  name: GDPR - Paragon Documentation
-  type: GDPR
-  description: 'null'
-- url: https://docs.useparagon.com/support/contacting-support
-  name: Contacting Support - Paragon Documentation
-  type: Support
-  description: 'null'
-- url: https://docs.useparagon.com/support/contacting-support
-  name: Contacting Support - Paragon Documentation
-  type: Support
-  description: 'null'
-- url: https://docs.useparagon.com/workflows/overview
-  name: Overview - Paragon Documentation
-  type: Workflows
-  description: 'null'
-- url: https://docs.useparagon.com/resources/integrations
-  data:
-  - name: Activecampaign
-  - name: Adobe Acrobat Sign
-  - name: Adobe Commerce
-  - name: Adobe Experience Manager
-  - name: Adp Workforce Now
-  - name: Airtable
-  - name: Amazon S3
-  - name: Amplitude
-  - name: apollo.io
-  - name: Applicant Tracking System
-  - name: Asana
-  - name: Azure DevOps
-  - name: Bamboohr
-  - name: Bigquery
-  - name: Box
-  - name: Business Intelligence
-  - name: Calendly
-  - name: chorus.ai
-  - name: Clickup
-  - name: Close
-  - name: Coda
-  - name: Confluence
-  - name: Content Management System
-  - name: Copper
-  - name: Docusign
-  - name: Dropbox
-  - name: Dropbox Sign
-  - name: Dynamics 365 Business Central
-  - name: Dynamics 365 Finance
-  - name: Excel
-  - name: Facebook Ads
-  - name: Facebook Pages
-  - name: Figma
-  - name: Freshdesk
-  - name: Freshsales
-  - name: Front
-  - name: Gainsight
-  - name: Github
-  - name: Gmail
-  - name: Gong
-  - name: Google Ad Manager
-  - name: Google Ads
-  - name: Google Analytics
-  - name: Google Analytics GA4
-  - name: Google Calendar
-  - name: Google Campaign Manager
-  - name: Google Docs
-  - name: Google Drive
-  - name: Google Search Console
-  - name: Google Sheets
-  - name: Greenhouse
-  - name: Gusto
-  - name: Heap
-  - name: Hive
-  - name: Hubspot
-  - name: Imanage
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/paragon
+  - type: GitHubOrganization
+    name: GitHub Organization
+    url: https://github.com/useparagon
+  - type: Integrations
+    name: Paragon Integrations Catalog
+    url: https://www.useparagon.com/integrations
+  - type: Documentation
+    name: Paragon Documentation
+    url: https://docs.useparagon.com/overview
+  - type: Blog
+    name: Paragon Blog
+    url: https://www.useparagon.com/blog
+  - type: StatusPage
+    name: Paragon Status
+    url: https://status.useparagon.com/
+  - type: UseCases
+    name: Powered by Paragon | Use Case Library
+    url: https://www.useparagon.com/use-case/library
+  - type: SDKs
+    name: Installing the Connect SDK
+    url: https://docs.useparagon.com/getting-started/installing-the-connect-sdk
+  - type: SDKs
+    name: '@useparagon/connect (npm)'
+    url: https://www.npmjs.com/package/@useparagon/connect
+  - type: Authentication
+    name: Connect Portal Overview
+    url: https://docs.useparagon.com/connect-portal/overview
+  - type: Webhooks
+    name: Custom Webhooks
+    url: https://docs.useparagon.com/resources/custom-webhooks
+  - type: RBAC
+    name: Role Based Access Control
+    url: https://docs.useparagon.com/managing-account/role-based-access-control
+  - type: ServiceLevelAgreement
+    name: Concurrency SLA
+    url: https://docs.useparagon.com/billing/concurrency-limits
+  - type: RateLimits
+    name: Paragon Rate Limits
+    url: rate-limits/paragon-rate-limits.yml
+  - type: Plans
+    name: Paragon Plans and Pricing
+    url: plans/paragon-plans-pricing.yml
+  - type: FinOps
+    name: Paragon FinOps
+    url: finops/paragon-finops.yml
+  - type: Security
+    name: Paragon Security
+    url: https://docs.useparagon.com/security/security
+  - type: Trust
+    name: Paragon Trust Center
+    url: https://security.useparagon.com/
+  - type: GDPR
+    name: GDPR
+    url: https://docs.useparagon.com/security/gdpr
+  - type: HIPAA
+    name: HIPAA Compliance
+    url: https://docs.useparagon.com/security/hipaa
+  - type: Support
+    name: Contacting Support
+    url: https://docs.useparagon.com/support/contacting-support
+  - type: Workflows
+    name: Workflows Overview
+    url: https://docs.useparagon.com/workflows/overview
+  - type: ChangeLog
+    name: Product Updates
+    url: https://docs.useparagon.com/changelog/product-updates
+  - type: SignUp
+    name: Paragon Sign Up
+    url: https://dashboard.useparagon.com/signup
+  - type: Login
+    name: Paragon Login
+    url: https://dashboard.useparagon.com/login
+  - type: TermsOfService
+    name: Terms of Service
+    url: https://www.useparagon.com/terms-of-service
+  - type: Customers
+    name: Paragon Customers
+    url: https://www.useparagon.com/customers
+  - type: Pricing
+    name: Paragon Pricing
+    url: https://www.useparagon.com/pricing
+  - type: MCPServer
+    name: Paragon MCP Server
+    url: https://github.com/useparagon/paragon-mcp
+  - type: AgentSkill
+    name: Paragon AI Skills (paragon-setup-skill, actionkit, managed-sync)
+    url: https://github.com/useparagon/paragon-ai-skills
+  - type: SampleCode
+    name: paragon-connect-nextjs-example
+    url: https://github.com/useparagon/paragon-connect-nextjs-example
+  - type: SampleCode
+    name: connect-headless-example
+    url: https://github.com/useparagon/connect-headless-example
+  - type: SampleCode
+    name: paragon-rails-example
+    url: https://github.com/useparagon/paragon-rails-example
+  - type: SampleCode
+    name: rag-tutorials
+    url: https://github.com/useparagon/rag-tutorials
+  - type: SampleCode
+    name: actionkit-playground
+    url: https://github.com/useparagon/actionkit-playground
+  - type: Deployment
+    name: AWS On-Prem (Self-Host)
+    url: https://github.com/useparagon/aws-on-prem
+  - type: Deployment
+    name: Enterprise Installer
+    url: https://github.com/useparagon/enterprise-installer
+  - type: Vocabulary
+    name: Paragon Vocabulary
+    url: vocabulary/paragon-vocabulary.yml
+  - type: SpectralRuleset
+    name: Paragon Spectral Rules
+    url: rules/paragon-rules.yml
+  - type: JSONStructure
+    name: Action Structure
+    url: json-structure/paragon-action-structure.json
+  - type: JSONStructure
+    name: Synced Record Structure
+    url: json-structure/paragon-synced-record-structure.json
+  - type: JSONStructure
+    name: Trigger Subscription Structure
+    url: json-structure/paragon-trigger-subscription-structure.json
+  - type: Features
+    name: Features
+    url: https://www.useparagon.com/pricing
+    sources:
+      - https://www.useparagon.com/pricing
+      - https://docs.useparagon.com/overview
+      - https://docs.useparagon.com/billing/concurrency-limits
+    updated: '2026-05-22'
+    data:
+      - 130+ pre-built integrations (Connect Portal)
+      - Fully managed authentication (OAuth 2.0, API Key, custom)
+      - Workflows — event-driven async orchestration
+      - ActionKit Universal API + MCP server for AI agents
+      - Triggers API (Beta) — event subscriptions across 130+ integrations
+      - Managed Sync — normalized File / CRM / Ticketing ingestion for RAG
+      - Permissions API — ReBAC-style access checks over synced objects
+      - Proxy API — direct passthrough to any provider API
+      - Users API — manage Connected User state and metadata
+      - Task History API — query historical executions (Enterprise; 1,000 req / 10 min)
+      - Connect API rate limit — 600 req/min/workspace
+      - ActionKit API rate limit — 50 req/sec/workspace
+      - Concurrency — 5 (Trial) / 20 (Pro) / up to 1,000 (Enterprise) step executions
+      - Embedded UX or Headless SDK
+      - Bring Your Own Connector (BYOC) / Custom Integrations
+      - Dynamic Field Mapping (Enterprise)
+      - SOC 2 Type 2 + GDPR + HIPAA-eligible deployment
+      - Self-host / forward-deploy on AWS (Enterprise)
+  - type: UseCases
+    name: Use Cases
+    url: https://www.useparagon.com/use-case/library
+    data:
+      - name: AI Agent Tool Calling (ActionKit + MCP)
+      - name: RAG Ingestion With Source Permissions (Managed Sync)
+      - name: Agentic Actions Across Integrations
+      - name: Embedded Workflow Builder Actions
+      - name: File Upload via 3rd-Party Picker
+      - name: Ingest All Files From File Storage
+      - name: Real-Time Bidirectional CRM Sync
+      - name: Send Slack / Teams Notifications
+  - type: Integrations
+    name: Paragon Integration Catalog
+    url: https://docs.useparagon.com/resources/integrations
+    data:
+      - name: ActiveCampaign
+      - name: Adobe Acrobat Sign
+      - name: Adobe Commerce
+      - name: Adobe Experience Manager
+      - name: ADP Workforce Now
+      - name: Airtable
+      - name: Amazon S3
+      - name: Amplitude
+      - name: Apollo.io
+      - name: Asana
+      - name: Azure DevOps
+      - name: BambooHR
+      - name: BigQuery
+      - name: Box
+      - name: Calendly
+      - name: Chorus.ai
+      - name: ClickUp
+      - name: Close
+      - name: Coda
+      - name: Confluence
+      - name: Contentful
+      - name: Copper
+      - name: DocuSign
+      - name: Dropbox
+      - name: Dropbox Sign
+      - name: Dynamics 365 Business Central
+      - name: Dynamics 365 Finance
+      - name: Emarsys
+      - name: Excel
+      - name: Facebook Ads
+      - name: Facebook Pages
+      - name: Figma
+      - name: Freshdesk
+      - name: Freshsales
+      - name: Front
+      - name: Gainsight
+      - name: GitHub
+      - name: Gmail
+      - name: Gong
+      - name: Google Ad Manager
+      - name: Google Ads
+      - name: Google Analytics
+      - name: Google Analytics GA4
+      - name: Google Calendar
+      - name: Google Campaign Manager
+      - name: Google Docs
+      - name: Google Drive
+      - name: Google Search Console
+      - name: Google Sheets
+      - name: Greenhouse
+      - name: Guru
+      - name: Gusto
+      - name: Heap
+      - name: Hive
+      - name: HubSpot
+      - name: iManage
+      - name: Insightly
+      - name: Intellum
+      - name: Intercom
+      - name: Jira
+      - name: Keap
+      - name: Klaviyo
+      - name: Lever
+      - name: Linear
+      - name: LinkedIn
+      - name: LinkedIn Marketing
+      - name: Magento
+      - name: Mailchimp
+      - name: Marketo
+      - name: Microsoft Dynamics 365 Sales
+      - name: Microsoft Outlook
+      - name: Microsoft SharePoint
+      - name: Microsoft Teams
+      - name: Miro
+      - name: Mixpanel
+      - name: monday.com
+      - name: NetSuite
+      - name: Notion
+      - name: OneDrive
+      - name: OneNote
+      - name: OpenAI
+      - name: Oracle Eloqua
+      - name: Oracle Financials Cloud
+      - name: Outreach
+      - name: PagerDuty
+      - name: PandaDoc
+      - name: Pardot
+      - name: Pipedrive
+      - name: Power BI
+      - name: Productboard
+      - name: QuickBooks
+      - name: Quip
+      - name: Ramp
+      - name: Sage Accounting
+      - name: Sage Intacct
+      - name: Sailthru
+      - name: Salesforce
+      - name: Salesloft
+      - name: SAP S/4HANA
+      - name: SAP SuccessFactors
+      - name: Segment
+      - name: ServiceNow
+      - name: Shopify
+      - name: Shortcut
+      - name: Slack
+      - name: Snowflake
+      - name: Stack Overflow for Teams
+      - name: Stripe
+      - name: Tableau
+      - name: TikTok Ads
+      - name: Todoist
+      - name: Trello
+      - name: Typeform
+      - name: Unleashed
+      - name: Vanta
+      - name: Vimeo
+      - name: WhatsApp
+      - name: WooCommerce
+      - name: WordPress
+      - name: Workable
+      - name: Workday
+      - name: Xero
+      - name: Zendesk
+      - name: Zendesk Sell
+      - name: Zoho CRM
+      - name: Zoho People
+      - name: Zoom
+integrations:
+  - name: Salesforce
+  - name: HubSpot
+  - name: Microsoft Dynamics 365 Sales
+  - name: Pipedrive
+  - name: Zoho CRM
+  - name: Zendesk Sell
   - name: Insightly
-  - name: Intercom
-  - name: Jira
+  - name: Copper
   - name: Keap
-  - name: Klaviyo
-  - name: Lever
+  - name: Freshsales
+  - name: Google Drive
+  - name: Dropbox
+  - name: Microsoft SharePoint
+  - name: Box
+  - name: OneDrive
+  - name: Notion
+  - name: OneNote
+  - name: Confluence
+  - name: Google Docs
+  - name: Coda
+  - name: Quip
+  - name: Emarsys
+  - name: Slack
+  - name: Microsoft Teams
+  - name: Zoom
+  - name: WhatsApp
+  - name: Outreach
+  - name: Gong
+  - name: Salesloft
+  - name: Apollo.io
+  - name: Jira
+  - name: Asana
+  - name: Trello
+  - name: monday.com
+  - name: Azure DevOps
+  - name: ClickUp
   - name: Linear
-  - name: LinkedIn
-  - name: Magento
+  - name: GitHub
+  - name: Productboard
+  - name: Airtable
+  - name: Hive
+  - name: Shortcut
+  - name: Todoist
+  - name: Intercom
+  - name: Zendesk
+  - name: ServiceNow
+  - name: Freshdesk
+  - name: Gainsight
+  - name: Front
+  - name: PagerDuty
+  - name: Vimeo
+  - name: Klaviyo
   - name: Mailchimp
   - name: Marketo
-  - name: Microsoft Dynamics 365 Sales
-  - name: Microsoft Outlook
-  - name: Microsoft Sharepoint
-  - name: Microsoft Teams
-  - name: Miro
-  - name: Mixpanel
-  - name: monday.com
-  - name: Netsuite
-  - name: Notion
-  - name: Onedrive
-  - name: Onenote
-  - name: OpenAI
-  - name: Oracle Eloqua
-  - name: Oracle Financials Cloud
-  - name: Outreach
-  - name: Pagerduty
-  - name: Pandadoc
   - name: Pardot
-  - name: Pipedrive
-  - name: Power Bi
-  - name: Productboard
-  - name: Quickbooks
-  - name: Quip
-  - name: Sage Accounting
-  - name: Sage Intacct
+  - name: Oracle Eloqua
   - name: Sailthru
-  - name: Salesforce
-  - name: Salesloft
-  - name: Sap S/4HANA
-  - name: Sap Success Factors
-  - name: Segment
-  - name: Servicenow
-  - name: Shopify
-  - name: Shortcut
-  - name: Slack
-  - name: Snowflake
+  - name: ActiveCampaign
+  - name: Google Sheets
+  - name: Google Calendar
+  - name: Microsoft Outlook
+  - name: Calendly
+  - name: Gmail
+  - name: Miro
+  - name: iManage
+  - name: OpenAI
+  - name: Excel
+  - name: Figma
   - name: Stack Overflow for Teams
-  - name: Stripe
-  - name: Tableau
-  - name: TikTok Ads
-  - name: Todoist
-  - name: Trello
   - name: Typeform
   - name: Vanta
-  - name: Whatsapp
-  - name: Woocommerce
-  - name: WordPress
-  - name: Workable
-  - name: Workday
+  - name: Google Analytics
+  - name: Google Search Console
+  - name: Mixpanel
+  - name: Google Analytics GA4
+  - name: Heap
+  - name: QuickBooks
   - name: Xero
-  - name: Zendesk
-  - name: Zendesk Sell
-  - name: Zoho CRM
-  - name: Zoho People
-  - name: Zoom
-  name: Overview - Paragon Documentation
-  type: Integrations
-- url: https://docs.useparagon.com/changelog/product-updates
-  name: Product Updates - Paragon Documentation
-  type: ChangeLog
-  description: 'null'
-- url: https://dashboard.useparagon.com/signup
-  name: Paragon
-  type: SignUp
-  description: 'null'
-- url: https://dashboard.useparagon.com/login
-  name: Paragon
-  type: Login
-  description: 'null'
-- url: https://www.useparagon.com/terms-of-service
-  name: Paragon Embedded iPaaS | Terms of Service
-  type: TermsOfService
-  description: 'null'
-- url: https://www.useparagon.com/customers
-  name: Paragon Embedded iPaaS | Customer Stories
-  type: Customers
-  description: 'null'
-- url: https://www.useparagon.com/pricing
-  name: Paragon | Embedded Integration Platform for Developers
-  type: Pricing
-  description: 'null'
-- url: https://www.useparagon.com/use-case/library
-  data:
-  - name: Agentic Actions Across Integrations
-  - name: Embedded Workflow Builder Actions
-  - name: File Upload via 3rd-Party Picker
-  - name: Ingest All Files From File Storage
-  - name: Ingest Permissions for Rag and AI
-  - name: Real-Time Bidirectional CRM Sync
-  - name: Send Slack / Teams Notifications
-  name: Use Cases
-  type: UseCases
-- url: https://www.useparagon.com/use-case/library
-  data:
-  - 'Platform: custom pricing by Connected Users'
-  - 'Enterprise: self-host / forward-deploy, dedicated support'
-  - Unlimited integrations
-  - Fully managed authentication (OAuth, API key, custom)
-  - Managed Sync for incremental data syncs
-  - ActionKit for one-shot operations
-  - Workflows for multi-step orchestration
-  - Embedded UX or Headless SDK
-  - Event Logs for debugging
-  - 'Connect API: 600 req/min/workspace'
-  - 'ActionKit API: 50 req/sec/workspace'
-  - OAuth + workspace tokens
-  - Bring Your Own Connector (BYOC)
-  - 200+ pre-built integrations
-  - Dynamic Field Mapping (Enterprise)
-  - SOC 2 Type 2 + GDPR-ready
-  name: Features
-  type: Features
-  sources:
-  - https://www.useparagon.com/pricing
-  updated: '2026-05-04'
-- name: MCP Server
-  url: https://github.com/useparagon/paragon-mcp
-  type: MCPServer
-- name: Agent Skills
-  url: https://github.com/useparagon/paragon-ai-skills
-  type: AgentSkill
-created: '2025-06-05T00:00:00.000Z'
-modified: '2026-05-19'
-position: Consuming
-description: Paragon enables companies to build products that integrate with the SaaS ecosystem. With Paragon, software companies
-  can integrate with hundreds of different SaaS apps in minutes while providing their customers with a seamless, unified integration
-  experience.
-integrations:
-- name: Salesforce
-- name: HubSpot
-- name: Microsoft Dynamics 365 Sales
-- name: Pipedrive
-- name: Zoho CRM
-- name: Zendesk Sell
-- name: Insightly
-- name: Copper
-- name: Keap
-- name: Freshsales
-- name: Google Drive
-- name: Dropbox
-- name: Microsoft SharePoint
-- name: Box
-- name: OneDrive
-- name: Notion
-- name: OneNote
-- name: Confluence
-- name: Google Docs
-- name: Coda
-- name: Quip
-- name: Emarsys
-- name: Slack
-- name: Microsoft Teams
-- name: Zoom
-- name: WhatsApp
-- name: Outreach
-- name: Gong
-- name: Salesloft
-- name: Apollo.io
-- name: JIRA
-- name: Asana
-- name: Trello
-- name: Monday.com
-- name: Azure DevOps
-- name: ClickUp
-- name: Linear
-- name: GitHub
-- name: Productboard
-- name: Airtable
-- name: Hive
-- name: Shortcut
-- name: Todoist
-- name: Intercom
-- name: Zendesk
-- name: ServiceNow
-- name: Freshdesk
-- name: Gainsight
-- name: Front
-- name: PagerDuty
-- name: Vimeo
-- name: Klaviyo
-- name: MailChimp
-- name: Marketo
-- name: Pardot
-- name: Oracle Eloqua
-- name: BETA Sailthru
-- name: ActiveCampaign
-- name: Google Sheets
-- name: Google Calendar
-- name: Microsoft Outlook
-- name: Calendly
-- name: Gmail
-- name: Miro
-- name: iManage
-- name: OpenAi
-- name: Excel
-- name: Figma
-- name: Stack Overflow for Teams
-- name: Typeform
-- name: BETA Vanta
-- name: Google Analytics
-- name: Google Search Console
-- name: Mixpanel
-- name: Google Analytics GA4
-- name: Heap
-- name: QuickBooks
-- name: Xero
-- name: Sage Intacct
-- name: NetSuite
-- name: Dynamics 365 Business Central
-- name: BETA SAP S/4HANA
-- name: BETA Oracle Financials Cloud
-- name: BETA Dynamics 365 Finance
-- name: Sage Accounting
-- name: Unleashed
-- name: Shopify
-- name: WooCommerce
-- name: Adobe Commerce
-- name: Facebook Ads
-- name: Google Campaign Manager
-- name: Google Ads
-- name: Google Ad Manager
-- name: TikTok Ads
-- name: DocuSign
-- name: PandaDoc
-- name: Dropbox Sign
-- name: Adobe Acrobat Sign
-- name: BETA Amplitude
-- name: Tableau
+  - name: Sage Intacct
+  - name: NetSuite
+  - name: Dynamics 365 Business Central
+  - name: SAP S/4HANA
+  - name: Oracle Financials Cloud
+  - name: Dynamics 365 Finance
+  - name: Sage Accounting
+  - name: Unleashed
+  - name: Shopify
+  - name: WooCommerce
+  - name: Adobe Commerce
+  - name: Facebook Ads
+  - name: Google Campaign Manager
+  - name: Google Ads
+  - name: Google Ad Manager
+  - name: TikTok Ads
+  - name: DocuSign
+  - name: PandaDoc
+  - name: Dropbox Sign
+  - name: Adobe Acrobat Sign
+  - name: Amplitude
+  - name: Tableau
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
-specificationVersion: '0.19'
+  - FN: Kin Lane
+    email: kin@apievangelist.com

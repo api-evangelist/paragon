@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/paragon/main/json-schema/trigger-subscription.json",
+  "title": "Paragon Trigger Subscription",
+  "description": "An active subscription of a Connected User to a Paragon trigger event.",
+  "type": "object",
+  "required": ["id", "trigger"],
+  "properties": {
+    "id": { "type": "string" },
+    "userId": { "type": "string" },
+    "trigger": { "type": "string" },
+    "integration": { "type": "string" },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "deliveryUrl": { "type": "string", "format": "uri" },
+    "createdAt": { "type": "string", "format": "date-time" }
+  }
+}

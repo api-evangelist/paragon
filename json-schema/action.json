@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/paragon/main/json-schema/action.json",
+  "title": "Paragon ActionKit Action",
+  "description": "A pre-built Integration Tool exposed by Paragon ActionKit. Each action wraps a specific third-party SaaS operation and is callable by an AI agent or app on behalf of a Connected User.",
+  "type": "object",
+  "required": ["name", "integration"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Action identifier (e.g., SLACK_SEND_MESSAGE, SALESFORCE_CREATE_RECORD)."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description suitable for use as an LLM tool description."
+    },
+    "integration": {
+      "type": "string",
+      "description": "Integration identifier the action belongs to (e.g., slack, salesforce)."
+    },
+    "parameters": {
+      "type": "object",
+      "description": "JSON Schema describing the action's input parameters.",
+      "additionalProperties": true
+    }
+  }
+}

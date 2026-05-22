@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/paragon/main/json-schema/sync-status.json",
+  "title": "Paragon Sync Status",
+  "description": "Status of a Managed Sync pipeline for a Connected User and integration.",
+  "type": "object",
+  "required": ["integration", "syncType", "status"],
+  "properties": {
+    "integration": { "type": "string" },
+    "syncType": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["SYNCING", "IDLE", "ERROR", "DISABLED"]
+    },
+    "lastSyncedAt": { "type": "string", "format": "date-time" },
+    "recordCount": { "type": "integer", "minimum": 0 }
+  }
+}

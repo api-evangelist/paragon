@@ -1,0 +1,108 @@
+vocabulary: Paragon
+version: '1.1'
+modified: '2026-05-22'
+description: >-
+  Operational and capability vocabulary for the Paragon embedded integration
+  infrastructure platform. Covers Connect Portal, Workflows, Proxy API,
+  ActionKit (Tools + Triggers), Managed Sync (Sync + Permissions), and the
+  Task History API.
+tags:
+  - Embedded Integrations
+  - Integration Infrastructure
+  - iPaaS
+  - AI Agents
+  - MCP
+domains:
+  - name: Connect Portal
+    description: Embedded UI (or headless SDK) that lets end users connect and configure third-party integrations.
+    terms:
+      - ConnectedUser
+      - Project
+      - Integration
+      - Credential
+      - OAuthFlow
+      - APIKeyAuth
+      - SigningKey
+  - name: Workflows
+    description: Event-driven runtime for orchestrating complex, asynchronous integration logic.
+    terms:
+      - Workflow
+      - WorkflowExecution
+      - StepExecution
+      - Trigger
+      - FunctionStep
+      - FieldMapping
+      - UserSettings
+  - name: Proxy API
+    description: Direct passthrough to a third-party provider's API on behalf of a Connected User.
+    terms:
+      - ProxyRequest
+      - IntegrationType
+      - CustomIntegration
+      - RawResponse
+  - name: ActionKit
+    description: Universal API and MCP server giving AI agents access to pre-built Integration Tools.
+    terms:
+      - Action
+      - ActionResult
+      - ToolCatalog
+      - MCPServer
+      - AgentSkill
+      - UniversalAPI
+  - name: Triggers
+    description: Event subscription surface across 130+ integrations.
+    terms:
+      - Trigger
+      - TriggerSubscription
+      - ExamplePayload
+      - DeliveryUrl
+      - CustomWebhook
+  - name: Managed Sync
+    description: Normalized data ingestion pipelines plus a permissions graph for RAG.
+    terms:
+      - SyncPipeline
+      - SyncStatus
+      - SyncedRecord
+      - FileSync
+      - CRMSync
+      - TicketingSync
+      - PermissionsGraph
+      - AccessCheck
+      - ReBAC
+  - name: Task History
+    description: Historical record of workflow + step executions per Connected User.
+    terms:
+      - WorkflowExecution
+      - StepExecution
+      - ExecutionStatus
+      - Replay
+  - name: Deployment
+    description: Hosting and operational footprint.
+    terms:
+      - Cloud
+      - SelfHost
+      - ForwardDeploy
+      - AWSOnPrem
+      - EnterpriseInstaller
+relations:
+  - subject: ConnectedUser
+    predicate: hasCredential
+    object: Credential
+  - subject: ConnectedUser
+    predicate: hasIntegration
+    object: Integration
+  - subject: Workflow
+    predicate: emits
+    object: WorkflowExecution
+  - subject: WorkflowExecution
+    predicate: contains
+    object: StepExecution
+  - subject: TriggerSubscription
+    predicate: bindsTo
+    object: Trigger
+  - subject: SyncPipeline
+    predicate: produces
+    object: SyncedRecord
+  - subject: SyncedRecord
+    predicate: governedBy
+    object: AccessCheck

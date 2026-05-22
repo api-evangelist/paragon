@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/schema/v0/",
+  "title": "Paragon Managed Sync Record",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "integration": { "type": "string" },
+    "syncType": { "type": "string" },
+    "sourceId": { "type": "string" },
+    "data": { "type": "object" },
+    "permissions": { "type": "object" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  },
+  "required": ["id", "integration", "syncType"]
+}

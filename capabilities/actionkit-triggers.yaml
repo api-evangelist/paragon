@@ -1,0 +1,225 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Paragon ActionKit — Triggers
+  description: ActionKit Triggers API (Beta). Subscribe to events from users' integrations across 130+ SaaS apps using pre-built triggers or custom webhooks.
+  tags:
+    - Paragon
+    - ActionKit
+    - Triggers
+    - Webhooks
+  created: '2026-05-22'
+  modified: '2026-05-22'
+binds:
+  - namespace: env
+    keys:
+      PARAGON_USER_TOKEN: PARAGON_USER_TOKEN
+      PARAGON_PROJECT_ID: PARAGON_PROJECT_ID
+capability:
+  consumes:
+    - type: http
+      namespace: actionkit-triggers
+      baseUri: https://actionkit.useparagon.com
+      description: Paragon ActionKit Triggers API consumer.
+      resources:
+        - name: projects-projectId-triggers
+          path: /projects/{projectId}/triggers
+          operations:
+            - name: listAvailableTriggers
+              method: GET
+              description: Paragon List Available Triggers
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: projectId
+                  in: path
+                  type: string
+                  required: true
+                - name: integration
+                  in: query
+                  type: string
+                  required: false
+        - name: projects-projectId-triggers-subscriptions
+          path: /projects/{projectId}/triggers/subscriptions
+          operations:
+            - name: listSubscribedTriggers
+              method: GET
+              description: Paragon List Subscribed Triggers
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: projectId
+                  in: path
+                  type: string
+                  required: true
+            - name: subscribeToTrigger
+              method: POST
+              description: Paragon Subscribe To Trigger
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: projectId
+                  in: path
+                  type: string
+                  required: true
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+        - name: projects-projectId-triggers-subscriptions-subscriptionId
+          path: /projects/{projectId}/triggers/subscriptions/{subscriptionId}
+          operations:
+            - name: updateTriggerSubscription
+              method: PATCH
+              description: Paragon Update Trigger Subscription
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: projectId
+                  in: path
+                  type: string
+                  required: true
+                - name: subscriptionId
+                  in: path
+                  type: string
+                  required: true
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+            - name: unsubscribeFromTrigger
+              method: DELETE
+              description: Paragon Unsubscribe From Trigger
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: projectId
+                  in: path
+                  type: string
+                  required: true
+                - name: subscriptionId
+                  in: path
+                  type: string
+                  required: true
+        - name: projects-projectId-triggers-trigger-example-payload
+          path: /projects/{projectId}/triggers/{trigger}/example-payload
+          operations:
+            - name: getExamplePayload
+              method: POST
+              description: Paragon Get Example Trigger Payload
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: projectId
+                  in: path
+                  type: string
+                  required: true
+                - name: trigger
+                  in: path
+                  type: string
+                  required: true
+      authentication:
+        type: bearer
+        token: '{{env.PARAGON_USER_TOKEN}}'
+  exposes:
+    - type: mcp
+      namespace: actionkit-triggers-mcp
+      port: 9091
+      transport: http
+      description: MCP adapter for ActionKit Triggers. One tool per consumed operation.
+      tools:
+        - name: paragon-triggers-list-available
+          description: List available pre-built triggers across the user's integrations.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: actionkit-triggers.listAvailableTriggers
+          with:
+            projectId: tools.projectId
+            integration: tools.integration
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: paragon-triggers-list-subscribed
+          description: List the user's current trigger subscriptions.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: actionkit-triggers.listSubscribedTriggers
+          with:
+            projectId: tools.projectId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: paragon-triggers-subscribe
+          description: Subscribe a Connected User to a trigger event.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: actionkit-triggers.subscribeToTrigger
+          with:
+            projectId: tools.projectId
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: paragon-triggers-update
+          description: Update an existing trigger subscription.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: actionkit-triggers.updateTriggerSubscription
+          with:
+            projectId: tools.projectId
+            subscriptionId: tools.subscriptionId
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: paragon-triggers-unsubscribe
+          description: Remove a trigger subscription.
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: actionkit-triggers.unsubscribeFromTrigger
+          with:
+            projectId: tools.projectId
+            subscriptionId: tools.subscriptionId
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: paragon-triggers-example-payload
+          description: Fetch an example payload for a trigger.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: actionkit-triggers.getExamplePayload
+          with:
+            projectId: tools.projectId
+            trigger: tools.trigger
+          outputParameters:
+            - type: object
+              mapping: $.

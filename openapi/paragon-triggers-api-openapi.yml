@@ -1,0 +1,265 @@
+openapi: 3.1.0
+info:
+  title: Paragon Triggers API
+  description: >-
+    The Triggers API (Beta) lets you subscribe to events from your users'
+    integrations using Paragon's catalog of pre-built triggers across 130+
+    SaaS applications, or custom webhooks. Use it to give your app or AI agent
+    real-time visibility into third-party events such as `Slack: Message
+    Received`, `Google Calendar: New Event`, or `Salesforce: Record Updated`.
+    Subscriptions are scoped per Connected User via Paragon User Token (JWT).
+  version: 1.0.0-beta
+  contact:
+    name: Paragon
+    url: https://www.useparagon.com
+  license:
+    name: Proprietary
+    url: https://www.useparagon.com/terms-of-service
+servers:
+  - url: https://actionkit.useparagon.com
+    description: Paragon ActionKit / Triggers API (Cloud)
+security:
+  - bearerAuth: []
+paths:
+  /projects/{projectId}/triggers:
+    get:
+      operationId: listAvailableTriggers
+      summary: Paragon List Available Triggers
+      description: >-
+        Returns the catalog of pre-built triggers available to the Connected
+        User, scoped to the integrations they have enabled. Each trigger
+        describes its event type, supported parameters, and the integration it
+        belongs to.
+      tags:
+        - Triggers
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: Your Paragon Project ID.
+          schema:
+            type: string
+        - name: integration
+          in: query
+          required: false
+          description: Optional integration filter (e.g., slack, googleCalendar).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved the catalog of triggers.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  triggers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Trigger'
+        '401':
+          description: Unauthorized.
+  /projects/{projectId}/triggers/subscriptions:
+    get:
+      operationId: listSubscribedTriggers
+      summary: Paragon List Subscribed Triggers
+      description: >-
+        Returns the list of trigger subscriptions for the Connected User.
+      tags:
+        - Triggers
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: Your Paragon Project ID.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved subscriptions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TriggerSubscription'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: subscribeToTrigger
+      summary: Paragon Subscribe To Trigger
+      description: >-
+        Subscribes the Connected User to a trigger event. Paragon will deliver
+        matching events to the webhook URL configured for the project (or a
+        per-subscription override).
+      tags:
+        - Triggers
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: Your Paragon Project ID.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggerSubscriptionRequest'
+      responses:
+        '201':
+          description: Subscription created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerSubscription'
+        '400':
+          description: Invalid subscription request.
+        '401':
+          description: Unauthorized.
+  /projects/{projectId}/triggers/subscriptions/{subscriptionId}:
+    patch:
+      operationId: updateTriggerSubscription
+      summary: Paragon Update Trigger Subscription
+      description: Updates the parameters of an existing trigger subscription.
+      tags:
+        - Triggers
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggerSubscriptionRequest'
+      responses:
+        '200':
+          description: Subscription updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TriggerSubscription'
+    delete:
+      operationId: unsubscribeFromTrigger
+      summary: Paragon Unsubscribe From Trigger
+      description: Removes a trigger subscription for the Connected User.
+      tags:
+        - Triggers
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Subscription deleted.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Subscription not found.
+  /projects/{projectId}/triggers/{trigger}/example-payload:
+    post:
+      operationId: getExamplePayload
+      summary: Paragon Get Example Trigger Payload
+      description: >-
+        Returns an example payload Paragon will deliver for a given trigger.
+        Useful for testing and for shaping consumer handlers without waiting for
+        a live event.
+      tags:
+        - Triggers
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: trigger
+          in: path
+          required: true
+          description: The trigger identifier (e.g., SLACK_MESSAGE_RECEIVED).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Returns an example event payload.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Paragon User Token (JWT) Bearer.
+  schemas:
+    Trigger:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Trigger identifier (e.g., SLACK_MESSAGE_RECEIVED).
+        description:
+          type: string
+        integration:
+          type: string
+        parameters:
+          type: object
+          description: JSON Schema describing the parameters required to subscribe.
+    TriggerSubscriptionRequest:
+      type: object
+      required:
+        - trigger
+      properties:
+        trigger:
+          type: string
+          description: The trigger name to subscribe to.
+        parameters:
+          type: object
+          description: Trigger-specific parameters (e.g., channelId for Slack).
+          additionalProperties: true
+        deliveryUrl:
+          type: string
+          format: uri
+          description: Optional per-subscription webhook URL override.
+    TriggerSubscription:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Subscription identifier.
+        userId:
+          type: string
+        trigger:
+          type: string
+        integration:
+          type: string
+        parameters:
+          type: object
+          additionalProperties: true
+        deliveryUrl:
+          type: string
+          format: uri
+        createdAt:
+          type: string
+          format: date-time
+tags:
+  - name: Triggers
+    description: Subscribe to integration events for AI agents and apps.

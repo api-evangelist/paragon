@@ -2,6 +2,8 @@
   "@context": {
     "@vocab": "https://schema.org/",
     "paragon": "https://docs.useparagon.com/apis/",
+    "actionkit": "https://docs.useparagon.com/actionkit/",
+    "managedSync": "https://docs.useparagon.com/managed-sync/",
     "User": {
       "@id": "paragon:users",
       "@context": {
@@ -63,6 +65,76 @@
         "integrationType": "https://schema.org/category",
         "integrationId": "https://schema.org/identifier",
         "apiPath": "https://schema.org/urlTemplate"
+      }
+    },
+    "Action": {
+      "@id": "actionkit:overview#action",
+      "@context": {
+        "name": "https://schema.org/name",
+        "description": "https://schema.org/description",
+        "integration": "https://schema.org/category",
+        "parameters": "https://schema.org/propertyValueSpecification"
+      }
+    },
+    "ActionResult": {
+      "@id": "actionkit:overview#action-result",
+      "@context": {
+        "output": "https://schema.org/result",
+        "integration": "https://schema.org/category",
+        "action": "https://schema.org/name"
+      }
+    },
+    "Trigger": {
+      "@id": "actionkit:triggers/overview#trigger",
+      "@context": {
+        "name": "https://schema.org/name",
+        "description": "https://schema.org/description",
+        "integration": "https://schema.org/category",
+        "parameters": "https://schema.org/propertyValueSpecification"
+      }
+    },
+    "TriggerSubscription": {
+      "@id": "actionkit:triggers/overview#subscription",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "userId": {
+          "@id": "paragon:users",
+          "@type": "@id"
+        },
+        "trigger": "https://schema.org/name",
+        "integration": "https://schema.org/category",
+        "deliveryUrl": "https://schema.org/url",
+        "createdAt": "https://schema.org/dateCreated"
+      }
+    },
+    "SyncedRecord": {
+      "@id": "managedSync:overview#record",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "integration": "https://schema.org/category",
+        "syncType": "https://schema.org/category",
+        "sourceId": "https://schema.org/identifier",
+        "data": "https://schema.org/value",
+        "permissions": "https://schema.org/accessibilityControl",
+        "updatedAt": "https://schema.org/dateModified"
+      }
+    },
+    "SyncStatus": {
+      "@id": "managedSync:overview#status",
+      "@context": {
+        "integration": "https://schema.org/category",
+        "syncType": "https://schema.org/category",
+        "status": "https://schema.org/status",
+        "lastSyncedAt": "https://schema.org/dateModified",
+        "recordCount": "https://schema.org/size"
+      }
+    },
+    "AccessCheck": {
+      "@id": "managedSync:overview#access-check",
+      "@context": {
+        "subject": "https://schema.org/agent",
+        "relation": "https://schema.org/roleName",
+        "object": "https://schema.org/object"
       }
     }
   }

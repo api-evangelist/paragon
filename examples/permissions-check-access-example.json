@@ -1,0 +1,10 @@
+{
+  "request": {
+    "subject": "user:user@example.com",
+    "relation": "viewer",
+    "object": "file:rec_01HX9Z7Q4DPMHC2BC9R1Q1F2GH"
+  },
+  "response": {
+    "allowed": true
+  }
+}
