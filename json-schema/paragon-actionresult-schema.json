@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ActionResult",
+  "title": "ActionResult",
+  "type": "object",
+  "description": "The response returned by an executed action.",
+  "properties": {
+    "output": {
+      "type": "object",
+      "description": "The action's output (varies by action / integration).",
+      "additionalProperties": true
+    },
+    "integration": {
+      "type": "string",
+      "description": "The integration the action ran against."
+    },
+    "action": {
+      "type": "string",
+      "description": "The action name that was executed."
+    }
+  }
+}

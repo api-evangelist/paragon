@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Trigger",
+  "title": "Trigger",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Trigger identifier (e.g., SLACK_MESSAGE_RECEIVED)."
+    },
+    "description": {
+      "type": "string"
+    },
+    "integration": {
+      "type": "string"
+    },
+    "parameters": {
+      "type": "object",
+      "description": "JSON Schema describing the parameters required to subscribe."
+    }
+  }
+}

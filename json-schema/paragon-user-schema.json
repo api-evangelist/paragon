@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/User",
+  "title": "User",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier for the Connected User."
+    },
+    "meta": {
+      "type": "object",
+      "description": "Metadata associated with the Connected User.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "authenticated": {
+      "type": "boolean",
+      "description": "Whether the user is currently authenticated."
+    },
+    "integrations": {
+      "type": "object",
+      "description": "A map of integration types to their status for this user.",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/UserIntegration"
+      }
+    }
+  }
+}

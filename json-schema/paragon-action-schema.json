@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Action",
+  "title": "Action",
+  "type": "object",
+  "description": "A pre-built Integration Tool exposed by ActionKit. Each action wraps a specific third-party operation (e.g., create a Salesforce record, send a Slack message).",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The action identifier (e.g., SLACK_SEND_MESSAGE)."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description suitable for an LLM tool definition."
+    },
+    "integration": {
+      "type": "string",
+      "description": "The integration this action belongs to."
+    },
+    "parameters": {
+      "type": "object",
+      "description": "JSON Schema describing the input parameters for the action."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WorkflowExecutionList",
+  "title": "WorkflowExecutionList",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/WorkflowExecution"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "description": "Total number of workflow executions matching the query."
+    },
+    "nextLink": {
+      "type": "string",
+      "nullable": true,
+      "description": "URL to retrieve the next page of results. Null if there are no more pages."
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SyncedRecord",
+  "title": "SyncedRecord",
+  "type": "object",
+  "description": "A normalized record produced by a Managed Sync pipeline.",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "integration": {
+      "type": "string"
+    },
+    "syncType": {
+      "type": "string"
+    },
+    "sourceId": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "permissions": {
+      "type": "object",
+      "description": "Source-system permissions captured for this record.",
+      "additionalProperties": true
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SyncStatus",
+  "title": "SyncStatus",
+  "type": "object",
+  "properties": {
+    "integration": {
+      "type": "string"
+    },
+    "syncType": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "SYNCING",
+        "IDLE",
+        "ERROR",
+        "DISABLED"
+      ]
+    },
+    "lastSyncedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "recordCount": {
+      "type": "integer"
+    }
+  }
+}

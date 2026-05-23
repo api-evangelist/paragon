@@ -1,0 +1,124 @@
+{
+  "provider": "Paragon",
+  "providerId": "paragon",
+  "kind": "json-structure",
+  "description": "Structural overview of the Paragon API surface; extracted from openapi/.",
+  "schemaCount": 3,
+  "operationCount": 10,
+  "schemas": [
+    {
+      "name": "SyncStatus",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "SyncedRecord",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "AccessCheck",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "subject",
+        "relation",
+        "object"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "method": "POST",
+      "path": "/projects/{projectId}/sync/enable",
+      "operationId": "enableSync",
+      "summary": "Paragon Enable A Sync",
+      "tags": [
+        "Sync"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{projectId}/sync/status",
+      "operationId": "getSyncStatus",
+      "summary": "Paragon Get Sync Status",
+      "tags": [
+        "Sync"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{projectId}/sync/records",
+      "operationId": "pullSyncedRecords",
+      "summary": "Paragon Pull Synced Records",
+      "tags": [
+        "Sync"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{projectId}/sync/records/{recordId}",
+      "operationId": "getSyncedRecord",
+      "summary": "Paragon Get Synced Record",
+      "tags": [
+        "Sync"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{projectId}/sync/records/{recordId}/content",
+      "operationId": "downloadContent",
+      "summary": "Paragon Download File Content",
+      "tags": [
+        "Sync"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{projectId}/permissions/check-access",
+      "operationId": "checkAccess",
+      "summary": "Paragon Check Access",
+      "tags": [
+        "Permissions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{projectId}/permissions/batch-check-access",
+      "operationId": "batchCheckAccess",
+      "summary": "Paragon Batch Check Access",
+      "tags": [
+        "Permissions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{projectId}/permissions/list-users",
+      "operationId": "listUsers",
+      "summary": "Paragon List Users With Access",
+      "tags": [
+        "Permissions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{projectId}/permissions/list-objects",
+      "operationId": "listObjects",
+      "summary": "Paragon List Objects With Access",
+      "tags": [
+        "Permissions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{projectId}/permissions/expand",
+      "operationId": "expandRelationships",
+      "summary": "Paragon Expand Permission Relationships",
+      "tags": [
+        "Permissions"
+      ]
+    }
+  ]
+}

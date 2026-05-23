@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccessCheck",
+  "title": "AccessCheck",
+  "type": "object",
+  "required": [
+    "subject",
+    "relation",
+    "object"
+  ],
+  "properties": {
+    "subject": {
+      "type": "string",
+      "description": "The actor (e.g., user@example.com)."
+    },
+    "relation": {
+      "type": "string",
+      "description": "The relation to check (e.g., viewer, editor, owner)."
+    },
+    "object": {
+      "type": "string",
+      "description": "The object identifier (e.g., file:abc123)."
+    }
+  }
+}

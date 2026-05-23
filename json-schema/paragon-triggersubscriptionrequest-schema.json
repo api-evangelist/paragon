@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TriggerSubscriptionRequest",
+  "title": "TriggerSubscriptionRequest",
+  "type": "object",
+  "required": [
+    "trigger"
+  ],
+  "properties": {
+    "trigger": {
+      "type": "string",
+      "description": "The trigger name to subscribe to."
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Trigger-specific parameters (e.g., channelId for Slack).",
+      "additionalProperties": true
+    },
+    "deliveryUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Optional per-subscription webhook URL override."
+    }
+  }
+}

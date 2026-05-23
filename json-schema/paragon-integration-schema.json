@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Integration",
+  "title": "Integration",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier for the integration."
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the integration."
+    },
+    "type": {
+      "type": "string",
+      "description": "The integration type identifier (e.g., salesforce, hubspot)."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the integration is enabled for the authenticated user."
+    },
+    "icon": {
+      "type": "string",
+      "description": "URL to the integration icon."
+    }
+  }
+}

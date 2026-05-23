@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserIntegration",
+  "title": "UserIntegration",
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the integration is enabled for this user."
+    },
+    "credentialStatus": {
+      "type": "string",
+      "description": "The status of the integration credential.",
+      "enum": [
+        "VALID",
+        "INVALID",
+        "EXPIRED"
+      ]
+    },
+    "providerId": {
+      "type": "string",
+      "description": "The provider-specific user ID."
+    }
+  }
+}
