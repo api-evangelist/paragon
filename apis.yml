@@ -511,6 +511,8 @@ common:
       - name: Zoho CRM
       - name: Zoho People
       - name: Zoom
+  - type: LLMsTxt
+    url: https://docs.useparagon.com/llms.txt
 integrations:
   - name: Salesforce
   - name: HubSpot
