@@ -1,0 +1,100 @@
+arazzo: 1.0.1
+info:
+  title: Paragon Find and Replay a Failed Workflow Execution
+  summary: Search Task History for failed executions, then replay the most recent failure.
+  description: >-
+    An operational recovery flow over the Task History API. The workflow queries
+    historical workflow executions filtered to FAILED status for an integration,
+    branches on whether any failures were returned, and replays the most recent
+    failed execution using the same workflow version it originally ran with.
+    Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: taskHistoryApi
+  url: ../openapi/paragon-task-history-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: find-and-replay-failed-execution
+  summary: Locate the latest failed execution for an integration and replay it.
+  description: >-
+    Searches workflow executions for FAILED runs, and when at least one is
+    found, replays the most recent failed execution.
+  inputs:
+    type: object
+    required:
+    - projectId
+    properties:
+      projectId:
+        type: string
+        description: Your Paragon Project ID.
+      integration:
+        type: string
+        description: Optional integration filter (e.g. salesforce, hubspot).
+      workflowId:
+        type: string
+        description: Optional workflow ID filter.
+      afterDate:
+        type: string
+        description: Optional ISO 8601 lower bound on execution start time.
+  steps:
+  - stepId: getFailedExecutions
+    description: >-
+      Search historical workflow executions filtered to FAILED status, sorted
+      most-recent-first, to find candidates to replay.
+    operationId: getWorkflowExecutions
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: integration
+      in: query
+      value: $inputs.integration
+    - name: workflowId
+      in: query
+      value: $inputs.workflowId
+    - name: status
+      in: query
+      value: FAILED
+    - name: afterDate
+      in: query
+      value: $inputs.afterDate
+    - name: sortBy
+      in: query
+      value: DESC
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      executions: $response.body#/data
+      total: $response.body#/total
+      latestFailedId: $response.body#/data/0/id
+    onSuccess:
+    - name: hasFailures
+      type: goto
+      stepId: replayExecution
+      criteria:
+      - context: $response.body
+        condition: $.total > 0
+        type: jsonpath
+  - stepId: replayExecution
+    description: >-
+      Replay the most recent failed execution using the same workflow version
+      it originally ran with.
+    operationId: replayWorkflowExecution
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: executionId
+      in: path
+      value: $steps.getFailedExecutions.outputs.latestFailedId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      replayId: $response.body#/id
+      status: $response.body#/status
+      taskCount: $response.body#/taskCount
+  outputs:
+    failedExecutions: $steps.getFailedExecutions.outputs.executions
+    replayId: $steps.replayExecution.outputs.replayId
+    replayStatus: $steps.replayExecution.outputs.status

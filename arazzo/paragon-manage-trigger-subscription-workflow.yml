@@ -1,0 +1,121 @@
+arazzo: 1.0.1
+info:
+  title: Paragon Find and Manage a Trigger Subscription
+  summary: Look up a Connected User's subscriptions and branch to update or unsubscribe.
+  description: >-
+    A subscription lifecycle flow. The workflow lists the Connected User's
+    current trigger subscriptions, branches on whether any subscriptions exist,
+    and then either patches the target subscription's parameters or removes it
+    entirely. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: triggersApi
+  url: ../openapi/paragon-triggers-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: find-and-manage-subscription
+  summary: Resolve a subscription, then branch to update its parameters or unsubscribe.
+  description: >-
+    Lists the Connected User's trigger subscriptions and, when at least one
+    exists, branches on the requested action to either update the subscription
+    parameters or delete the subscription.
+  inputs:
+    type: object
+    required:
+    - projectId
+    - subscriptionId
+    - action
+    properties:
+      projectId:
+        type: string
+        description: Your Paragon Project ID.
+      subscriptionId:
+        type: string
+        description: The subscription ID to update or remove.
+      action:
+        type: string
+        description: Either "update" to patch parameters or "unsubscribe" to delete.
+      trigger:
+        type: string
+        description: The trigger name, required when updating the subscription.
+      triggerParameters:
+        type: object
+        description: New trigger-specific parameters, used when updating.
+      deliveryUrl:
+        type: string
+        description: Optional webhook URL override, used when updating.
+  steps:
+  - stepId: listSubscribedTriggers
+    description: >-
+      Retrieve the list of existing trigger subscriptions for the Connected
+      User to confirm there is something to manage.
+    operationId: listSubscribedTriggers
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      subscriptions: $response.body
+    onSuccess:
+    - name: hasSubscriptionsUpdate
+      type: goto
+      stepId: updateTriggerSubscription
+      criteria:
+      - context: $response.body
+        condition: $.length > 0 && '$inputs.action' == 'update'
+        type: jsonpath
+    - name: hasSubscriptionsUnsubscribe
+      type: goto
+      stepId: unsubscribeFromTrigger
+      criteria:
+      - context: $response.body
+        condition: $.length > 0 && '$inputs.action' == 'unsubscribe'
+        type: jsonpath
+  - stepId: updateTriggerSubscription
+    description: >-
+      Patch the parameters of the target trigger subscription for the Connected
+      User.
+    operationId: updateTriggerSubscription
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    requestBody:
+      contentType: application/json
+      payload:
+        trigger: $inputs.trigger
+        parameters: $inputs.triggerParameters
+        deliveryUrl: $inputs.deliveryUrl
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      subscriptionId: $response.body#/id
+      updatedTrigger: $response.body#/trigger
+    onSuccess:
+    - name: done
+      type: end
+  - stepId: unsubscribeFromTrigger
+    description: >-
+      Remove the target trigger subscription so Paragon stops delivering its
+      events to the Connected User.
+    operationId: unsubscribeFromTrigger
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      deletedSubscriptionId: $inputs.subscriptionId
+  outputs:
+    updatedSubscriptionId: $steps.updateTriggerSubscription.outputs.subscriptionId
+    deletedSubscriptionId: $steps.unsubscribeFromTrigger.outputs.deletedSubscriptionId

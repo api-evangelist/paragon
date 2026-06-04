@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Paragon Verify Integration then Proxy a Request
+  summary: Confirm the Connected User has the integration enabled, then proxy a live API call to it.
+  description: >-
+    A guarded Proxy API flow spanning the Users and Proxy specs. The workflow
+    reads the Connected User to confirm they are authenticated, inspects the
+    project integrations to verify the target integration is enabled for the
+    user, and only then proxies a GET request to the third-party provider's API
+    on the user's behalf. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: usersApi
+  url: ../openapi/paragon-users-api-openapi.yml
+  type: openapi
+- name: proxyApi
+  url: ../openapi/paragon-proxy-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: verify-integration-and-proxy-request
+  summary: Check the integration is connected, then proxy a GET to the provider.
+  description: >-
+    Reads the Connected User, verifies the target integration is enabled in the
+    project, and proxies a GET request to the integration provider only when the
+    integration is available.
+  inputs:
+    type: object
+    required:
+    - projectId
+    - integrationType
+    - apiPath
+    properties:
+      projectId:
+        type: string
+        description: Your Paragon Project ID.
+      integrationType:
+        type: string
+        description: The integration to proxy to (e.g. salesforce, hubspot, slack).
+      apiPath:
+        type: string
+        description: The third-party provider API path to send the request to.
+  steps:
+  - stepId: getUser
+    description: >-
+      Read the authenticated Connected User to confirm they are authenticated
+      and to capture their enabled integrations map.
+    operationId: getUser
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      userId: $response.body#/id
+      authenticated: $response.body#/authenticated
+      integrations: $response.body#/integrations
+  - stepId: getIntegrations
+    description: >-
+      Retrieve the project integrations and confirm at least one is enabled for
+      the Connected User before attempting a proxied call.
+    operationId: getIntegrations
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      integrations: $response.body
+    onSuccess:
+    - name: hasEnabledIntegration
+      type: goto
+      stepId: proxyGetRequest
+      criteria:
+      - context: $response.body
+        condition: $[?(@.enabled == true)]
+        type: jsonpath
+  - stepId: proxyGetRequest
+    description: >-
+      Proxy a GET request to the third-party integration provider's API on
+      behalf of the Connected User.
+    operationId: proxyGetRequest
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: integrationType
+      in: path
+      value: $inputs.integrationType
+    - name: apiPath
+      in: path
+      value: $inputs.apiPath
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      providerResponse: $response.body
+  outputs:
+    userId: $steps.getUser.outputs.userId
+    integrations: $steps.getIntegrations.outputs.integrations
+    providerResponse: $steps.proxyGetRequest.outputs.providerResponse

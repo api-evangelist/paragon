@@ -1,0 +1,124 @@
+arazzo: 1.0.1
+info:
+  title: Paragon Enable a Sync and Pull Records
+  summary: Enable a Managed Sync pipeline, poll until it has run, then read the normalized records.
+  description: >-
+    The end-to-end Managed Sync ingestion pattern. The workflow enables a sync
+    pipeline for a Connected User and integration, polls the sync status until
+    Paragon reports the pipeline has settled (no longer SYNCING), and then pulls
+    the first page of normalized records for downstream use such as a RAG
+    pipeline. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: managedSyncApi
+  url: ../openapi/paragon-managed-sync-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: enable-sync-and-pull-records
+  summary: Enable a sync, wait for it to settle, then read its normalized records.
+  description: >-
+    Enables a Managed Sync pipeline, polls the sync status until it is no longer
+    actively SYNCING, and pulls the first page of synced records.
+  inputs:
+    type: object
+    required:
+    - projectId
+    - integration
+    - syncType
+    properties:
+      projectId:
+        type: string
+        description: Your Paragon Project ID.
+      integration:
+        type: string
+        description: Integration identifier (e.g. googleDrive, salesforce).
+      syncType:
+        type: string
+        description: The sync pipeline type (e.g. files, contacts, deals, tickets).
+      frequency:
+        type: string
+        description: Optional sync frequency (e.g. 1m, 15m, 1h, 1d).
+  steps:
+  - stepId: enableSync
+    description: >-
+      Enable the sync pipeline for the Connected User and integration so
+      Paragon begins fetching records on the configured schedule.
+    operationId: enableSync
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    requestBody:
+      contentType: application/json
+      payload:
+        integration: $inputs.integration
+        syncType: $inputs.syncType
+        frequency: $inputs.frequency
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      status: $response.body#/status
+  - stepId: pollSyncStatus
+    description: >-
+      Poll the sync status until the pipeline is no longer actively SYNCING,
+      indicating the first sync has produced records.
+    operationId: getSyncStatus
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: integration
+      in: query
+      value: $inputs.integration
+    - name: syncType
+      in: query
+      value: $inputs.syncType
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status != 'SYNCING'
+      type: jsonpath
+    onSuccess:
+    - name: synced
+      type: goto
+      stepId: pullSyncedRecords
+      criteria:
+      - context: $response.body
+        condition: $.status != 'SYNCING'
+        type: jsonpath
+    onFailure:
+    - name: retryStatus
+      type: retry
+      retryAfter: 5
+      retryLimit: 30
+      criteria:
+      - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+      lastSyncedAt: $response.body#/lastSyncedAt
+      recordCount: $response.body#/recordCount
+  - stepId: pullSyncedRecords
+    description: >-
+      Pull the first page of normalized records produced by the sync pipeline
+      for the integration and sync type.
+    operationId: pullSyncedRecords
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: integration
+      in: query
+      value: $inputs.integration
+    - name: syncType
+      in: query
+      value: $inputs.syncType
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      records: $response.body#/records
+      nextCursor: $response.body#/nextCursor
+  outputs:
+    status: $steps.pollSyncStatus.outputs.status
+    records: $steps.pullSyncedRecords.outputs.records
+    nextCursor: $steps.pullSyncedRecords.outputs.nextCursor

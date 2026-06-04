@@ -1,0 +1,85 @@
+arazzo: 1.0.1
+info:
+  title: Paragon Discover and Run an ActionKit Action
+  summary: List the Integration Tools available to a Connected User, then execute one synchronously.
+  description: >-
+    The core ActionKit agent pattern. The workflow first lists the catalog of
+    pre-built Integration Tools the Connected User has access to (optionally
+    filtered to a single integration), confirms the requested action is present
+    in that catalog, and then executes it synchronously with the supplied
+    parameters. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: actionKitApi
+  url: ../openapi/paragon-actionkit-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: discover-and-run-action
+  summary: Resolve an ActionKit tool from the catalog and run it for a Connected User.
+  description: >-
+    Lists available actions for the Connected User, verifies the requested
+    action name is in the returned catalog, and then runs it synchronously,
+    returning the third-party provider's response payload.
+  inputs:
+    type: object
+    required:
+    - projectId
+    - action
+    - actionParameters
+    properties:
+      projectId:
+        type: string
+        description: Your Paragon Project ID.
+      integration:
+        type: string
+        description: Optional integration filter for the catalog (e.g. salesforce, slack).
+      action:
+        type: string
+        description: The ActionKit action name to run (e.g. SLACK_SEND_MESSAGE).
+      actionParameters:
+        type: object
+        description: The parameters required by the action, as a key/value map.
+  steps:
+  - stepId: listAvailableActions
+    description: >-
+      Retrieve the catalog of pre-built Integration Tools available to the
+      Connected User, optionally scoped to a single integration.
+    operationId: listActions
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: integration
+      in: query
+      value: $inputs.integration
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      actions: $response.body#/actions
+      firstActionName: $response.body#/actions/0/name
+  - stepId: runAction
+    description: >-
+      Execute the requested action synchronously on behalf of the Connected
+      User and capture the integration's response payload.
+    operationId: runAction
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: action
+      in: path
+      value: $inputs.action
+    requestBody:
+      contentType: application/json
+      payload: $inputs.actionParameters
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      output: $response.body#/output
+      integration: $response.body#/integration
+      executedAction: $response.body#/action
+  outputs:
+    availableActions: $steps.listAvailableActions.outputs.actions
+    output: $steps.runAction.outputs.output
+    executedAction: $steps.runAction.outputs.executedAction

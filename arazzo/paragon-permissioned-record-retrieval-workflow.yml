@@ -1,0 +1,139 @@
+arazzo: 1.0.1
+info:
+  title: Paragon Permissioned Synced Record Retrieval
+  summary: Pull a synced record, check the requester's access, and download its file content only if allowed.
+  description: >-
+    The permission-enforcing retrieval pattern for RAG over Managed Sync. The
+    workflow pulls a page of synced records, fetches the full normalized record
+    for a chosen ID, runs a ReBAC-style access check for the requesting subject,
+    and branches: only when access is allowed does it download the file's binary
+    content. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: managedSyncApi
+  url: ../openapi/paragon-managed-sync-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: permissioned-record-retrieval
+  summary: Resolve a synced record, enforce source-system permissions, then download content.
+  description: >-
+    Pulls synced records, retrieves the chosen record, performs an access check
+    for the requesting subject, and downloads the file content only when the
+    check returns allowed.
+  inputs:
+    type: object
+    required:
+    - projectId
+    - integration
+    - syncType
+    - recordId
+    - subject
+    - relation
+    - object
+    properties:
+      projectId:
+        type: string
+        description: Your Paragon Project ID.
+      integration:
+        type: string
+        description: Integration identifier (e.g. googleDrive).
+      syncType:
+        type: string
+        description: The sync pipeline type (e.g. files).
+      recordId:
+        type: string
+        description: The synced record ID to retrieve and download.
+      subject:
+        type: string
+        description: The requesting actor (e.g. user@example.com).
+      relation:
+        type: string
+        description: The relation to check (e.g. viewer, editor, owner).
+      object:
+        type: string
+        description: The object identifier to check access against (e.g. file:abc123).
+  steps:
+  - stepId: pullSyncedRecords
+    description: >-
+      Pull the first page of normalized records for the integration and sync
+      type to establish the working set.
+    operationId: pullSyncedRecords
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: integration
+      in: query
+      value: $inputs.integration
+    - name: syncType
+      in: query
+      value: $inputs.syncType
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      records: $response.body#/records
+  - stepId: getSyncedRecord
+    description: >-
+      Retrieve the full normalized record, including its captured source-system
+      permissions, for the chosen record ID.
+    operationId: getSyncedRecord
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: recordId
+      in: path
+      value: $inputs.recordId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      sourceId: $response.body#/sourceId
+      permissions: $response.body#/permissions
+  - stepId: checkAccess
+    description: >-
+      Run a ReBAC-style access check to confirm the requesting subject has the
+      required relation to the object before any content is read.
+    operationId: checkAccess
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    requestBody:
+      contentType: application/json
+      payload:
+        subject: $inputs.subject
+        relation: $inputs.relation
+        object: $inputs.object
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      allowed: $response.body#/allowed
+    onSuccess:
+    - name: accessGranted
+      type: goto
+      stepId: downloadContent
+      criteria:
+      - context: $response.body
+        condition: $.allowed == true
+        type: jsonpath
+  - stepId: downloadContent
+    description: >-
+      Download the binary content of the file-type record now that access has
+      been confirmed for the requesting subject.
+    operationId: downloadContent
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: recordId
+      in: path
+      value: $inputs.recordId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      content: $response.body
+  outputs:
+    permissions: $steps.getSyncedRecord.outputs.permissions
+    allowed: $steps.checkAccess.outputs.allowed
+    content: $steps.downloadContent.outputs.content

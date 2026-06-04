@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Paragon Preview and Subscribe to a Trigger
+  summary: Resolve a trigger from the catalog, preview its example payload, then subscribe the user to it.
+  description: >-
+    A guided trigger onboarding flow. The workflow lists the catalog of
+    pre-built triggers available to the Connected User, fetches an example
+    payload for the chosen trigger so the consumer's handler can be shaped
+    before any live event arrives, and finally creates the subscription so
+    Paragon begins delivering matching events to the configured webhook. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: triggersApi
+  url: ../openapi/paragon-triggers-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: preview-and-subscribe-to-trigger
+  summary: Discover a trigger, preview its payload, and subscribe the Connected User.
+  description: >-
+    Lists available triggers for the Connected User, retrieves an example event
+    payload for the chosen trigger, and then creates a subscription with the
+    supplied trigger parameters.
+  inputs:
+    type: object
+    required:
+    - projectId
+    - trigger
+    properties:
+      projectId:
+        type: string
+        description: Your Paragon Project ID.
+      integration:
+        type: string
+        description: Optional integration filter for the trigger catalog (e.g. slack).
+      trigger:
+        type: string
+        description: The trigger name to subscribe to (e.g. SLACK_MESSAGE_RECEIVED).
+      triggerParameters:
+        type: object
+        description: Trigger-specific parameters (e.g. channelId for Slack).
+      deliveryUrl:
+        type: string
+        description: Optional per-subscription webhook URL override.
+  steps:
+  - stepId: listAvailableTriggers
+    description: >-
+      Retrieve the catalog of pre-built triggers available to the Connected
+      User, optionally scoped to a single integration.
+    operationId: listAvailableTriggers
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: integration
+      in: query
+      value: $inputs.integration
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      triggers: $response.body#/triggers
+  - stepId: getExamplePayload
+    description: >-
+      Fetch an example payload Paragon will deliver for the chosen trigger so
+      the consumer handler can be shaped before a live event occurs.
+    operationId: getExamplePayload
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: trigger
+      in: path
+      value: $inputs.trigger
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      examplePayload: $response.body
+  - stepId: subscribeToTrigger
+    description: >-
+      Create the subscription so Paragon begins delivering matching events to
+      the configured webhook URL for the Connected User.
+    operationId: subscribeToTrigger
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    requestBody:
+      contentType: application/json
+      payload:
+        trigger: $inputs.trigger
+        parameters: $inputs.triggerParameters
+        deliveryUrl: $inputs.deliveryUrl
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      subscriptionId: $response.body#/id
+      subscribedTrigger: $response.body#/trigger
+      createdAt: $response.body#/createdAt
+  outputs:
+    examplePayload: $steps.getExamplePayload.outputs.examplePayload
+    subscriptionId: $steps.subscribeToTrigger.outputs.subscriptionId

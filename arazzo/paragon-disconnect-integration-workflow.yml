@@ -1,0 +1,88 @@
+arazzo: 1.0.1
+info:
+  title: Paragon Disconnect a User Integration and Confirm
+  summary: Find an enabled integration for a Connected User, disconnect it, then confirm it is gone.
+  description: >-
+    A clean integration teardown flow. The workflow lists the project
+    integrations to confirm the target integration is enabled for the Connected
+    User, disconnects it (which stops its workflows and clears saved User
+    Settings), and re-reads the user to confirm the integration no longer
+    reports as enabled. Every step spells out its request inline so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: usersApi
+  url: ../openapi/paragon-users-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: disconnect-integration
+  summary: Verify an integration is connected, disconnect it, and confirm removal.
+  description: >-
+    Lists project integrations, branches when the target integration is enabled,
+    disconnects it for the Connected User, and re-reads the user to confirm.
+  inputs:
+    type: object
+    required:
+    - projectId
+    - integrationId
+    properties:
+      projectId:
+        type: string
+        description: Your Paragon Project ID.
+      integrationId:
+        type: string
+        description: The ID of the integration to disconnect.
+  steps:
+  - stepId: getIntegrations
+    description: >-
+      Retrieve the project integrations and their enabled status for the
+      Connected User to confirm there is something to disconnect.
+    operationId: getIntegrations
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      integrations: $response.body
+    onSuccess:
+    - name: hasEnabledIntegration
+      type: goto
+      stepId: disconnectIntegration
+      criteria:
+      - context: $response.body
+        condition: $[?(@.enabled == true)]
+        type: jsonpath
+  - stepId: disconnectIntegration
+    description: >-
+      Disconnect the integration for the Connected User, stopping its workflows
+      and clearing any saved User Settings.
+    operationId: disconnectIntegration
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: integrationId
+      in: path
+      value: $inputs.integrationId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      disconnectedIntegrationId: $inputs.integrationId
+  - stepId: confirmUser
+    description: >-
+      Re-read the Connected User to confirm the disconnected integration is no
+      longer reported among their enabled integrations.
+    operationId: getUser
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      integrations: $response.body#/integrations
+  outputs:
+    disconnectedIntegrationId: $steps.disconnectIntegration.outputs.disconnectedIntegrationId
+    remainingIntegrations: $steps.confirmUser.outputs.integrations

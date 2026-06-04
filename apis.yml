@@ -216,6 +216,33 @@ apis:
       source-system permissions when retrieving content for retrieval-augmented
       generation.
 common:
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+    - url: arazzo/paragon-disconnect-integration-workflow.yml
+      name: Paragon Disconnect a User Integration and Confirm
+      summary: Find an enabled integration for a Connected User, disconnect it, then confirm it is gone.
+    - url: arazzo/paragon-discover-and-run-action-workflow.yml
+      name: Paragon Discover and Run an ActionKit Action
+      summary: List the Integration Tools available to a Connected User, then execute one synchronously.
+    - url: arazzo/paragon-enable-sync-and-pull-records-workflow.yml
+      name: Paragon Enable a Sync and Pull Records
+      summary: Enable a Managed Sync pipeline, poll until it has run, then read the normalized records.
+    - url: arazzo/paragon-find-and-replay-failed-execution-workflow.yml
+      name: Paragon Find and Replay a Failed Workflow Execution
+      summary: Search Task History for failed executions, then replay the most recent failure.
+    - url: arazzo/paragon-manage-trigger-subscription-workflow.yml
+      name: Paragon Find and Manage a Trigger Subscription
+      summary: Look up a Connected User's subscriptions and branch to update or unsubscribe.
+    - url: arazzo/paragon-permissioned-record-retrieval-workflow.yml
+      name: Paragon Permissioned Synced Record Retrieval
+      summary: Pull a synced record, check the requester's access, and download its file content only if allowed.
+    - url: arazzo/paragon-subscribe-to-trigger-workflow.yml
+      name: Paragon Preview and Subscribe to a Trigger
+      summary: Resolve a trigger from the catalog, preview its example payload, then subscribe the user to it.
+    - url: arazzo/paragon-verify-integration-and-proxy-request-workflow.yml
+      name: Paragon Verify Integration then Proxy a Request
+      summary: Confirm the Connected User has the integration enabled, then proxy a live API call to it.
   - type: LinkedIn
     url: https://www.linkedin.com/company/paragon
   - type: GitHubOrganization
