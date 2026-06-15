@@ -1,0 +1,174 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paragon Users API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paragon Get current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.useparagon.com/projects/:projectId/sdk/me",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              }
+            ]
+          },
+          "docs": "Returns the authenticated Connected User's details, including their user ID, authentication status, enabled integrations, and associated metadata. Equivalent to the SDK function paragon.getUser()."
+        },
+        {
+          "info": {
+            "name": "Paragon Update user metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.useparagon.com/projects/:projectId/sdk/me",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the authenticated Connected User's metadata. You can associate arbitrary key-value metadata with a Connected User. Equivalent to the SDK function paragon.setMetadata()."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Integrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paragon Get project integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.useparagon.com/projects/:projectId/sdk/integrations",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              }
+            ]
+          },
+          "docs": "Returns the list of integrations available in the project, including their enabled status for the authenticated Connected User."
+        },
+        {
+          "info": {
+            "name": "Paragon Disconnect an integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.useparagon.com/projects/:projectId/sdk/integrations/:integrationId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "integrationId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the integration to disconnect."
+              }
+            ]
+          },
+          "docs": "Disconnects an integration for the authenticated Connected User. When an integration is disconnected, workflows for that integration will stop running for the user and any saved User Settings will be cleared. Equivalent to the SDK function paragon.uninstallIntegration()."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Credentials",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paragon Get user credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.useparagon.com/projects/:projectId/sdk/credentials",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              }
+            ]
+          },
+          "docs": "Returns the Connect credentials for the authenticated Connected User."
+        },
+        {
+          "info": {
+            "name": "Paragon Update a credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.useparagon.com/projects/:projectId/sdk/credentials/:credentialId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "credentialId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Connect credential to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a specific Connect credential for the authenticated Connected User."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

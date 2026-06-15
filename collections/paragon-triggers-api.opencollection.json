@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paragon Triggers API",
+    "version": "1.0.0-beta"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Triggers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paragon List Available Triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/triggers",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "integration",
+                "value": "",
+                "type": "query",
+                "description": "Optional integration filter (e.g., slack, googleCalendar)."
+              }
+            ]
+          },
+          "docs": "Returns the catalog of pre-built triggers available to the Connected User, scoped to the integrations they have enabled. Each trigger describes its event type, supported parameters, and the integration it belongs to."
+        },
+        {
+          "info": {
+            "name": "Paragon List Subscribed Triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/triggers/subscriptions",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              }
+            ]
+          },
+          "docs": "Returns the list of trigger subscriptions for the Connected User."
+        },
+        {
+          "info": {
+            "name": "Paragon Subscribe To Trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/triggers/subscriptions",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Subscribes the Connected User to a trigger event. Paragon will deliver matching events to the webhook URL configured for the project (or a per-subscription override)."
+        },
+        {
+          "info": {
+            "name": "Paragon Update Trigger Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/triggers/subscriptions/:subscriptionId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the parameters of an existing trigger subscription."
+        },
+        {
+          "info": {
+            "name": "Paragon Unsubscribe From Trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/triggers/subscriptions/:subscriptionId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Removes a trigger subscription for the Connected User."
+        },
+        {
+          "info": {
+            "name": "Paragon Get Example Trigger Payload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/triggers/:trigger/example-payload",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "trigger",
+                "value": "",
+                "type": "path",
+                "description": "The trigger identifier (e.g., SLACK_MESSAGE_RECEIVED)."
+              }
+            ]
+          },
+          "docs": "Returns an example payload Paragon will deliver for a given trigger. Useful for testing and for shaping consumer handlers without waiting for a live event."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

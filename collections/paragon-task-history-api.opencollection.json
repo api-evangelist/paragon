@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paragon Task History API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Task History",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paragon Get workflow executions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.useparagon.com/projects/:projectId/task-history/workflow-executions",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "integration",
+                "value": "",
+                "type": "query",
+                "description": "Filter by integration name (e.g., salesforce, hubspot)."
+              },
+              {
+                "name": "workflowId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by workflow ID."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Connected User ID."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by execution status."
+              },
+              {
+                "name": "afterDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter executions that started after this date (ISO 8601 format)."
+              },
+              {
+                "name": "beforeDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter executions that started before this date (ISO 8601 format)."
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for the results."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset for retrieving additional pages."
+              }
+            ]
+          },
+          "docs": "Search through historical workflow executions with filtering options. Returns paginated results with up to 100 records per page. If additional pages are available, the response will include a nextLink URL to retrieve the next page."
+        },
+        {
+          "info": {
+            "name": "Paragon Replay a workflow execution",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.useparagon.com/projects/:projectId/task-history/workflow-executions/:executionId/replay",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "executionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the workflow execution to replay."
+              }
+            ]
+          },
+          "docs": "Replays a specific workflow execution using the same version of the workflow that the execution originally ran with. This endpoint is in beta and may not be suitable for use in production applications."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

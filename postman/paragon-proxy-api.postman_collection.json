@@ -1,0 +1,2228 @@
+{
+  "info": {
+    "_postman_id": "042aefc0-f5f0-4d64-90ba-573881d046ed",
+    "name": "Paragon Proxy API",
+    "description": "The Proxy API allows you to directly access any of the third-party provider's API methods on behalf of your Connected Users. Along with Workflows, the Proxy API is one of two primary ways to build integrations with Paragon. The Proxy API accepts requests with body contents specified as application/json and supports any HTTP verb including GET, POST, PUT, PATCH, and DELETE.\n\nContact Support:\n Name: Paragon",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:14:04.000Z",
+    "updatedAt": "2026-06-05T15:14:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-042aefc0-f5f0-4d64-90ba-573881d046ed"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{projectId}",
+          "item": [
+            {
+              "name": "sdk",
+              "item": [
+                {
+                  "name": "proxy",
+                  "item": [
+                    {
+                      "name": "{integrationType}",
+                      "item": [
+                        {
+                          "name": "{apiPath}",
+                          "item": [
+                            {
+                              "name": "Paragon Proxy GET request to integration",
+                              "id": "aeb0c731-371e-4b3f-8209-fcc050b703e3",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "sdk",
+                                    "proxy",
+                                    ":integrationType",
+                                    ":apiPath"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "3f684a04-710e-4cb0-a00e-268c493c3dcb",
+                                      "key": "projectId",
+                                      "value": "<string>",
+                                      "description": "(Required) Your Paragon Project ID."
+                                    },
+                                    {
+                                      "id": "7d387716-bda4-48d6-99bf-c92287ae7c53",
+                                      "key": "integrationType",
+                                      "value": "<string>",
+                                      "description": "(Required) The type of integration to proxy the request to (e.g., salesforce, hubspot, slack)."
+                                    },
+                                    {
+                                      "id": "51173691-5913-4236-87c4-25111ba4e781",
+                                      "key": "apiPath",
+                                      "value": "<string>",
+                                      "description": "(Required) The API path of the third-party provider to send the request to."
+                                    }
+                                  ]
+                                },
+                                "description": "Send a GET request to a third-party integration API on behalf of a Connected User. The request is proxied through Paragon to the integration provider."
+                              },
+                              "response": [
+                                {
+                                  "id": "70b13304-fb94-47c6-8e92-5faea16b056d",
+                                  "name": "Successful proxy response from the integration provider.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{}",
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-70b13304-fb94-47c6-8e92-5faea16b056d"
+                                },
+                                {
+                                  "id": "8790099c-f9bf-4cb6-ba8c-de3f71702a34",
+                                  "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-8790099c-f9bf-4cb6-ba8c-de3f71702a34"
+                                },
+                                {
+                                  "id": "3db6820f-3c05-45a4-88a5-483c5777cd6d",
+                                  "name": "Integration not found or not enabled for the user.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-3db6820f-3c05-45a4-88a5-483c5777cd6d"
+                                },
+                                {
+                                  "id": "cb5ec6ef-db18-450e-97dd-81678c0c9b69",
+                                  "name": "Rate limit exceeded.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-cb5ec6ef-db18-450e-97dd-81678c0c9b69"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:14:04.000Z",
+                              "updatedAt": "2026-06-05T15:14:04.000Z",
+                              "uid": "35240-aeb0c731-371e-4b3f-8209-fcc050b703e3"
+                            },
+                            {
+                              "name": "Paragon Proxy POST request to integration",
+                              "id": "faf54c4f-f013-4ab3-b4ec-3023678389b0",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "sdk",
+                                    "proxy",
+                                    ":integrationType",
+                                    ":apiPath"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "0ea72b41-4724-4d23-a9ec-addf65af65f4",
+                                      "key": "projectId",
+                                      "value": "<string>",
+                                      "description": "(Required) Your Paragon Project ID."
+                                    },
+                                    {
+                                      "id": "73794237-b6e7-412f-96ab-fd7d31c4c901",
+                                      "key": "integrationType",
+                                      "value": "<string>",
+                                      "description": "(Required) The type of integration to proxy the request to."
+                                    },
+                                    {
+                                      "id": "37266bb1-2650-4693-bce8-f114b994c77c",
+                                      "key": "apiPath",
+                                      "value": "<string>",
+                                      "description": "(Required) The API path of the third-party provider to send the request to."
+                                    }
+                                  ]
+                                },
+                                "description": "Send a POST request to a third-party integration API on behalf of a Connected User."
+                              },
+                              "response": [
+                                {
+                                  "id": "07b2e0c6-1698-412e-9ca2-edfa929b25b0",
+                                  "name": "Successful proxy response from the integration provider.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{}",
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-07b2e0c6-1698-412e-9ca2-edfa929b25b0"
+                                },
+                                {
+                                  "id": "e97b2fc5-5383-4965-9646-29fe3c462675",
+                                  "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-e97b2fc5-5383-4965-9646-29fe3c462675"
+                                },
+                                {
+                                  "id": "752e6084-74d9-4b1b-9fad-9066f38ca803",
+                                  "name": "Integration not found or not enabled for the user.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-752e6084-74d9-4b1b-9fad-9066f38ca803"
+                                },
+                                {
+                                  "id": "77de6270-6ea1-469a-af16-603eb4b6e665",
+                                  "name": "Rate limit exceeded.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-77de6270-6ea1-469a-af16-603eb4b6e665"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:14:04.000Z",
+                              "updatedAt": "2026-06-05T15:14:04.000Z",
+                              "uid": "35240-faf54c4f-f013-4ab3-b4ec-3023678389b0"
+                            },
+                            {
+                              "name": "Paragon Proxy PUT request to integration",
+                              "id": "4f78af08-03c1-40e8-bbc1-a68a4957b06a",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "sdk",
+                                    "proxy",
+                                    ":integrationType",
+                                    ":apiPath"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "068ec2fa-15ee-4c7e-ab29-248831b7fd55",
+                                      "key": "projectId",
+                                      "value": "<string>",
+                                      "description": "(Required) Your Paragon Project ID."
+                                    },
+                                    {
+                                      "id": "ea392476-d47c-4425-8e97-06a7b70863d9",
+                                      "key": "integrationType",
+                                      "value": "<string>",
+                                      "description": "(Required) The type of integration to proxy the request to."
+                                    },
+                                    {
+                                      "id": "fccfd86d-f956-40c3-bb84-d123a13a20b4",
+                                      "key": "apiPath",
+                                      "value": "<string>",
+                                      "description": "(Required) The API path of the third-party provider to send the request to."
+                                    }
+                                  ]
+                                },
+                                "description": "Send a PUT request to a third-party integration API on behalf of a Connected User."
+                              },
+                              "response": [
+                                {
+                                  "id": "bc36c3d9-a38d-470f-b670-aba0f54694a8",
+                                  "name": "Successful proxy response from the integration provider.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{}",
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-bc36c3d9-a38d-470f-b670-aba0f54694a8"
+                                },
+                                {
+                                  "id": "88f6dd3e-5718-481b-bd3f-c67d0859ef06",
+                                  "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-88f6dd3e-5718-481b-bd3f-c67d0859ef06"
+                                },
+                                {
+                                  "id": "ad4841ef-a3e5-48c9-8df5-a1fffc9ba107",
+                                  "name": "Integration not found or not enabled for the user.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-ad4841ef-a3e5-48c9-8df5-a1fffc9ba107"
+                                },
+                                {
+                                  "id": "09d8cd27-31d7-4f42-8dff-d94d5e7dd96f",
+                                  "name": "Rate limit exceeded.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-09d8cd27-31d7-4f42-8dff-d94d5e7dd96f"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:14:04.000Z",
+                              "updatedAt": "2026-06-05T15:14:04.000Z",
+                              "uid": "35240-4f78af08-03c1-40e8-bbc1-a68a4957b06a"
+                            },
+                            {
+                              "name": "Paragon Proxy PATCH request to integration",
+                              "id": "512009a7-a3b9-4d82-bd31-deed39ac0088",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "sdk",
+                                    "proxy",
+                                    ":integrationType",
+                                    ":apiPath"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "d0cea338-83f8-4ed5-92b9-7deda8df4f54",
+                                      "key": "projectId",
+                                      "value": "<string>",
+                                      "description": "(Required) Your Paragon Project ID."
+                                    },
+                                    {
+                                      "id": "874f27c0-1967-489d-a5a1-410a1bc03484",
+                                      "key": "integrationType",
+                                      "value": "<string>",
+                                      "description": "(Required) The type of integration to proxy the request to."
+                                    },
+                                    {
+                                      "id": "a3d3213b-9372-41a8-a2f0-b61996cdc2da",
+                                      "key": "apiPath",
+                                      "value": "<string>",
+                                      "description": "(Required) The API path of the third-party provider to send the request to."
+                                    }
+                                  ]
+                                },
+                                "description": "Send a PATCH request to a third-party integration API on behalf of a Connected User."
+                              },
+                              "response": [
+                                {
+                                  "id": "d1d0f670-ca64-48f9-bc5e-ade4d17617c3",
+                                  "name": "Successful proxy response from the integration provider.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{}",
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-d1d0f670-ca64-48f9-bc5e-ade4d17617c3"
+                                },
+                                {
+                                  "id": "d7ead34e-032d-496b-b965-578dd7ee40a3",
+                                  "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-d7ead34e-032d-496b-b965-578dd7ee40a3"
+                                },
+                                {
+                                  "id": "453b1e01-9582-4c14-85ca-d2b5be2e6968",
+                                  "name": "Integration not found or not enabled for the user.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-453b1e01-9582-4c14-85ca-d2b5be2e6968"
+                                },
+                                {
+                                  "id": "0d9c78b9-bc5e-43ed-b239-b8fb91bde5e4",
+                                  "name": "Rate limit exceeded.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-0d9c78b9-bc5e-43ed-b239-b8fb91bde5e4"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:14:04.000Z",
+                              "updatedAt": "2026-06-05T15:14:04.000Z",
+                              "uid": "35240-512009a7-a3b9-4d82-bd31-deed39ac0088"
+                            },
+                            {
+                              "name": "Paragon Proxy DELETE request to integration",
+                              "id": "0b545a60-825f-4148-9c4d-982723188937",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "sdk",
+                                    "proxy",
+                                    ":integrationType",
+                                    ":apiPath"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "8377338e-0947-43d5-9ae0-245d4ff2a673",
+                                      "key": "projectId",
+                                      "value": "<string>",
+                                      "description": "(Required) Your Paragon Project ID."
+                                    },
+                                    {
+                                      "id": "e07becfc-97c9-4d81-8144-5eca494b1c7c",
+                                      "key": "integrationType",
+                                      "value": "<string>",
+                                      "description": "(Required) The type of integration to proxy the request to."
+                                    },
+                                    {
+                                      "id": "1fe58959-e446-4024-97cd-e1ebc2764051",
+                                      "key": "apiPath",
+                                      "value": "<string>",
+                                      "description": "(Required) The API path of the third-party provider to send the request to."
+                                    }
+                                  ]
+                                },
+                                "description": "Send a DELETE request to a third-party integration API on behalf of a Connected User."
+                              },
+                              "response": [
+                                {
+                                  "id": "09ac8e14-9e2c-4c8d-a90d-2308e324a780",
+                                  "name": "Successful proxy response from the integration provider.",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{}",
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-09ac8e14-9e2c-4c8d-a90d-2308e324a780"
+                                },
+                                {
+                                  "id": "3c9e1954-310c-491e-8977-6ab617de9fd5",
+                                  "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-3c9e1954-310c-491e-8977-6ab617de9fd5"
+                                },
+                                {
+                                  "id": "ae7fa853-4bf0-41cd-a6df-861dec77444b",
+                                  "name": "Integration not found or not enabled for the user.",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-ae7fa853-4bf0-41cd-a6df-861dec77444b"
+                                },
+                                {
+                                  "id": "ba1ae4b8-f368-477b-9e71-ad7ab8d60608",
+                                  "name": "Rate limit exceeded.",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        ":integrationType",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "integrationType"
+                                        },
+                                        {
+                                          "key": "apiPath"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-ba1ae4b8-f368-477b-9e71-ad7ab8d60608"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:14:04.000Z",
+                              "updatedAt": "2026-06-05T15:14:04.000Z",
+                              "uid": "35240-0b545a60-825f-4148-9c4d-982723188937"
+                            }
+                          ],
+                          "id": "3336ff81-3882-413f-b848-8d521bde07ff",
+                          "createdAt": "2026-06-05T15:14:04.000Z",
+                          "updatedAt": "2026-06-05T15:14:04.000Z",
+                          "uid": "35240-3336ff81-3882-413f-b848-8d521bde07ff"
+                        }
+                      ],
+                      "id": "2a45046b-4712-4b28-b5be-4e1e4ef9cfa3",
+                      "createdAt": "2026-06-05T15:14:04.000Z",
+                      "updatedAt": "2026-06-05T15:14:04.000Z",
+                      "uid": "35240-2a45046b-4712-4b28-b5be-4e1e4ef9cfa3"
+                    },
+                    {
+                      "name": "custom",
+                      "item": [
+                        {
+                          "name": "{integrationId}",
+                          "item": [
+                            {
+                              "name": "{apiPath}",
+                              "item": [
+                                {
+                                  "name": "Paragon Proxy GET request to custom integration",
+                                  "id": "da76a64d-e5a7-4f0c-bf2a-18f2c3b41d57",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        "custom",
+                                        ":integrationId",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "422f53bd-f78a-4e44-b1a1-7585d1e23ef3",
+                                          "key": "projectId",
+                                          "value": "<string>",
+                                          "description": "(Required) Your Paragon Project ID."
+                                        },
+                                        {
+                                          "id": "7e215082-09bf-4d22-b083-aa248dd2ac69",
+                                          "key": "integrationId",
+                                          "value": "<string>",
+                                          "description": "(Required) The ID of the custom integration."
+                                        },
+                                        {
+                                          "id": "49f80dc4-dd19-478e-a8cf-b332be218565",
+                                          "key": "apiPath",
+                                          "value": "<string>",
+                                          "description": "(Required) The API path of the custom integration to send the request to."
+                                        }
+                                      ]
+                                    },
+                                    "description": "Send a GET request to a custom integration API on behalf of a Connected User."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "b7db62ae-71ae-48da-818b-a771d956aa72",
+                                      "name": "Successful proxy response from the custom integration.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "projects",
+                                            ":projectId",
+                                            "sdk",
+                                            "proxy",
+                                            "custom",
+                                            ":integrationId",
+                                            ":apiPath"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "integrationId"
+                                            },
+                                            {
+                                              "key": "apiPath"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-06-05T15:14:04.000Z",
+                                      "updatedAt": "2026-06-05T15:14:04.000Z",
+                                      "uid": "35240-b7db62ae-71ae-48da-818b-a771d956aa72"
+                                    },
+                                    {
+                                      "id": "eab93a56-194d-49cd-84f8-44c5db186c13",
+                                      "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "projects",
+                                            ":projectId",
+                                            "sdk",
+                                            "proxy",
+                                            "custom",
+                                            ":integrationId",
+                                            ":apiPath"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "integrationId"
+                                            },
+                                            {
+                                              "key": "apiPath"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-06-05T15:14:04.000Z",
+                                      "updatedAt": "2026-06-05T15:14:04.000Z",
+                                      "uid": "35240-eab93a56-194d-49cd-84f8-44c5db186c13"
+                                    },
+                                    {
+                                      "id": "b684bee1-83a7-4864-94d8-343904df7541",
+                                      "name": "Integration not found or not enabled for the user.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "projects",
+                                            ":projectId",
+                                            "sdk",
+                                            "proxy",
+                                            "custom",
+                                            ":integrationId",
+                                            ":apiPath"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "integrationId"
+                                            },
+                                            {
+                                              "key": "apiPath"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-06-05T15:14:04.000Z",
+                                      "updatedAt": "2026-06-05T15:14:04.000Z",
+                                      "uid": "35240-b684bee1-83a7-4864-94d8-343904df7541"
+                                    },
+                                    {
+                                      "id": "0618e2c8-264a-462e-8621-201af5d213b9",
+                                      "name": "Rate limit exceeded.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "projects",
+                                            ":projectId",
+                                            "sdk",
+                                            "proxy",
+                                            "custom",
+                                            ":integrationId",
+                                            ":apiPath"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "integrationId"
+                                            },
+                                            {
+                                              "key": "apiPath"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Too Many Requests",
+                                      "code": 429,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-06-05T15:14:04.000Z",
+                                      "updatedAt": "2026-06-05T15:14:04.000Z",
+                                      "uid": "35240-0618e2c8-264a-462e-8621-201af5d213b9"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-da76a64d-e5a7-4f0c-bf2a-18f2c3b41d57"
+                                },
+                                {
+                                  "name": "Paragon Proxy POST request to custom integration",
+                                  "id": "4168c299-1d9b-4d14-a00c-2b63d969e854",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sdk",
+                                        "proxy",
+                                        "custom",
+                                        ":integrationId",
+                                        ":apiPath"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "70b79b44-a957-4d80-bede-7e8fbfb3bf29",
+                                          "key": "projectId",
+                                          "value": "<string>",
+                                          "description": "(Required) Your Paragon Project ID."
+                                        },
+                                        {
+                                          "id": "1915868c-212d-4ee3-97fc-8baadb46f42e",
+                                          "key": "integrationId",
+                                          "value": "<string>",
+                                          "description": "(Required) The ID of the custom integration."
+                                        },
+                                        {
+                                          "id": "4a7bc29a-d910-4b32-8978-6d1d96837a48",
+                                          "key": "apiPath",
+                                          "value": "<string>",
+                                          "description": "(Required) The API path of the custom integration to send the request to."
+                                        }
+                                      ]
+                                    },
+                                    "description": "Send a POST request to a custom integration API on behalf of a Connected User."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "6aea9726-a936-4451-ab5f-ee44580aea28",
+                                      "name": "Successful proxy response from the custom integration.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "projects",
+                                            ":projectId",
+                                            "sdk",
+                                            "proxy",
+                                            "custom",
+                                            ":integrationId",
+                                            ":apiPath"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "integrationId"
+                                            },
+                                            {
+                                              "key": "apiPath"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{}",
+                                      "createdAt": "2026-06-05T15:14:04.000Z",
+                                      "updatedAt": "2026-06-05T15:14:04.000Z",
+                                      "uid": "35240-6aea9726-a936-4451-ab5f-ee44580aea28"
+                                    },
+                                    {
+                                      "id": "8cd5f66e-b012-42e7-80e8-5dd2cf5ea182",
+                                      "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "projects",
+                                            ":projectId",
+                                            "sdk",
+                                            "proxy",
+                                            "custom",
+                                            ":integrationId",
+                                            ":apiPath"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "integrationId"
+                                            },
+                                            {
+                                              "key": "apiPath"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-06-05T15:14:04.000Z",
+                                      "updatedAt": "2026-06-05T15:14:04.000Z",
+                                      "uid": "35240-8cd5f66e-b012-42e7-80e8-5dd2cf5ea182"
+                                    },
+                                    {
+                                      "id": "2c6b0967-c213-40ac-ab93-ca0d64293c0a",
+                                      "name": "Integration not found or not enabled for the user.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "projects",
+                                            ":projectId",
+                                            "sdk",
+                                            "proxy",
+                                            "custom",
+                                            ":integrationId",
+                                            ":apiPath"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "integrationId"
+                                            },
+                                            {
+                                              "key": "apiPath"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-06-05T15:14:04.000Z",
+                                      "updatedAt": "2026-06-05T15:14:04.000Z",
+                                      "uid": "35240-2c6b0967-c213-40ac-ab93-ca0d64293c0a"
+                                    },
+                                    {
+                                      "id": "f756d20a-59a8-48d4-b35b-cdf8366c66a3",
+                                      "name": "Rate limit exceeded.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "projects",
+                                            ":projectId",
+                                            "sdk",
+                                            "proxy",
+                                            "custom",
+                                            ":integrationId",
+                                            ":apiPath"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "integrationId"
+                                            },
+                                            {
+                                              "key": "apiPath"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Too Many Requests",
+                                      "code": 429,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-06-05T15:14:04.000Z",
+                                      "updatedAt": "2026-06-05T15:14:04.000Z",
+                                      "uid": "35240-f756d20a-59a8-48d4-b35b-cdf8366c66a3"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:14:04.000Z",
+                                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                                  "uid": "35240-4168c299-1d9b-4d14-a00c-2b63d969e854"
+                                }
+                              ],
+                              "id": "f228cacf-198d-4c1a-9032-2176e61edf79",
+                              "createdAt": "2026-06-05T15:14:04.000Z",
+                              "updatedAt": "2026-06-05T15:14:04.000Z",
+                              "uid": "35240-f228cacf-198d-4c1a-9032-2176e61edf79"
+                            }
+                          ],
+                          "id": "76e1ffd5-060f-41e1-bc1b-0e771d744963",
+                          "createdAt": "2026-06-05T15:14:04.000Z",
+                          "updatedAt": "2026-06-05T15:14:04.000Z",
+                          "uid": "35240-76e1ffd5-060f-41e1-bc1b-0e771d744963"
+                        }
+                      ],
+                      "id": "2c043b06-a7c3-4327-aeed-6489a19e0da2",
+                      "createdAt": "2026-06-05T15:14:04.000Z",
+                      "updatedAt": "2026-06-05T15:14:04.000Z",
+                      "uid": "35240-2c043b06-a7c3-4327-aeed-6489a19e0da2"
+                    }
+                  ],
+                  "id": "e71d385f-c28f-404f-ad86-751c41657997",
+                  "createdAt": "2026-06-05T15:14:04.000Z",
+                  "updatedAt": "2026-06-05T15:14:04.000Z",
+                  "uid": "35240-e71d385f-c28f-404f-ad86-751c41657997"
+                }
+              ],
+              "id": "0713bebe-a9a5-4109-b10f-201c68753134",
+              "createdAt": "2026-06-05T15:14:04.000Z",
+              "updatedAt": "2026-06-05T15:14:04.000Z",
+              "uid": "35240-0713bebe-a9a5-4109-b10f-201c68753134"
+            }
+          ],
+          "id": "3e135292-f247-4230-b01f-fdc5d4cc2c26",
+          "createdAt": "2026-06-05T15:14:04.000Z",
+          "updatedAt": "2026-06-05T15:14:04.000Z",
+          "uid": "35240-3e135292-f247-4230-b01f-fdc5d4cc2c26"
+        }
+      ],
+      "id": "55f25aff-091d-4539-8c67-3f38d5edbafb",
+      "createdAt": "2026-06-05T15:14:04.000Z",
+      "updatedAt": "2026-06-05T15:14:04.000Z",
+      "uid": "35240-55f25aff-091d-4539-8c67-3f38d5edbafb"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://proxy.useparagon.com"
+    }
+  ]
+}

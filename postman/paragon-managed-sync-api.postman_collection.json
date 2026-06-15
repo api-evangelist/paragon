@@ -1,0 +1,1285 @@
+{
+  "info": {
+    "_postman_id": "dfa7a65b-0d42-4fc3-993c-52abaee76d3d",
+    "name": "Paragon Managed Sync API",
+    "description": "Managed Sync provides pipelines to sync data from your users' integration sources (File Storage, CRM, Ticketing) into your app or RAG pipeline. The service handles sync scheduling, normalization to standardized schemas, and enforcement of source-system permissions. Managed Sync exposes a Sync API for record ingestion and a Permissions API for ReBAC-style access checks over synced objects.\n\nContact Support:\n Name: Paragon",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:14:10.000Z",
+    "updatedAt": "2026-06-05T15:14:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-dfa7a65b-0d42-4fc3-993c-52abaee76d3d"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{projectId}",
+          "item": [
+            {
+              "name": "sync",
+              "item": [
+                {
+                  "name": "enable",
+                  "item": [
+                    {
+                      "name": "Paragon Enable A Sync",
+                      "id": "3831160d-5171-4fc0-a017-28d733ed5846",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"integration\": \"<string>\",\n  \"syncType\": \"<string>\",\n  \"frequency\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/sync/enable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "sync",
+                            "enable"
+                          ],
+                          "variable": [
+                            {
+                              "id": "71eb76d7-40b3-4a45-bf3e-9904dd963761",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Enables a sync pipeline for a Connected User and integration. Paragon begins fetching records on a configurable schedule."
+                      },
+                      "response": [
+                        {
+                          "id": "272ecad7-cf4f-420f-abaa-d0c8cf847673",
+                          "name": "Sync enabled.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"integration\": \"<string>\",\n  \"syncType\": \"<string>\",\n  \"frequency\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/sync/enable",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "sync",
+                                "enable"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"integration\": \"<string>\",\n  \"syncType\": \"<string>\",\n  \"status\": \"DISABLED\",\n  \"lastSyncedAt\": \"<dateTime>\",\n  \"recordCount\": \"<integer>\"\n}",
+                          "createdAt": "2026-06-05T15:14:11.000Z",
+                          "updatedAt": "2026-06-05T15:14:11.000Z",
+                          "uid": "35240-272ecad7-cf4f-420f-abaa-d0c8cf847673"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:10.000Z",
+                      "updatedAt": "2026-06-05T15:14:10.000Z",
+                      "uid": "35240-3831160d-5171-4fc0-a017-28d733ed5846"
+                    }
+                  ],
+                  "id": "0501ebbc-2bb4-492b-a3a6-1126aa3b9fcf",
+                  "createdAt": "2026-06-05T15:14:10.000Z",
+                  "updatedAt": "2026-06-05T15:14:10.000Z",
+                  "uid": "35240-0501ebbc-2bb4-492b-a3a6-1126aa3b9fcf"
+                },
+                {
+                  "name": "status",
+                  "item": [
+                    {
+                      "name": "Paragon Get Sync Status",
+                      "id": "af3660ec-5784-43c8-af33-6fc43493a170",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/sync/status?integration=<string>&syncType=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "sync",
+                            "status"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "integration",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "syncType",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "ea966e80-7dbb-4404-946a-5c1981e267c0",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Returns the state of a sync pipeline for the Connected User."
+                      },
+                      "response": [
+                        {
+                          "id": "439bd2d2-e026-4943-816f-39a81be66ae8",
+                          "name": "Sync status.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/sync/status?integration=<string>&syncType=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "sync",
+                                "status"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "integration",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) ",
+                                  "key": "syncType",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"integration\": \"<string>\",\n  \"syncType\": \"<string>\",\n  \"status\": \"DISABLED\",\n  \"lastSyncedAt\": \"<dateTime>\",\n  \"recordCount\": \"<integer>\"\n}",
+                          "createdAt": "2026-06-05T15:14:11.000Z",
+                          "updatedAt": "2026-06-05T15:14:11.000Z",
+                          "uid": "35240-439bd2d2-e026-4943-816f-39a81be66ae8"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:10.000Z",
+                      "updatedAt": "2026-06-05T15:14:10.000Z",
+                      "uid": "35240-af3660ec-5784-43c8-af33-6fc43493a170"
+                    }
+                  ],
+                  "id": "b21192e5-e5b0-45c3-a463-5bb0b378f579",
+                  "createdAt": "2026-06-05T15:14:10.000Z",
+                  "updatedAt": "2026-06-05T15:14:10.000Z",
+                  "uid": "35240-b21192e5-e5b0-45c3-a463-5bb0b378f579"
+                },
+                {
+                  "name": "records",
+                  "item": [
+                    {
+                      "name": "{recordId}",
+                      "item": [
+                        {
+                          "name": "content",
+                          "item": [
+                            {
+                              "name": "Paragon Download File Content",
+                              "id": "408b34b2-9c2a-4574-82a6-b474505a2116",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/octet-stream"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/sync/records/:recordId/content",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "sync",
+                                    "records",
+                                    ":recordId",
+                                    "content"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "45db4d5c-fef6-4167-aa26-3ca04a7c5d2d",
+                                      "key": "projectId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "7b53f423-62fe-46c7-a59c-c09845f3fd88",
+                                      "key": "recordId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Downloads the binary content of a file-type synced record. Returns the raw file bytes with the appropriate Content-Type for the source file."
+                              },
+                              "response": [
+                                {
+                                  "id": "575c92f9-62d8-479d-a667-80e84e07540c",
+                                  "name": "File content.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/octet-stream"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/sync/records/:recordId/content",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "sync",
+                                        "records",
+                                        ":recordId",
+                                        "content"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "recordId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/octet-stream"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "<binary>",
+                                  "createdAt": "2026-06-05T15:14:11.000Z",
+                                  "updatedAt": "2026-06-05T15:14:11.000Z",
+                                  "uid": "35240-575c92f9-62d8-479d-a667-80e84e07540c"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:14:10.000Z",
+                              "updatedAt": "2026-06-05T15:14:10.000Z",
+                              "uid": "35240-408b34b2-9c2a-4574-82a6-b474505a2116"
+                            }
+                          ],
+                          "id": "faa7467c-9867-4e6d-a3ed-a4ac81c2e48d",
+                          "createdAt": "2026-06-05T15:14:10.000Z",
+                          "updatedAt": "2026-06-05T15:14:10.000Z",
+                          "uid": "35240-faa7467c-9867-4e6d-a3ed-a4ac81c2e48d"
+                        },
+                        {
+                          "name": "Paragon Get Synced Record",
+                          "id": "e3a04474-778a-4ae7-84b2-1fdc3c4b7ae1",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/sync/records/:recordId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "sync",
+                                "records",
+                                ":recordId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "26ffa895-c9a1-4248-94b5-e2a92ba437f9",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "a67d8f33-7709-4c32-b44f-d859d8a4a3f6",
+                                  "key": "recordId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Returns a single normalized synced record by ID."
+                          },
+                          "response": [
+                            {
+                              "id": "e7de8aa9-e595-4519-994d-aeff6ab7c752",
+                              "name": "The synced record.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/sync/records/:recordId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "sync",
+                                    "records",
+                                    ":recordId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "recordId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"integration\": \"<string>\",\n  \"syncType\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"data\": {\n    \"laborea7f\": 36713664\n  },\n  \"permissions\": {\n    \"elit_ca\": \"laboris consectetur\"\n  },\n  \"updatedAt\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-06-05T15:14:11.000Z",
+                              "updatedAt": "2026-06-05T15:14:11.000Z",
+                              "uid": "35240-e7de8aa9-e595-4519-994d-aeff6ab7c752"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:14:10.000Z",
+                          "updatedAt": "2026-06-05T15:14:10.000Z",
+                          "uid": "35240-e3a04474-778a-4ae7-84b2-1fdc3c4b7ae1"
+                        }
+                      ],
+                      "id": "4e5ff17e-e81f-4217-94b4-7bf0ee5a7665",
+                      "createdAt": "2026-06-05T15:14:10.000Z",
+                      "updatedAt": "2026-06-05T15:14:10.000Z",
+                      "uid": "35240-4e5ff17e-e81f-4217-94b4-7bf0ee5a7665"
+                    },
+                    {
+                      "name": "Paragon Pull Synced Records",
+                      "id": "038ac81c-14be-473d-97c3-f4c5b81dfaca",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/sync/records?integration=<string>&syncType=<string>&cursor=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "sync",
+                            "records"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "integration",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "syncType",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "cursor",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "cd34f0e6-859d-4451-b552-e68d23c1bbaf",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Returns a paginated list of normalized records for a given integration and sync type (e.g., Files, Contacts, Deals, Tickets)."
+                      },
+                      "response": [
+                        {
+                          "id": "8e905e18-f2a2-4572-b219-69b75e075238",
+                          "name": "List of synced records.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/sync/records?integration=<string>&syncType=<string>&cursor=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "sync",
+                                "records"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "integration",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) ",
+                                  "key": "syncType",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"records\": [\n    {\n      \"id\": \"<string>\",\n      \"integration\": \"<string>\",\n      \"syncType\": \"<string>\",\n      \"sourceId\": \"<string>\",\n      \"data\": {\n        \"in_1\": 76338293,\n        \"exercitation8_\": false\n      },\n      \"permissions\": {\n        \"dolorc\": -94743617.97522134,\n        \"adipisicing60\": -65140484.49757772,\n        \"ex_657\": \"aliquip nisi pariatur\"\n      },\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"integration\": \"<string>\",\n      \"syncType\": \"<string>\",\n      \"sourceId\": \"<string>\",\n      \"data\": {\n        \"anim26\": 31261118.708861873\n      },\n      \"permissions\": {\n        \"non_10\": 91168799,\n        \"minim25\": -65352242.332588516\n      },\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ],\n  \"nextCursor\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:14:11.000Z",
+                          "updatedAt": "2026-06-05T15:14:11.000Z",
+                          "uid": "35240-8e905e18-f2a2-4572-b219-69b75e075238"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:10.000Z",
+                      "updatedAt": "2026-06-05T15:14:10.000Z",
+                      "uid": "35240-038ac81c-14be-473d-97c3-f4c5b81dfaca"
+                    }
+                  ],
+                  "id": "9bf7180d-0bb7-418c-a9a0-e335d6595a3f",
+                  "createdAt": "2026-06-05T15:14:10.000Z",
+                  "updatedAt": "2026-06-05T15:14:10.000Z",
+                  "uid": "35240-9bf7180d-0bb7-418c-a9a0-e335d6595a3f"
+                }
+              ],
+              "id": "dd2e11cb-9eeb-4888-940d-02f9a4942266",
+              "createdAt": "2026-06-05T15:14:10.000Z",
+              "updatedAt": "2026-06-05T15:14:10.000Z",
+              "uid": "35240-dd2e11cb-9eeb-4888-940d-02f9a4942266"
+            },
+            {
+              "name": "permissions",
+              "item": [
+                {
+                  "name": "check-access",
+                  "item": [
+                    {
+                      "name": "Paragon Check Access",
+                      "id": "32aede27-11a8-4b6e-bb26-c6c3612339d8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"subject\": \"<string>\",\n  \"relation\": \"<string>\",\n  \"object\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/permissions/check-access",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "permissions",
+                            "check-access"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6236e7b0-f1c4-4fd7-ac04-dcb98d058b74",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Checks whether a subject (user, group) has a given relation to a synced object (file, contact, ticket). Useful for enforcing source-system permissions in RAG retrieval."
+                      },
+                      "response": [
+                        {
+                          "id": "beaa5180-1763-4375-83a2-1450f275d836",
+                          "name": "Access decision.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"subject\": \"<string>\",\n  \"relation\": \"<string>\",\n  \"object\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/permissions/check-access",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "permissions",
+                                "check-access"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"allowed\": \"<boolean>\"\n}",
+                          "createdAt": "2026-06-05T15:14:11.000Z",
+                          "updatedAt": "2026-06-05T15:14:11.000Z",
+                          "uid": "35240-beaa5180-1763-4375-83a2-1450f275d836"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:10.000Z",
+                      "updatedAt": "2026-06-05T15:14:10.000Z",
+                      "uid": "35240-32aede27-11a8-4b6e-bb26-c6c3612339d8"
+                    }
+                  ],
+                  "id": "68ba059e-c133-48ab-81ea-57659e142bfe",
+                  "createdAt": "2026-06-05T15:14:10.000Z",
+                  "updatedAt": "2026-06-05T15:14:10.000Z",
+                  "uid": "35240-68ba059e-c133-48ab-81ea-57659e142bfe"
+                },
+                {
+                  "name": "batch-check-access",
+                  "item": [
+                    {
+                      "name": "Paragon Batch Check Access",
+                      "id": "79d3cdd1-6238-4546-9d7d-8acd4babcdbb",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"checks\": [\n    {\n      \"subject\": \"<string>\",\n      \"relation\": \"<string>\",\n      \"object\": \"<string>\"\n    },\n    {\n      \"subject\": \"<string>\",\n      \"relation\": \"<string>\",\n      \"object\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/permissions/batch-check-access",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "permissions",
+                            "batch-check-access"
+                          ],
+                          "variable": [
+                            {
+                              "id": "113b829e-a45a-46e8-8873-d6ad8b296db5",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Performs multiple access checks in a single call."
+                      },
+                      "response": [
+                        {
+                          "id": "04d5f9c4-a201-47d5-9c67-b9cff9b0c953",
+                          "name": "Per-check access decisions.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"checks\": [\n    {\n      \"subject\": \"<string>\",\n      \"relation\": \"<string>\",\n      \"object\": \"<string>\"\n    },\n    {\n      \"subject\": \"<string>\",\n      \"relation\": \"<string>\",\n      \"object\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/permissions/batch-check-access",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "permissions",
+                                "batch-check-access"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"results\": [\n    {\n      \"allowed\": \"<boolean>\"\n    },\n    {\n      \"allowed\": \"<boolean>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:14:11.000Z",
+                          "updatedAt": "2026-06-05T15:14:11.000Z",
+                          "uid": "35240-04d5f9c4-a201-47d5-9c67-b9cff9b0c953"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:10.000Z",
+                      "updatedAt": "2026-06-05T15:14:10.000Z",
+                      "uid": "35240-79d3cdd1-6238-4546-9d7d-8acd4babcdbb"
+                    }
+                  ],
+                  "id": "6552e3f9-a663-4ad1-baaa-ad3b4816bb01",
+                  "createdAt": "2026-06-05T15:14:10.000Z",
+                  "updatedAt": "2026-06-05T15:14:10.000Z",
+                  "uid": "35240-6552e3f9-a663-4ad1-baaa-ad3b4816bb01"
+                },
+                {
+                  "name": "list-users",
+                  "item": [
+                    {
+                      "name": "Paragon List Users With Access",
+                      "id": "fe9e0359-8469-471f-b6ed-701219ef225e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"object\": \"<string>\",\n  \"relation\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/permissions/list-users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "permissions",
+                            "list-users"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fbbc30cf-57bc-42c7-ac30-74114db159d5",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Returns the subjects that have access to a given object."
+                      },
+                      "response": [
+                        {
+                          "id": "24d3c04e-bf7e-47d7-9f7a-06aa9a04d59f",
+                          "name": "Subjects with the requested relation.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"object\": \"<string>\",\n  \"relation\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/permissions/list-users",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "permissions",
+                                "list-users"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:11.000Z",
+                          "updatedAt": "2026-06-05T15:14:11.000Z",
+                          "uid": "35240-24d3c04e-bf7e-47d7-9f7a-06aa9a04d59f"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:10.000Z",
+                      "updatedAt": "2026-06-05T15:14:10.000Z",
+                      "uid": "35240-fe9e0359-8469-471f-b6ed-701219ef225e"
+                    }
+                  ],
+                  "id": "ff8467af-2198-4543-a047-790aa7ecb15f",
+                  "createdAt": "2026-06-05T15:14:10.000Z",
+                  "updatedAt": "2026-06-05T15:14:10.000Z",
+                  "uid": "35240-ff8467af-2198-4543-a047-790aa7ecb15f"
+                },
+                {
+                  "name": "list-objects",
+                  "item": [
+                    {
+                      "name": "Paragon List Objects With Access",
+                      "id": "e0d0ab18-d860-4dda-8e72-ee2a6caa3dde",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"subject\": \"<string>\",\n  \"relation\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/permissions/list-objects",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "permissions",
+                            "list-objects"
+                          ],
+                          "variable": [
+                            {
+                              "id": "82f66454-54f0-4b63-9f72-554a17afb5d9",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Returns the objects a subject has the requested relation to."
+                      },
+                      "response": [
+                        {
+                          "id": "eb5509b9-972c-480f-aa6b-3ac935529164",
+                          "name": "Objects with the requested relation.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"subject\": \"<string>\",\n  \"relation\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/permissions/list-objects",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "permissions",
+                                "list-objects"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:11.000Z",
+                          "updatedAt": "2026-06-05T15:14:11.000Z",
+                          "uid": "35240-eb5509b9-972c-480f-aa6b-3ac935529164"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:10.000Z",
+                      "updatedAt": "2026-06-05T15:14:10.000Z",
+                      "uid": "35240-e0d0ab18-d860-4dda-8e72-ee2a6caa3dde"
+                    }
+                  ],
+                  "id": "d8300fa9-c757-4a86-9311-5ed58231093c",
+                  "createdAt": "2026-06-05T15:14:10.000Z",
+                  "updatedAt": "2026-06-05T15:14:10.000Z",
+                  "uid": "35240-d8300fa9-c757-4a86-9311-5ed58231093c"
+                },
+                {
+                  "name": "expand",
+                  "item": [
+                    {
+                      "name": "Paragon Expand Permission Relationships",
+                      "id": "c403e89e-daf1-4af5-83f0-51920771bc20",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"subject\": \"<string>\",\n  \"relation\": \"<string>\",\n  \"object\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/permissions/expand",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "permissions",
+                            "expand"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fa97ac36-cb55-47cf-a934-9eb370917a44",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Expands the relationship tree for a (subject, relation, object) tuple."
+                      },
+                      "response": [
+                        {
+                          "id": "851fd740-7f5f-40c4-a9d6-42aad5114a1b",
+                          "name": "Expanded relationship graph.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"subject\": \"<string>\",\n  \"relation\": \"<string>\",\n  \"object\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/permissions/expand",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "permissions",
+                                "expand"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:11.000Z",
+                          "updatedAt": "2026-06-05T15:14:11.000Z",
+                          "uid": "35240-851fd740-7f5f-40c4-a9d6-42aad5114a1b"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:10.000Z",
+                      "updatedAt": "2026-06-05T15:14:10.000Z",
+                      "uid": "35240-c403e89e-daf1-4af5-83f0-51920771bc20"
+                    }
+                  ],
+                  "id": "b7fb47cf-9167-49d3-a386-9f8a3089c315",
+                  "createdAt": "2026-06-05T15:14:10.000Z",
+                  "updatedAt": "2026-06-05T15:14:10.000Z",
+                  "uid": "35240-b7fb47cf-9167-49d3-a386-9f8a3089c315"
+                }
+              ],
+              "id": "31982130-0689-4751-8ca4-7a65f14fe868",
+              "createdAt": "2026-06-05T15:14:10.000Z",
+              "updatedAt": "2026-06-05T15:14:10.000Z",
+              "uid": "35240-31982130-0689-4751-8ca4-7a65f14fe868"
+            }
+          ],
+          "id": "f4d1d0a5-5eee-4441-9108-2a58622c6a38",
+          "createdAt": "2026-06-05T15:14:10.000Z",
+          "updatedAt": "2026-06-05T15:14:10.000Z",
+          "uid": "35240-f4d1d0a5-5eee-4441-9108-2a58622c6a38"
+        }
+      ],
+      "id": "0d1f400d-ddda-4efa-8992-7bdde45fd909",
+      "createdAt": "2026-06-05T15:14:10.000Z",
+      "updatedAt": "2026-06-05T15:14:10.000Z",
+      "uid": "35240-0d1f400d-ddda-4efa-8992-7bdde45fd909"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://managed-sync.useparagon.com"
+    }
+  ]
+}

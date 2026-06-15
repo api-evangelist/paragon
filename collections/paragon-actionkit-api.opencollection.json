@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paragon ActionKit API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tools",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paragon List Available Actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/actions",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "integration",
+                "value": "",
+                "type": "query",
+                "description": "Optional integration filter (e.g., salesforce, slack)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Tool format. Use `openai` for OpenAI tool schema or `anthropic` for Claude tool schema. Defaults to JSON Schema."
+              }
+            ]
+          },
+          "docs": "Returns the catalog of pre-built Integration Tools available to the Connected User. Tools are scoped to the integrations the user has enabled in the Connect Portal. Each tool describes its name, JSON Schema input parameters, and which integration it belongs to."
+        },
+        {
+          "info": {
+            "name": "Paragon Run Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/actions/:action",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "path",
+                "description": "The ActionKit action name (e.g., SLACK_SEND_MESSAGE)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a named Integration Tool on behalf of the Connected User. Action names follow the pattern `{INTEGRATION}_{ACTION_NAME}` (e.g., `SALESFORCE_CREATE_RECORD`, `SLACK_SEND_MESSAGE`). The action runs synchronously and returns the third-party provider's response payload."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

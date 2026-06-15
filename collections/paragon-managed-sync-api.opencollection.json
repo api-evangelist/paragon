@@ -1,0 +1,271 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paragon Managed Sync API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sync",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paragon Enable A Sync",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://managed-sync.useparagon.com/projects/:projectId/sync/enable",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enables a sync pipeline for a Connected User and integration. Paragon begins fetching records on a configurable schedule."
+        },
+        {
+          "info": {
+            "name": "Paragon Get Sync Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://managed-sync.useparagon.com/projects/:projectId/sync/status",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "integration",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "syncType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the state of a sync pipeline for the Connected User."
+        },
+        {
+          "info": {
+            "name": "Paragon Pull Synced Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://managed-sync.useparagon.com/projects/:projectId/sync/records",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "integration",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "syncType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of normalized records for a given integration and sync type (e.g., Files, Contacts, Deals, Tickets)."
+        },
+        {
+          "info": {
+            "name": "Paragon Get Synced Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://managed-sync.useparagon.com/projects/:projectId/sync/records/:recordId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a single normalized synced record by ID."
+        },
+        {
+          "info": {
+            "name": "Paragon Download File Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://managed-sync.useparagon.com/projects/:projectId/sync/records/:recordId/content",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Downloads the binary content of a file-type synced record. Returns the raw file bytes with the appropriate Content-Type for the source file."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Permissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paragon Check Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://managed-sync.useparagon.com/projects/:projectId/permissions/check-access",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Checks whether a subject (user, group) has a given relation to a synced object (file, contact, ticket). Useful for enforcing source-system permissions in RAG retrieval."
+        },
+        {
+          "info": {
+            "name": "Paragon Batch Check Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://managed-sync.useparagon.com/projects/:projectId/permissions/batch-check-access",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Performs multiple access checks in a single call."
+        },
+        {
+          "info": {
+            "name": "Paragon List Users With Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://managed-sync.useparagon.com/projects/:projectId/permissions/list-users",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the subjects that have access to a given object."
+        },
+        {
+          "info": {
+            "name": "Paragon List Objects With Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://managed-sync.useparagon.com/projects/:projectId/permissions/list-objects",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the objects a subject has the requested relation to."
+        },
+        {
+          "info": {
+            "name": "Paragon Expand Permission Relationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://managed-sync.useparagon.com/projects/:projectId/permissions/expand",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Expands the relationship tree for a (subject, relation, object) tuple."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

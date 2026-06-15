@@ -1,0 +1,669 @@
+{
+  "info": {
+    "_postman_id": "4a049cba-3b84-4c32-ab66-1fee9eacf2df",
+    "name": "Paragon Task History API",
+    "description": "The Task History API allows you to query your users' usage of integration workflows and access data from historical workflow executions. The Task History API can be used to analyze integration usage or pull information about historical workflow executions into your application. Available for Paragon customers on Enterprise plans. Rate limited to 1,000 requests per 10 minutes.\n\nContact Support:\n Name: Paragon",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:14:07.000Z",
+    "updatedAt": "2026-06-05T15:14:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4a049cba-3b84-4c32-ab66-1fee9eacf2df"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{projectId}",
+          "item": [
+            {
+              "name": "task-history",
+              "item": [
+                {
+                  "name": "workflow-executions",
+                  "item": [
+                    {
+                      "name": "{executionId}",
+                      "item": [
+                        {
+                          "name": "replay",
+                          "item": [
+                            {
+                              "name": "Paragon Replay a workflow execution",
+                              "id": "0179879f-e995-48aa-824d-d163437f1134",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/task-history/workflow-executions/:executionId/replay",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "task-history",
+                                    "workflow-executions",
+                                    ":executionId",
+                                    "replay"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "4d14ccdb-9340-42fc-bfc7-7922738963d6",
+                                      "key": "projectId",
+                                      "value": "<string>",
+                                      "description": "(Required) Your Paragon Project ID."
+                                    },
+                                    {
+                                      "id": "0d712e5c-20d6-4e53-a17e-395efa2344c5",
+                                      "key": "executionId",
+                                      "value": "<string>",
+                                      "description": "(Required) The ID of the workflow execution to replay."
+                                    }
+                                  ]
+                                },
+                                "description": "Replays a specific workflow execution using the same version of the workflow that the execution originally ran with. This endpoint is in beta and may not be suitable for use in production applications."
+                              },
+                              "response": [
+                                {
+                                  "id": "be7e0ce4-6e0b-4996-8233-da9a2c4bcb02",
+                                  "name": "Successfully replayed the workflow execution.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/task-history/workflow-executions/:executionId/replay",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "task-history",
+                                        "workflow-executions",
+                                        ":executionId",
+                                        "replay"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "executionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"workflowId\": \"<string>\",\n  \"status\": \"SUCCEEDED\",\n  \"taskCount\": \"<integer>\",\n  \"runDuration\": \"<integer>\",\n  \"dateStarted\": \"<dateTime>\",\n  \"dateEnded\": \"<dateTime>\"\n}",
+                                  "createdAt": "2026-06-05T15:14:07.000Z",
+                                  "updatedAt": "2026-06-05T15:14:07.000Z",
+                                  "uid": "35240-be7e0ce4-6e0b-4996-8233-da9a2c4bcb02"
+                                },
+                                {
+                                  "id": "968bc65a-b535-4e19-b4b1-15077ecae025",
+                                  "name": "Unauthorized. Invalid or missing API Key.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/task-history/workflow-executions/:executionId/replay",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "task-history",
+                                        "workflow-executions",
+                                        ":executionId",
+                                        "replay"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "executionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:07.000Z",
+                                  "updatedAt": "2026-06-05T15:14:07.000Z",
+                                  "uid": "35240-968bc65a-b535-4e19-b4b1-15077ecae025"
+                                },
+                                {
+                                  "id": "3a91add7-7816-41c7-b276-801ba963dba8",
+                                  "name": "Workflow execution not found.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/task-history/workflow-executions/:executionId/replay",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "task-history",
+                                        "workflow-executions",
+                                        ":executionId",
+                                        "replay"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "executionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:07.000Z",
+                                  "updatedAt": "2026-06-05T15:14:07.000Z",
+                                  "uid": "35240-3a91add7-7816-41c7-b276-801ba963dba8"
+                                },
+                                {
+                                  "id": "9649a812-a5bb-4bc1-92a1-b1af7232dd0e",
+                                  "name": "Rate limit exceeded. The Task History API has a rate limit of 1,000 requests per 10 minutes.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/task-history/workflow-executions/:executionId/replay",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "task-history",
+                                        "workflow-executions",
+                                        ":executionId",
+                                        "replay"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "executionId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Too Many Requests",
+                                  "code": 429,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-06-05T15:14:07.000Z",
+                                  "updatedAt": "2026-06-05T15:14:07.000Z",
+                                  "uid": "35240-9649a812-a5bb-4bc1-92a1-b1af7232dd0e"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:14:07.000Z",
+                              "updatedAt": "2026-06-05T15:14:07.000Z",
+                              "uid": "35240-0179879f-e995-48aa-824d-d163437f1134"
+                            }
+                          ],
+                          "id": "c84a4064-9761-4333-9c22-1bed2ef9cbde",
+                          "createdAt": "2026-06-05T15:14:07.000Z",
+                          "updatedAt": "2026-06-05T15:14:07.000Z",
+                          "uid": "35240-c84a4064-9761-4333-9c22-1bed2ef9cbde"
+                        }
+                      ],
+                      "id": "337c06c1-212d-4670-8feb-5b807a824b93",
+                      "createdAt": "2026-06-05T15:14:07.000Z",
+                      "updatedAt": "2026-06-05T15:14:07.000Z",
+                      "uid": "35240-337c06c1-212d-4670-8feb-5b807a824b93"
+                    },
+                    {
+                      "name": "Paragon Get workflow executions",
+                      "id": "55e69559-495e-49c9-9cc4-a952cb94fa1b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/task-history/workflow-executions?integration=<string>&workflowId=<string>&userId=<string>&status=SUCCEEDED&afterDate=<dateTime>&beforeDate=<dateTime>&sortBy=DESC&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "task-history",
+                            "workflow-executions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by integration name (e.g., salesforce, hubspot).",
+                              "key": "integration",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by workflow ID.",
+                              "key": "workflowId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by Connected User ID.",
+                              "key": "userId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by execution status.",
+                              "key": "status",
+                              "value": "SUCCEEDED"
+                            },
+                            {
+                              "description": "Filter executions that started after this date (ISO 8601 format).",
+                              "key": "afterDate",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Filter executions that started before this date (ISO 8601 format).",
+                              "key": "beforeDate",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Sort order for the results.",
+                              "key": "sortBy",
+                              "value": "DESC"
+                            },
+                            {
+                              "description": "Pagination offset for retrieving additional pages.",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "87bf8e54-d996-4406-a866-fc860ec37ee0",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) Your Paragon Project ID."
+                            }
+                          ]
+                        },
+                        "description": "Search through historical workflow executions with filtering options. Returns paginated results with up to 100 records per page. If additional pages are available, the response will include a nextLink URL to retrieve the next page."
+                      },
+                      "response": [
+                        {
+                          "id": "ec731f9c-cc90-489e-8dc6-c2cbbed49c2b",
+                          "name": "Successfully retrieved workflow executions.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/task-history/workflow-executions?integration=<string>&workflowId=<string>&userId=<string>&status=SUCCEEDED&afterDate=<dateTime>&beforeDate=<dateTime>&sortBy=DESC&offset=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "task-history",
+                                "workflow-executions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter by integration name (e.g., salesforce, hubspot).",
+                                  "key": "integration",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by workflow ID.",
+                                  "key": "workflowId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by Connected User ID.",
+                                  "key": "userId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by execution status.",
+                                  "key": "status",
+                                  "value": "SUCCEEDED"
+                                },
+                                {
+                                  "description": "Filter executions that started after this date (ISO 8601 format).",
+                                  "key": "afterDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Filter executions that started before this date (ISO 8601 format).",
+                                  "key": "beforeDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Sort order for the results.",
+                                  "key": "sortBy",
+                                  "value": "DESC"
+                                },
+                                {
+                                  "description": "Pagination offset for retrieving additional pages.",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"workflowId\": \"<string>\",\n      \"status\": \"FAILED\",\n      \"taskCount\": \"<integer>\",\n      \"runDuration\": \"<integer>\",\n      \"dateStarted\": \"<dateTime>\",\n      \"dateEnded\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"workflowId\": \"<string>\",\n      \"status\": \"FAILED\",\n      \"taskCount\": \"<integer>\",\n      \"runDuration\": \"<integer>\",\n      \"dateStarted\": \"<dateTime>\",\n      \"dateEnded\": \"<dateTime>\"\n    }\n  ],\n  \"total\": \"<integer>\",\n  \"nextLink\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:14:07.000Z",
+                          "updatedAt": "2026-06-05T15:14:07.000Z",
+                          "uid": "35240-ec731f9c-cc90-489e-8dc6-c2cbbed49c2b"
+                        },
+                        {
+                          "id": "67c434d4-0797-42c1-ad33-03cbdfb3052f",
+                          "name": "Unauthorized. Invalid or missing API Key.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/task-history/workflow-executions?integration=<string>&workflowId=<string>&userId=<string>&status=SUCCEEDED&afterDate=<dateTime>&beforeDate=<dateTime>&sortBy=DESC&offset=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "task-history",
+                                "workflow-executions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter by integration name (e.g., salesforce, hubspot).",
+                                  "key": "integration",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by workflow ID.",
+                                  "key": "workflowId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by Connected User ID.",
+                                  "key": "userId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by execution status.",
+                                  "key": "status",
+                                  "value": "SUCCEEDED"
+                                },
+                                {
+                                  "description": "Filter executions that started after this date (ISO 8601 format).",
+                                  "key": "afterDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Filter executions that started before this date (ISO 8601 format).",
+                                  "key": "beforeDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Sort order for the results.",
+                                  "key": "sortBy",
+                                  "value": "DESC"
+                                },
+                                {
+                                  "description": "Pagination offset for retrieving additional pages.",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:07.000Z",
+                          "updatedAt": "2026-06-05T15:14:07.000Z",
+                          "uid": "35240-67c434d4-0797-42c1-ad33-03cbdfb3052f"
+                        },
+                        {
+                          "id": "f358ffc6-34bb-4ab0-806d-502d9b979ebf",
+                          "name": "Rate limit exceeded. The Task History API has a rate limit of 1,000 requests per 10 minutes.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/task-history/workflow-executions?integration=<string>&workflowId=<string>&userId=<string>&status=SUCCEEDED&afterDate=<dateTime>&beforeDate=<dateTime>&sortBy=DESC&offset=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "task-history",
+                                "workflow-executions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter by integration name (e.g., salesforce, hubspot).",
+                                  "key": "integration",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by workflow ID.",
+                                  "key": "workflowId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by Connected User ID.",
+                                  "key": "userId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by execution status.",
+                                  "key": "status",
+                                  "value": "SUCCEEDED"
+                                },
+                                {
+                                  "description": "Filter executions that started after this date (ISO 8601 format).",
+                                  "key": "afterDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Filter executions that started before this date (ISO 8601 format).",
+                                  "key": "beforeDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Sort order for the results.",
+                                  "key": "sortBy",
+                                  "value": "DESC"
+                                },
+                                {
+                                  "description": "Pagination offset for retrieving additional pages.",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:07.000Z",
+                          "updatedAt": "2026-06-05T15:14:07.000Z",
+                          "uid": "35240-f358ffc6-34bb-4ab0-806d-502d9b979ebf"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:07.000Z",
+                      "updatedAt": "2026-06-05T15:14:07.000Z",
+                      "uid": "35240-55e69559-495e-49c9-9cc4-a952cb94fa1b"
+                    }
+                  ],
+                  "id": "11b27d96-0a49-40e8-bcb0-c1a5802de814",
+                  "createdAt": "2026-06-05T15:14:07.000Z",
+                  "updatedAt": "2026-06-05T15:14:07.000Z",
+                  "uid": "35240-11b27d96-0a49-40e8-bcb0-c1a5802de814"
+                }
+              ],
+              "id": "54f33899-158a-4557-94f2-57182e6142b5",
+              "createdAt": "2026-06-05T15:14:07.000Z",
+              "updatedAt": "2026-06-05T15:14:07.000Z",
+              "uid": "35240-54f33899-158a-4557-94f2-57182e6142b5"
+            }
+          ],
+          "id": "43e60767-9ed0-4f1a-ac82-aa0375faf1cf",
+          "createdAt": "2026-06-05T15:14:07.000Z",
+          "updatedAt": "2026-06-05T15:14:07.000Z",
+          "uid": "35240-43e60767-9ed0-4f1a-ac82-aa0375faf1cf"
+        }
+      ],
+      "id": "cf0acd15-1e5a-43b7-93cf-8c5799a011c1",
+      "createdAt": "2026-06-05T15:14:07.000Z",
+      "updatedAt": "2026-06-05T15:14:07.000Z",
+      "uid": "35240-cf0acd15-1e5a-43b7-93cf-8c5799a011c1"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.useparagon.com"
+    }
+  ]
+}

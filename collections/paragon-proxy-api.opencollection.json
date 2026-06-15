@@ -1,0 +1,265 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paragon Proxy API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Proxy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paragon Proxy GET request to integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://proxy.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "integrationType",
+                "value": "",
+                "type": "path",
+                "description": "The type of integration to proxy the request to (e.g., salesforce, hubspot, slack)."
+              },
+              {
+                "name": "apiPath",
+                "value": "",
+                "type": "path",
+                "description": "The API path of the third-party provider to send the request to."
+              }
+            ]
+          },
+          "docs": "Send a GET request to a third-party integration API on behalf of a Connected User. The request is proxied through Paragon to the integration provider."
+        },
+        {
+          "info": {
+            "name": "Paragon Proxy POST request to integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://proxy.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "integrationType",
+                "value": "",
+                "type": "path",
+                "description": "The type of integration to proxy the request to."
+              },
+              {
+                "name": "apiPath",
+                "value": "",
+                "type": "path",
+                "description": "The API path of the third-party provider to send the request to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a POST request to a third-party integration API on behalf of a Connected User."
+        },
+        {
+          "info": {
+            "name": "Paragon Proxy PUT request to integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://proxy.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "integrationType",
+                "value": "",
+                "type": "path",
+                "description": "The type of integration to proxy the request to."
+              },
+              {
+                "name": "apiPath",
+                "value": "",
+                "type": "path",
+                "description": "The API path of the third-party provider to send the request to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a PUT request to a third-party integration API on behalf of a Connected User."
+        },
+        {
+          "info": {
+            "name": "Paragon Proxy PATCH request to integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://proxy.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "integrationType",
+                "value": "",
+                "type": "path",
+                "description": "The type of integration to proxy the request to."
+              },
+              {
+                "name": "apiPath",
+                "value": "",
+                "type": "path",
+                "description": "The API path of the third-party provider to send the request to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a PATCH request to a third-party integration API on behalf of a Connected User."
+        },
+        {
+          "info": {
+            "name": "Paragon Proxy DELETE request to integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://proxy.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "integrationType",
+                "value": "",
+                "type": "path",
+                "description": "The type of integration to proxy the request to."
+              },
+              {
+                "name": "apiPath",
+                "value": "",
+                "type": "path",
+                "description": "The API path of the third-party provider to send the request to."
+              }
+            ]
+          },
+          "docs": "Send a DELETE request to a third-party integration API on behalf of a Connected User."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Custom Integrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paragon Proxy GET request to custom integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://proxy.useparagon.com/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "integrationId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the custom integration."
+              },
+              {
+                "name": "apiPath",
+                "value": "",
+                "type": "path",
+                "description": "The API path of the custom integration to send the request to."
+              }
+            ]
+          },
+          "docs": "Send a GET request to a custom integration API on behalf of a Connected User."
+        },
+        {
+          "info": {
+            "name": "Paragon Proxy POST request to custom integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://proxy.useparagon.com/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "integrationId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the custom integration."
+              },
+              {
+                "name": "apiPath",
+                "value": "",
+                "type": "path",
+                "description": "The API path of the custom integration to send the request to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a POST request to a custom integration API on behalf of a Connected User."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

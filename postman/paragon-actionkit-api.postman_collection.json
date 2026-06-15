@@ -1,0 +1,593 @@
+{
+  "info": {
+    "_postman_id": "c604f44d-f81f-4afa-87e4-fe8104c15253",
+    "name": "Paragon ActionKit API",
+    "description": "ActionKit is an API to give your AI agent or app access to Paragon's catalog of pre-built Integration Tools across 130+ SaaS applications. ActionKit exposes a Universal API (Tools API) for listing and executing synchronous CRUD actions, and is paired with a Triggers API for event subscriptions. Paragon also publishes an MCP server (github.com/useparagon/paragon-mcp) that wraps ActionKit so agents can call integration tools via the Model Context Protocol. Requests are scoped to a Connected User via Paragon User Token (JWT) Bearer authentication.\n\nContact Support:\n Name: Paragon",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:14:08.000Z",
+    "updatedAt": "2026-06-05T15:14:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c604f44d-f81f-4afa-87e4-fe8104c15253"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{projectId}",
+          "item": [
+            {
+              "name": "actions",
+              "item": [
+                {
+                  "name": "{action}",
+                  "item": [
+                    {
+                      "name": "Paragon Run Action",
+                      "id": "19c2a663-011a-4aae-86a1-399d2a13aa82",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Lorem_c1b\": \"ut in ad dolore\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/actions/:action",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "actions",
+                            ":action"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ef3fe6db-c482-4c1b-b271-f6ec0d88f2d5",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) Your Paragon Project ID."
+                            },
+                            {
+                              "id": "c9029ce2-47f8-4404-afce-233a039d78d6",
+                              "key": "action",
+                              "value": "<string>",
+                              "description": "(Required) The ActionKit action name (e.g., SLACK_SEND_MESSAGE)."
+                            }
+                          ]
+                        },
+                        "description": "Executes a named Integration Tool on behalf of the Connected User. Action names follow the pattern `{INTEGRATION}_{ACTION_NAME}` (e.g., `SALESFORCE_CREATE_RECORD`, `SLACK_SEND_MESSAGE`). The action runs synchronously and returns the third-party provider's response payload."
+                      },
+                      "response": [
+                        {
+                          "id": "739c87c7-a99e-42d1-aa93-270311f10c6b",
+                          "name": "Action executed successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Lorem_c1b\": \"ut in ad dolore\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/actions/:action",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "actions",
+                                ":action"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "action"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"output\": {\n    \"laboris_f9\": 92548190\n  },\n  \"integration\": \"<string>\",\n  \"action\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:14:08.000Z",
+                          "updatedAt": "2026-06-05T15:14:08.000Z",
+                          "uid": "35240-739c87c7-a99e-42d1-aa93-270311f10c6b"
+                        },
+                        {
+                          "id": "6dca641d-b320-43f1-b420-6320a6004004",
+                          "name": "Invalid parameters for the action.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Lorem_c1b\": \"ut in ad dolore\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/actions/:action",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "actions",
+                                ":action"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "action"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:08.000Z",
+                          "updatedAt": "2026-06-05T15:14:08.000Z",
+                          "uid": "35240-6dca641d-b320-43f1-b420-6320a6004004"
+                        },
+                        {
+                          "id": "363af3c7-b3a1-49f6-853f-d36a018be7c8",
+                          "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Lorem_c1b\": \"ut in ad dolore\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/actions/:action",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "actions",
+                                ":action"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "action"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:08.000Z",
+                          "updatedAt": "2026-06-05T15:14:08.000Z",
+                          "uid": "35240-363af3c7-b3a1-49f6-853f-d36a018be7c8"
+                        },
+                        {
+                          "id": "27900ea4-7e9e-4a44-b74e-3cd6e80ffa5e",
+                          "name": "Unknown action or action not available for this user.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Lorem_c1b\": \"ut in ad dolore\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/actions/:action",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "actions",
+                                ":action"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "action"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:08.000Z",
+                          "updatedAt": "2026-06-05T15:14:08.000Z",
+                          "uid": "35240-27900ea4-7e9e-4a44-b74e-3cd6e80ffa5e"
+                        },
+                        {
+                          "id": "9ecd8b14-709c-4fb2-959b-7983e74c0be2",
+                          "name": "Rate limited. ActionKit enforces 50 requests per second per workspace.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"Lorem_c1b\": \"ut in ad dolore\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/actions/:action",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "actions",
+                                ":action"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "action"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:08.000Z",
+                          "updatedAt": "2026-06-05T15:14:08.000Z",
+                          "uid": "35240-9ecd8b14-709c-4fb2-959b-7983e74c0be2"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:08.000Z",
+                      "updatedAt": "2026-06-05T15:14:08.000Z",
+                      "uid": "35240-19c2a663-011a-4aae-86a1-399d2a13aa82"
+                    }
+                  ],
+                  "id": "8353f6dc-4ffa-4ed7-bcfc-a545f361e2ca",
+                  "createdAt": "2026-06-05T15:14:08.000Z",
+                  "updatedAt": "2026-06-05T15:14:08.000Z",
+                  "uid": "35240-8353f6dc-4ffa-4ed7-bcfc-a545f361e2ca"
+                },
+                {
+                  "name": "Paragon List Available Actions",
+                  "id": "404568c4-4266-432b-80d8-ac6cfaa12f4f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectId/actions?integration=<string>&format=openai",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectId",
+                        "actions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional integration filter (e.g., salesforce, slack).",
+                          "key": "integration",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Tool format. Use `openai` for OpenAI tool schema or `anthropic` for Claude tool schema. Defaults to JSON Schema.",
+                          "key": "format",
+                          "value": "openai"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "4b7510e4-25f4-4de9-952c-57eea5dd4acf",
+                          "key": "projectId",
+                          "value": "<string>",
+                          "description": "(Required) Your Paragon Project ID."
+                        }
+                      ]
+                    },
+                    "description": "Returns the catalog of pre-built Integration Tools available to the Connected User. Tools are scoped to the integrations the user has enabled in the Connect Portal. Each tool describes its name, JSON Schema input parameters, and which integration it belongs to."
+                  },
+                  "response": [
+                    {
+                      "id": "29e7c0dc-ad62-4cb0-a5cc-06d2a9444b82",
+                      "name": "Successfully retrieved the list of available actions.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/actions?integration=<string>&format=openai",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "actions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional integration filter (e.g., salesforce, slack).",
+                              "key": "integration",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Tool format. Use `openai` for OpenAI tool schema or `anthropic` for Claude tool schema. Defaults to JSON Schema.",
+                              "key": "format",
+                              "value": "openai"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"actions\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"integration\": \"<string>\",\n      \"parameters\": {}\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"integration\": \"<string>\",\n      \"parameters\": {}\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:14:08.000Z",
+                      "updatedAt": "2026-06-05T15:14:08.000Z",
+                      "uid": "35240-29e7c0dc-ad62-4cb0-a5cc-06d2a9444b82"
+                    },
+                    {
+                      "id": "2fd45e03-db2e-4324-a17e-0ee75444d5d7",
+                      "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/actions?integration=<string>&format=openai",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "actions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional integration filter (e.g., salesforce, slack).",
+                              "key": "integration",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Tool format. Use `openai` for OpenAI tool schema or `anthropic` for Claude tool schema. Defaults to JSON Schema.",
+                              "key": "format",
+                              "value": "openai"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:14:08.000Z",
+                      "updatedAt": "2026-06-05T15:14:08.000Z",
+                      "uid": "35240-2fd45e03-db2e-4324-a17e-0ee75444d5d7"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:14:08.000Z",
+                  "updatedAt": "2026-06-05T15:14:08.000Z",
+                  "uid": "35240-404568c4-4266-432b-80d8-ac6cfaa12f4f"
+                }
+              ],
+              "id": "93f61b81-90c3-4bfc-865d-ceaa3dc266c6",
+              "createdAt": "2026-06-05T15:14:08.000Z",
+              "updatedAt": "2026-06-05T15:14:08.000Z",
+              "uid": "35240-93f61b81-90c3-4bfc-865d-ceaa3dc266c6"
+            }
+          ],
+          "id": "4b37eda5-4ab1-4976-bbf3-335be3cd1a47",
+          "createdAt": "2026-06-05T15:14:08.000Z",
+          "updatedAt": "2026-06-05T15:14:08.000Z",
+          "uid": "35240-4b37eda5-4ab1-4976-bbf3-335be3cd1a47"
+        }
+      ],
+      "id": "2682926f-79f9-4bfc-8fb5-16417b0e7053",
+      "createdAt": "2026-06-05T15:14:08.000Z",
+      "updatedAt": "2026-06-05T15:14:08.000Z",
+      "uid": "35240-2682926f-79f9-4bfc-8fb5-16417b0e7053"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://actionkit.useparagon.com"
+    }
+  ]
+}

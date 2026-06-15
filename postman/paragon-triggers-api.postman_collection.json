@@ -1,0 +1,1020 @@
+{
+  "info": {
+    "_postman_id": "d26562c6-29f9-4f48-a632-f664231a09b5",
+    "name": "Paragon Triggers API",
+    "description": "The Triggers API (Beta) lets you subscribe to events from your users' integrations using Paragon's catalog of pre-built triggers across 130+ SaaS applications, or custom webhooks. Use it to give your app or AI agent real-time visibility into third-party events such as `Slack: Message Received`, `Google Calendar: New Event`, or `Salesforce: Record Updated`. Subscriptions are scoped per Connected User via Paragon User Token (JWT).\n\nContact Support:\n Name: Paragon",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:14:09.000Z",
+    "updatedAt": "2026-06-05T15:14:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d26562c6-29f9-4f48-a632-f664231a09b5"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{projectId}",
+          "item": [
+            {
+              "name": "triggers",
+              "item": [
+                {
+                  "name": "subscriptions",
+                  "item": [
+                    {
+                      "name": "{subscriptionId}",
+                      "item": [
+                        {
+                          "name": "Paragon Update Trigger Subscription",
+                          "id": "66bad60f-1f60-4def-9832-69cfc05e221b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"aute364\": \"adipisicing aliquip amet \",\n    \"sed_b90\": -19765098.587011606\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/triggers/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "triggers",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "2b51f97f-3b12-42dc-ba9b-fa0f38ae25c4",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "b1a0bab4-a341-42ac-bd28-d2de1759bf18",
+                                  "key": "subscriptionId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Updates the parameters of an existing trigger subscription."
+                          },
+                          "response": [
+                            {
+                              "id": "1ba73ea6-b9b9-464d-89ec-4f7c03f953cf",
+                              "name": "Subscription updated.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"aute364\": \"adipisicing aliquip amet \",\n    \"sed_b90\": -19765098.587011606\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/triggers/subscriptions/:subscriptionId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "triggers",
+                                    "subscriptions",
+                                    ":subscriptionId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"trigger\": \"<string>\",\n  \"integration\": \"<string>\",\n  \"parameters\": {\n    \"sint_3\": 3627951.620827779\n  },\n  \"deliveryUrl\": \"<uri>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-06-05T15:14:09.000Z",
+                              "updatedAt": "2026-06-05T15:14:09.000Z",
+                              "uid": "35240-1ba73ea6-b9b9-464d-89ec-4f7c03f953cf"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:14:09.000Z",
+                          "updatedAt": "2026-06-05T15:14:09.000Z",
+                          "uid": "35240-66bad60f-1f60-4def-9832-69cfc05e221b"
+                        },
+                        {
+                          "name": "Paragon Unsubscribe From Trigger",
+                          "id": "be8b6cca-ad9e-4679-821e-63a7ddcc63ad",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/triggers/subscriptions/:subscriptionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "triggers",
+                                "subscriptions",
+                                ":subscriptionId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "310142b2-a5ee-4653-ac92-9fb634cbc60f",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "62b16d4c-1c14-4894-b431-c5654860d26a",
+                                  "key": "subscriptionId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Removes a trigger subscription for the Connected User."
+                          },
+                          "response": [
+                            {
+                              "id": "45ceb8da-8105-449c-8cb5-0f564be20bc0",
+                              "name": "Subscription deleted.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/triggers/subscriptions/:subscriptionId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "triggers",
+                                    "subscriptions",
+                                    ":subscriptionId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:14:09.000Z",
+                              "updatedAt": "2026-06-05T15:14:09.000Z",
+                              "uid": "35240-45ceb8da-8105-449c-8cb5-0f564be20bc0"
+                            },
+                            {
+                              "id": "8e1cd204-3b89-47a4-9b7e-807a41a9dca5",
+                              "name": "Unauthorized.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/triggers/subscriptions/:subscriptionId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "triggers",
+                                    "subscriptions",
+                                    ":subscriptionId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:14:09.000Z",
+                              "updatedAt": "2026-06-05T15:14:09.000Z",
+                              "uid": "35240-8e1cd204-3b89-47a4-9b7e-807a41a9dca5"
+                            },
+                            {
+                              "id": "2b02f6d7-13b3-4a0b-9f06-c2716403742b",
+                              "name": "Subscription not found.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/triggers/subscriptions/:subscriptionId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "triggers",
+                                    "subscriptions",
+                                    ":subscriptionId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:14:09.000Z",
+                              "updatedAt": "2026-06-05T15:14:09.000Z",
+                              "uid": "35240-2b02f6d7-13b3-4a0b-9f06-c2716403742b"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:14:09.000Z",
+                          "updatedAt": "2026-06-05T15:14:09.000Z",
+                          "uid": "35240-be8b6cca-ad9e-4679-821e-63a7ddcc63ad"
+                        }
+                      ],
+                      "id": "ee70eb76-8771-41ed-a4b3-b0dcf069125a",
+                      "createdAt": "2026-06-05T15:14:09.000Z",
+                      "updatedAt": "2026-06-05T15:14:09.000Z",
+                      "uid": "35240-ee70eb76-8771-41ed-a4b3-b0dcf069125a"
+                    },
+                    {
+                      "name": "Paragon List Subscribed Triggers",
+                      "id": "e8a77ce3-6c5d-48e9-8a39-a4acba303375",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/triggers/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "triggers",
+                            "subscriptions"
+                          ],
+                          "variable": [
+                            {
+                              "id": "14cb13d4-346b-44a7-8199-44804e0c7192",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) Your Paragon Project ID."
+                            }
+                          ]
+                        },
+                        "description": "Returns the list of trigger subscriptions for the Connected User."
+                      },
+                      "response": [
+                        {
+                          "id": "cd6a8139-0884-4bf0-a157-e025378690a2",
+                          "name": "Successfully retrieved subscriptions.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/triggers/subscriptions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "triggers",
+                                "subscriptions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"trigger\": \"<string>\",\n    \"integration\": \"<string>\",\n    \"parameters\": {\n      \"veniam_b\": -37930151\n    },\n    \"deliveryUrl\": \"<uri>\",\n    \"createdAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"trigger\": \"<string>\",\n    \"integration\": \"<string>\",\n    \"parameters\": {\n      \"elit9e5\": 37257907,\n      \"tempore\": 79078093\n    },\n    \"deliveryUrl\": \"<uri>\",\n    \"createdAt\": \"<dateTime>\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:14:09.000Z",
+                          "updatedAt": "2026-06-05T15:14:09.000Z",
+                          "uid": "35240-cd6a8139-0884-4bf0-a157-e025378690a2"
+                        },
+                        {
+                          "id": "f4b5fca8-35dc-4f0a-9302-e598f41958a0",
+                          "name": "Unauthorized.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/triggers/subscriptions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "triggers",
+                                "subscriptions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:09.000Z",
+                          "updatedAt": "2026-06-05T15:14:09.000Z",
+                          "uid": "35240-f4b5fca8-35dc-4f0a-9302-e598f41958a0"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:09.000Z",
+                      "updatedAt": "2026-06-05T15:14:09.000Z",
+                      "uid": "35240-e8a77ce3-6c5d-48e9-8a39-a4acba303375"
+                    },
+                    {
+                      "name": "Paragon Subscribe To Trigger",
+                      "id": "97914ab2-77b0-4263-9aff-b814625b4e1d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"aute364\": \"adipisicing aliquip amet \",\n    \"sed_b90\": -19765098.587011606\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/triggers/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "triggers",
+                            "subscriptions"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9f81b223-4298-4de9-95b8-92b6280808ab",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) Your Paragon Project ID."
+                            }
+                          ]
+                        },
+                        "description": "Subscribes the Connected User to a trigger event. Paragon will deliver matching events to the webhook URL configured for the project (or a per-subscription override)."
+                      },
+                      "response": [
+                        {
+                          "id": "20833d25-3eb1-479f-a160-11cd9947a07b",
+                          "name": "Subscription created.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"aute364\": \"adipisicing aliquip amet \",\n    \"sed_b90\": -19765098.587011606\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/triggers/subscriptions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "triggers",
+                                "subscriptions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"trigger\": \"<string>\",\n  \"integration\": \"<string>\",\n  \"parameters\": {\n    \"sint_3\": 3627951.620827779\n  },\n  \"deliveryUrl\": \"<uri>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-06-05T15:14:09.000Z",
+                          "updatedAt": "2026-06-05T15:14:09.000Z",
+                          "uid": "35240-20833d25-3eb1-479f-a160-11cd9947a07b"
+                        },
+                        {
+                          "id": "3e75b795-748e-4658-be2f-af65dcac7b74",
+                          "name": "Invalid subscription request.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"aute364\": \"adipisicing aliquip amet \",\n    \"sed_b90\": -19765098.587011606\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/triggers/subscriptions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "triggers",
+                                "subscriptions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:09.000Z",
+                          "updatedAt": "2026-06-05T15:14:09.000Z",
+                          "uid": "35240-3e75b795-748e-4658-be2f-af65dcac7b74"
+                        },
+                        {
+                          "id": "bdb1ac91-ba2b-4613-a53d-084aac5cec65",
+                          "name": "Unauthorized.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"aute364\": \"adipisicing aliquip amet \",\n    \"sed_b90\": -19765098.587011606\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/triggers/subscriptions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "triggers",
+                                "subscriptions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:09.000Z",
+                          "updatedAt": "2026-06-05T15:14:09.000Z",
+                          "uid": "35240-bdb1ac91-ba2b-4613-a53d-084aac5cec65"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:09.000Z",
+                      "updatedAt": "2026-06-05T15:14:09.000Z",
+                      "uid": "35240-97914ab2-77b0-4263-9aff-b814625b4e1d"
+                    }
+                  ],
+                  "id": "7a97d8a0-1081-4e2e-8483-0d50957afde9",
+                  "createdAt": "2026-06-05T15:14:09.000Z",
+                  "updatedAt": "2026-06-05T15:14:09.000Z",
+                  "uid": "35240-7a97d8a0-1081-4e2e-8483-0d50957afde9"
+                },
+                {
+                  "name": "{trigger}",
+                  "item": [
+                    {
+                      "name": "example-payload",
+                      "item": [
+                        {
+                          "name": "Paragon Get Example Trigger Payload",
+                          "id": "1763a517-1426-486b-91d5-f602ff97a2de",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/triggers/:trigger/example-payload",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "triggers",
+                                ":trigger",
+                                "example-payload"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "09a9282a-2e83-4358-b0ba-56f6aa47eec0",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "78528fd4-7415-4fa7-96ee-b069ee77bdbf",
+                                  "key": "trigger",
+                                  "value": "<string>",
+                                  "description": "(Required) The trigger identifier (e.g., SLACK_MESSAGE_RECEIVED)."
+                                }
+                              ]
+                            },
+                            "description": "Returns an example payload Paragon will deliver for a given trigger. Useful for testing and for shaping consumer handlers without waiting for a live event."
+                          },
+                          "response": [
+                            {
+                              "id": "017466f8-26be-4730-8d3d-52e8e02b013c",
+                              "name": "Returns an example event payload.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/triggers/:trigger/example-payload",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "triggers",
+                                    ":trigger",
+                                    "example-payload"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "trigger"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"velit1_8\": \"elit exercitation magna fugiat\"\n}",
+                              "createdAt": "2026-06-05T15:14:09.000Z",
+                              "updatedAt": "2026-06-05T15:14:09.000Z",
+                              "uid": "35240-017466f8-26be-4730-8d3d-52e8e02b013c"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:14:09.000Z",
+                          "updatedAt": "2026-06-05T15:14:09.000Z",
+                          "uid": "35240-1763a517-1426-486b-91d5-f602ff97a2de"
+                        }
+                      ],
+                      "id": "69c5f9f6-1a8f-4629-bf46-0f878d392c81",
+                      "createdAt": "2026-06-05T15:14:09.000Z",
+                      "updatedAt": "2026-06-05T15:14:09.000Z",
+                      "uid": "35240-69c5f9f6-1a8f-4629-bf46-0f878d392c81"
+                    }
+                  ],
+                  "id": "74980086-e660-4148-8b2e-fda16327f1b4",
+                  "createdAt": "2026-06-05T15:14:09.000Z",
+                  "updatedAt": "2026-06-05T15:14:09.000Z",
+                  "uid": "35240-74980086-e660-4148-8b2e-fda16327f1b4"
+                },
+                {
+                  "name": "Paragon List Available Triggers",
+                  "id": "b6ebd5a8-5c46-443b-9f9e-8c8e9fa4d8ab",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/projects/:projectId/triggers?integration=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "projects",
+                        ":projectId",
+                        "triggers"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional integration filter (e.g., slack, googleCalendar).",
+                          "key": "integration",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "35598d91-9f7b-4fce-bdf8-05a6150fb9a3",
+                          "key": "projectId",
+                          "value": "<string>",
+                          "description": "(Required) Your Paragon Project ID."
+                        }
+                      ]
+                    },
+                    "description": "Returns the catalog of pre-built triggers available to the Connected User, scoped to the integrations they have enabled. Each trigger describes its event type, supported parameters, and the integration it belongs to."
+                  },
+                  "response": [
+                    {
+                      "id": "f12b7ee7-5588-457f-b5f1-3604d708ec5a",
+                      "name": "Successfully retrieved the catalog of triggers.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/triggers?integration=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "triggers"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional integration filter (e.g., slack, googleCalendar).",
+                              "key": "integration",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"triggers\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"integration\": \"<string>\",\n      \"parameters\": {}\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"integration\": \"<string>\",\n      \"parameters\": {}\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:14:09.000Z",
+                      "updatedAt": "2026-06-05T15:14:09.000Z",
+                      "uid": "35240-f12b7ee7-5588-457f-b5f1-3604d708ec5a"
+                    },
+                    {
+                      "id": "e1f17763-28d2-4d99-a9dd-26fb795db92c",
+                      "name": "Unauthorized.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/triggers?integration=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "triggers"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional integration filter (e.g., slack, googleCalendar).",
+                              "key": "integration",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:14:09.000Z",
+                      "updatedAt": "2026-06-05T15:14:09.000Z",
+                      "uid": "35240-e1f17763-28d2-4d99-a9dd-26fb795db92c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:14:09.000Z",
+                  "updatedAt": "2026-06-05T15:14:09.000Z",
+                  "uid": "35240-b6ebd5a8-5c46-443b-9f9e-8c8e9fa4d8ab"
+                }
+              ],
+              "id": "35f2a6ae-0b7f-4092-83ad-284e3ffef9ec",
+              "createdAt": "2026-06-05T15:14:09.000Z",
+              "updatedAt": "2026-06-05T15:14:09.000Z",
+              "uid": "35240-35f2a6ae-0b7f-4092-83ad-284e3ffef9ec"
+            }
+          ],
+          "id": "6543d32d-b747-4e6a-bb0e-3997d1803369",
+          "createdAt": "2026-06-05T15:14:09.000Z",
+          "updatedAt": "2026-06-05T15:14:09.000Z",
+          "uid": "35240-6543d32d-b747-4e6a-bb0e-3997d1803369"
+        }
+      ],
+      "id": "feb46c2c-540b-40c6-90f8-f59ad313c619",
+      "createdAt": "2026-06-05T15:14:09.000Z",
+      "updatedAt": "2026-06-05T15:14:09.000Z",
+      "uid": "35240-feb46c2c-540b-40c6-90f8-f59ad313c619"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://actionkit.useparagon.com"
+    }
+  ]
+}

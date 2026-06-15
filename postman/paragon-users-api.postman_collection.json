@@ -1,0 +1,1104 @@
+{
+  "info": {
+    "_postman_id": "50d7b53f-13eb-4c26-9fb9-ff4ad962cb7d",
+    "name": "Paragon Users API",
+    "description": "The Users API allows you to query and modify the state of your Connected Users and their integrations. The API includes REST endpoints for identifying what integrations your user has enabled, disconnecting integrations, disabling workflows, and associating metadata with a Connected User.\n\nContact Support:\n Name: Paragon",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:14:06.000Z",
+    "updatedAt": "2026-06-05T15:14:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-50d7b53f-13eb-4c26-9fb9-ff4ad962cb7d"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{projectId}",
+          "item": [
+            {
+              "name": "sdk",
+              "item": [
+                {
+                  "name": "me",
+                  "item": [
+                    {
+                      "name": "Paragon Get current user",
+                      "id": "223a1fae-635e-4052-b638-6dccbe4d7fd7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/sdk/me",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "sdk",
+                            "me"
+                          ],
+                          "variable": [
+                            {
+                              "id": "794b9fac-821b-47ce-8136-0c9552b57776",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) Your Paragon Project ID."
+                            }
+                          ]
+                        },
+                        "description": "Returns the authenticated Connected User's details, including their user ID, authentication status, enabled integrations, and associated metadata. Equivalent to the SDK function paragon.getUser()."
+                      },
+                      "response": [
+                        {
+                          "id": "e6d626fc-2478-4411-b4a1-fde3385b4be2",
+                          "name": "Successfully retrieved user details.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/sdk/me",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "sdk",
+                                "me"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"meta\": {\n    \"ead\": \"<string>\",\n    \"in4\": \"<string>\",\n    \"magna_1b_\": \"<string>\"\n  },\n  \"authenticated\": \"<boolean>\",\n  \"integrations\": {\n    \"sint507\": {\n      \"enabled\": \"<boolean>\",\n      \"credentialStatus\": \"EXPIRED\",\n      \"providerId\": \"<string>\"\n    },\n    \"ipsum_0fb\": {\n      \"enabled\": \"<boolean>\",\n      \"credentialStatus\": \"INVALID\",\n      \"providerId\": \"<string>\"\n    },\n    \"proident_3\": {\n      \"enabled\": \"<boolean>\",\n      \"credentialStatus\": \"VALID\",\n      \"providerId\": \"<string>\"\n    },\n    \"nisi_f53\": {\n      \"enabled\": \"<boolean>\",\n      \"credentialStatus\": \"EXPIRED\",\n      \"providerId\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-06-05T15:14:06.000Z",
+                          "updatedAt": "2026-06-05T15:14:06.000Z",
+                          "uid": "35240-e6d626fc-2478-4411-b4a1-fde3385b4be2"
+                        },
+                        {
+                          "id": "c542f852-e4de-4dfc-9589-fd3e2d056b9c",
+                          "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/sdk/me",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "sdk",
+                                "me"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:06.000Z",
+                          "updatedAt": "2026-06-05T15:14:06.000Z",
+                          "uid": "35240-c542f852-e4de-4dfc-9589-fd3e2d056b9c"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:06.000Z",
+                      "updatedAt": "2026-06-05T15:14:06.000Z",
+                      "uid": "35240-223a1fae-635e-4052-b638-6dccbe4d7fd7"
+                    },
+                    {
+                      "name": "Paragon Update user metadata",
+                      "id": "ed917736-c74a-46bd-83e4-54bba5a02e08",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"meta\": {\n    \"ipsum_4fe\": \"<string>\",\n    \"occaecat_47d\": \"<string>\",\n    \"nostrud_c5\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/sdk/me",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "sdk",
+                            "me"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9144c546-b11d-4bab-8cef-2f3bc069ce71",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) Your Paragon Project ID."
+                            }
+                          ]
+                        },
+                        "description": "Updates the authenticated Connected User's metadata. You can associate arbitrary key-value metadata with a Connected User. Equivalent to the SDK function paragon.setMetadata()."
+                      },
+                      "response": [
+                        {
+                          "id": "5f5b1314-dfd6-4dfc-93ba-b2d42cac9418",
+                          "name": "Successfully updated user metadata.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"meta\": {\n    \"ipsum_4fe\": \"<string>\",\n    \"occaecat_47d\": \"<string>\",\n    \"nostrud_c5\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/sdk/me",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "sdk",
+                                "me"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"meta\": {\n    \"ead\": \"<string>\",\n    \"in4\": \"<string>\",\n    \"magna_1b_\": \"<string>\"\n  },\n  \"authenticated\": \"<boolean>\",\n  \"integrations\": {\n    \"sint507\": {\n      \"enabled\": \"<boolean>\",\n      \"credentialStatus\": \"EXPIRED\",\n      \"providerId\": \"<string>\"\n    },\n    \"ipsum_0fb\": {\n      \"enabled\": \"<boolean>\",\n      \"credentialStatus\": \"INVALID\",\n      \"providerId\": \"<string>\"\n    },\n    \"proident_3\": {\n      \"enabled\": \"<boolean>\",\n      \"credentialStatus\": \"VALID\",\n      \"providerId\": \"<string>\"\n    },\n    \"nisi_f53\": {\n      \"enabled\": \"<boolean>\",\n      \"credentialStatus\": \"EXPIRED\",\n      \"providerId\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-06-05T15:14:06.000Z",
+                          "updatedAt": "2026-06-05T15:14:06.000Z",
+                          "uid": "35240-5f5b1314-dfd6-4dfc-93ba-b2d42cac9418"
+                        },
+                        {
+                          "id": "9f18635f-918c-4a86-91be-3db1e921d1be",
+                          "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"meta\": {\n    \"ipsum_4fe\": \"<string>\",\n    \"occaecat_47d\": \"<string>\",\n    \"nostrud_c5\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/sdk/me",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "sdk",
+                                "me"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:06.000Z",
+                          "updatedAt": "2026-06-05T15:14:06.000Z",
+                          "uid": "35240-9f18635f-918c-4a86-91be-3db1e921d1be"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:06.000Z",
+                      "updatedAt": "2026-06-05T15:14:06.000Z",
+                      "uid": "35240-ed917736-c74a-46bd-83e4-54bba5a02e08"
+                    }
+                  ],
+                  "id": "39a44405-2cd0-4f9e-8efc-95851237b451",
+                  "createdAt": "2026-06-05T15:14:06.000Z",
+                  "updatedAt": "2026-06-05T15:14:06.000Z",
+                  "uid": "35240-39a44405-2cd0-4f9e-8efc-95851237b451"
+                },
+                {
+                  "name": "integrations",
+                  "item": [
+                    {
+                      "name": "{integrationId}",
+                      "item": [
+                        {
+                          "name": "Paragon Disconnect an integration",
+                          "id": "6ca29a7d-64f8-49c9-b37f-5d794ab44374",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/sdk/integrations/:integrationId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "sdk",
+                                "integrations",
+                                ":integrationId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7693ffae-5be7-404e-8768-c04685080441",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) Your Paragon Project ID."
+                                },
+                                {
+                                  "id": "f31e8b8a-348c-42e2-8516-5d888320f93e",
+                                  "key": "integrationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the integration to disconnect."
+                                }
+                              ]
+                            },
+                            "description": "Disconnects an integration for the authenticated Connected User. When an integration is disconnected, workflows for that integration will stop running for the user and any saved User Settings will be cleared. Equivalent to the SDK function paragon.uninstallIntegration()."
+                          },
+                          "response": [
+                            {
+                              "id": "5571ce26-ef3a-4aab-92d5-02a49123d7e6",
+                              "name": "Successfully disconnected the integration.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/sdk/integrations/:integrationId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "sdk",
+                                    "integrations",
+                                    ":integrationId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "integrationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:14:06.000Z",
+                              "updatedAt": "2026-06-05T15:14:06.000Z",
+                              "uid": "35240-5571ce26-ef3a-4aab-92d5-02a49123d7e6"
+                            },
+                            {
+                              "id": "733e9f4f-49f8-40a2-802e-dbcbe1c2cb87",
+                              "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/sdk/integrations/:integrationId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "sdk",
+                                    "integrations",
+                                    ":integrationId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "integrationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:14:06.000Z",
+                              "updatedAt": "2026-06-05T15:14:06.000Z",
+                              "uid": "35240-733e9f4f-49f8-40a2-802e-dbcbe1c2cb87"
+                            },
+                            {
+                              "id": "89257efd-de23-447a-ae0a-bd1c737f7b61",
+                              "name": "Integration not found.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/sdk/integrations/:integrationId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "sdk",
+                                    "integrations",
+                                    ":integrationId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "integrationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:14:06.000Z",
+                              "updatedAt": "2026-06-05T15:14:06.000Z",
+                              "uid": "35240-89257efd-de23-447a-ae0a-bd1c737f7b61"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:14:06.000Z",
+                          "updatedAt": "2026-06-05T15:14:06.000Z",
+                          "uid": "35240-6ca29a7d-64f8-49c9-b37f-5d794ab44374"
+                        }
+                      ],
+                      "id": "22b51e6d-50f9-479e-b7a2-e6fbe8838433",
+                      "createdAt": "2026-06-05T15:14:06.000Z",
+                      "updatedAt": "2026-06-05T15:14:06.000Z",
+                      "uid": "35240-22b51e6d-50f9-479e-b7a2-e6fbe8838433"
+                    },
+                    {
+                      "name": "Paragon Get project integrations",
+                      "id": "33b378fa-1a8c-4171-9e82-c487ae47ffac",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/sdk/integrations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "sdk",
+                            "integrations"
+                          ],
+                          "variable": [
+                            {
+                              "id": "934ebdfc-10f9-44d8-86de-432494a91ec1",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) Your Paragon Project ID."
+                            }
+                          ]
+                        },
+                        "description": "Returns the list of integrations available in the project, including their enabled status for the authenticated Connected User."
+                      },
+                      "response": [
+                        {
+                          "id": "34ca7897-c157-463d-8ee1-1fb18eba2d38",
+                          "name": "Successfully retrieved integrations.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/sdk/integrations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "sdk",
+                                "integrations"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"icon\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"icon\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:14:06.000Z",
+                          "updatedAt": "2026-06-05T15:14:06.000Z",
+                          "uid": "35240-34ca7897-c157-463d-8ee1-1fb18eba2d38"
+                        },
+                        {
+                          "id": "82dca447-54e1-40fd-a3d0-f9eec7fb751e",
+                          "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/sdk/integrations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "sdk",
+                                "integrations"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:06.000Z",
+                          "updatedAt": "2026-06-05T15:14:06.000Z",
+                          "uid": "35240-82dca447-54e1-40fd-a3d0-f9eec7fb751e"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:06.000Z",
+                      "updatedAt": "2026-06-05T15:14:06.000Z",
+                      "uid": "35240-33b378fa-1a8c-4171-9e82-c487ae47ffac"
+                    }
+                  ],
+                  "id": "815567a0-6cad-4ceb-829c-c03b1dc58bfe",
+                  "createdAt": "2026-06-05T15:14:06.000Z",
+                  "updatedAt": "2026-06-05T15:14:06.000Z",
+                  "uid": "35240-815567a0-6cad-4ceb-829c-c03b1dc58bfe"
+                },
+                {
+                  "name": "credentials",
+                  "item": [
+                    {
+                      "name": "{credentialId}",
+                      "item": [
+                        {
+                          "name": "Paragon Update a credential",
+                          "id": "e41c6be1-154f-458f-a1b9-4e10c048e973",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"accessToken\": \"<string>\",\n  \"refreshToken\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/sdk/credentials/:credentialId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "sdk",
+                                "credentials",
+                                ":credentialId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "2157a599-c2ef-4367-9108-4f7f1138f683",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) Your Paragon Project ID."
+                                },
+                                {
+                                  "id": "f2e2acce-2f55-4530-b105-52ffbaef7cfe",
+                                  "key": "credentialId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the Connect credential to update."
+                                }
+                              ]
+                            },
+                            "description": "Updates a specific Connect credential for the authenticated Connected User."
+                          },
+                          "response": [
+                            {
+                              "id": "77d637f3-969b-4ed5-8884-f51fb1dc03c7",
+                              "name": "Successfully updated the credential.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"accessToken\": \"<string>\",\n  \"refreshToken\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/sdk/credentials/:credentialId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "sdk",
+                                    "credentials",
+                                    ":credentialId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "credentialId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"integrationId\": \"<string>\",\n  \"status\": \"VALID\"\n}",
+                              "createdAt": "2026-06-05T15:14:06.000Z",
+                              "updatedAt": "2026-06-05T15:14:06.000Z",
+                              "uid": "35240-77d637f3-969b-4ed5-8884-f51fb1dc03c7"
+                            },
+                            {
+                              "id": "d5400be0-3518-4b48-bf0d-272e3487152c",
+                              "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"accessToken\": \"<string>\",\n  \"refreshToken\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/sdk/credentials/:credentialId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "sdk",
+                                    "credentials",
+                                    ":credentialId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "credentialId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:14:06.000Z",
+                              "updatedAt": "2026-06-05T15:14:06.000Z",
+                              "uid": "35240-d5400be0-3518-4b48-bf0d-272e3487152c"
+                            },
+                            {
+                              "id": "251279b6-f723-43b7-84fa-489db5736dd2",
+                              "name": "Credential not found.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"accessToken\": \"<string>\",\n  \"refreshToken\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/sdk/credentials/:credentialId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "sdk",
+                                    "credentials",
+                                    ":credentialId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "credentialId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:14:06.000Z",
+                              "updatedAt": "2026-06-05T15:14:06.000Z",
+                              "uid": "35240-251279b6-f723-43b7-84fa-489db5736dd2"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:14:06.000Z",
+                          "updatedAt": "2026-06-05T15:14:06.000Z",
+                          "uid": "35240-e41c6be1-154f-458f-a1b9-4e10c048e973"
+                        }
+                      ],
+                      "id": "f2ffe942-c0d2-4e21-9529-f7f08e8e6d6d",
+                      "createdAt": "2026-06-05T15:14:06.000Z",
+                      "updatedAt": "2026-06-05T15:14:06.000Z",
+                      "uid": "35240-f2ffe942-c0d2-4e21-9529-f7f08e8e6d6d"
+                    },
+                    {
+                      "name": "Paragon Get user credentials",
+                      "id": "0140089c-4738-4327-95b8-fb2421ce3e52",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/projects/:projectId/sdk/credentials",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "projects",
+                            ":projectId",
+                            "sdk",
+                            "credentials"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e777a688-bebc-4aad-8a9b-7c0b4757b3ff",
+                              "key": "projectId",
+                              "value": "<string>",
+                              "description": "(Required) Your Paragon Project ID."
+                            }
+                          ]
+                        },
+                        "description": "Returns the Connect credentials for the authenticated Connected User."
+                      },
+                      "response": [
+                        {
+                          "id": "f08d3720-baac-45f5-9640-d9a4c8d71048",
+                          "name": "Successfully retrieved credentials.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/sdk/credentials",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "sdk",
+                                "credentials"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": \"<string>\",\n    \"integrationId\": \"<string>\",\n    \"status\": \"EXPIRED\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"integrationId\": \"<string>\",\n    \"status\": \"INVALID\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:14:06.000Z",
+                          "updatedAt": "2026-06-05T15:14:06.000Z",
+                          "uid": "35240-f08d3720-baac-45f5-9640-d9a4c8d71048"
+                        },
+                        {
+                          "id": "dbe1541e-d232-4c71-87c3-dbca88299915",
+                          "name": "Unauthorized. Invalid or missing Paragon User Token.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/sdk/credentials",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "sdk",
+                                "credentials"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:14:06.000Z",
+                          "updatedAt": "2026-06-05T15:14:06.000Z",
+                          "uid": "35240-dbe1541e-d232-4c71-87c3-dbca88299915"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:14:06.000Z",
+                      "updatedAt": "2026-06-05T15:14:06.000Z",
+                      "uid": "35240-0140089c-4738-4327-95b8-fb2421ce3e52"
+                    }
+                  ],
+                  "id": "9b531be1-f9e0-4be3-83db-f636918f31e7",
+                  "createdAt": "2026-06-05T15:14:06.000Z",
+                  "updatedAt": "2026-06-05T15:14:06.000Z",
+                  "uid": "35240-9b531be1-f9e0-4be3-83db-f636918f31e7"
+                }
+              ],
+              "id": "98a344fb-efa1-4161-a38e-51e8ae495b80",
+              "createdAt": "2026-06-05T15:14:06.000Z",
+              "updatedAt": "2026-06-05T15:14:06.000Z",
+              "uid": "35240-98a344fb-efa1-4161-a38e-51e8ae495b80"
+            }
+          ],
+          "id": "351e7e4a-acb1-4fc8-be12-6261b6351d22",
+          "createdAt": "2026-06-05T15:14:06.000Z",
+          "updatedAt": "2026-06-05T15:14:06.000Z",
+          "uid": "35240-351e7e4a-acb1-4fc8-be12-6261b6351d22"
+        }
+      ],
+      "id": "07e4d9fb-834c-45d3-90fc-331c15ad5959",
+      "createdAt": "2026-06-05T15:14:06.000Z",
+      "updatedAt": "2026-06-05T15:14:06.000Z",
+      "uid": "35240-07e4d9fb-834c-45d3-90fc-331c15ad5959"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.useparagon.com"
+    }
+  ]
+}

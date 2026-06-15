@@ -16,14 +16,11 @@ created: '2025-06-05T00:00:00.000Z'
 modified: '2026-05-22'
 specificationVersion: '0.19'
 description: >-
-  Paragon is the Integration Infrastructure Platform for B2B SaaS and AI
-  products. The platform combines Connect Portal (managed user authentication
-  for 130+ SaaS apps), Workflows (event-driven async orchestration), ActionKit
-  (Universal API + MCP server giving AI agents synchronous CRUD access to
-  Integration Tools), Triggers (event subscriptions), Managed Sync (normalized
-  RAG-grade data ingestion with a permissions graph), the Proxy API (direct
-  passthrough to third-party APIs on behalf of Connected Users), the Users
-  API, and the Task History API.
+  Paragon is the Integration Infrastructure Platform for B2B SaaS and AI products. The platform combines Connect Portal
+  (managed user authentication for 130+ SaaS apps), Workflows (event-driven async orchestration), ActionKit (Universal
+  API + MCP server giving AI agents synchronous CRUD access to Integration Tools), Triggers (event subscriptions),
+  Managed Sync (normalized RAG-grade data ingestion with a permissions graph), the Proxy API (direct passthrough to
+  third-party APIs on behalf of Connected Users), the Users API, and the Task History API.
 apis:
   - aid: paragon:proxy-api
     name: Proxy API
@@ -39,18 +36,13 @@ apis:
         url: openapi/paragon-proxy-api-openapi.yml
       - type: JSONLD
         url: json-ld/paragon-context.jsonld
-      - type: NaftikoCapability
-        url: capabilities/proxy-custom-integrations.yaml
-      - type: NaftikoCapability
-        url: capabilities/proxy-proxy.yaml
       - type: Example
         url: examples/proxy-request-example.json
     description: >-
-      Send requests directly to an integration provider, on behalf of Connected
-      Users. The Proxy API allows you to access any third-party provider's API
-      methods via Paragon's managed credential handling. Supports any HTTP verb
-      and accepts JSON request bodies. Along with Workflows, the Proxy API is
-      one of two primary ways to build integrations with Paragon.
+      Send requests directly to an integration provider, on behalf of Connected Users. The Proxy API allows you to
+      access any third-party provider's API methods via Paragon's managed credential handling. Supports any HTTP verb
+      and accepts JSON request bodies. Along with Workflows, the Proxy API is one of two primary ways to build
+      integrations with Paragon.
   - aid: paragon:users-api
     name: Users API
     tags:
@@ -71,21 +63,13 @@ apis:
         url: json-schema/credential.json
       - type: JSONLD
         url: json-ld/paragon-context.jsonld
-      - type: NaftikoCapability
-        url: capabilities/users-credentials.yaml
-      - type: NaftikoCapability
-        url: capabilities/users-integrations.yaml
-      - type: NaftikoCapability
-        url: capabilities/users-users.yaml
       - type: Example
         url: examples/users-get-user-example.json
     description: >-
-      The Users API allows you to query and modify the state of your Connected
-      Users and their integrations. Endpoints cover retrieving user info,
-      setting metadata, listing and disconnecting integrations, and managing
-      Connect credentials. SDK functions like paragon.authenticate(),
-      paragon.setMetadata(), and paragon.uninstallIntegration() map to these
-      endpoints.
+      The Users API allows you to query and modify the state of your Connected Users and their integrations. Endpoints
+      cover retrieving user info, setting metadata, listing and disconnecting integrations, and managing Connect
+      credentials. SDK functions like paragon.authenticate(), paragon.setMetadata(), and paragon.uninstallIntegration()
+      map to these endpoints.
   - aid: paragon:task-history-api
     name: Task History API
     tags:
@@ -105,16 +89,12 @@ apis:
         url: json-schema/workflow-execution-list.json
       - type: JSONLD
         url: json-ld/paragon-context.jsonld
-      - type: NaftikoCapability
-        url: capabilities/task-history-task-history.yaml
       - type: Example
         url: examples/task-history-workflow-executions-example.json
     description: >-
-      The Task History API allows you to query your users' usage of integration
-      workflows and access data from historical workflow executions. Includes
-      endpoints to list and inspect workflow executions, drill into step
-      executions, and replay failed runs. Available on Enterprise plans; rate
-      limited to 1,000 requests per 10 minutes.
+      The Task History API allows you to query your users' usage of integration workflows and access data from
+      historical workflow executions. Includes endpoints to list and inspect workflow executions, drill into step
+      executions, and replay failed runs. Available on Enterprise plans; rate limited to 1,000 requests per 10 minutes.
   - aid: paragon:actionkit-api
     name: ActionKit API
     tags:
@@ -133,8 +113,6 @@ apis:
         url: json-schema/action.json
       - type: JSONLD
         url: json-ld/paragon-context.jsonld
-      - type: NaftikoCapability
-        url: capabilities/actionkit-tools.yaml
       - type: MCPServer
         url: https://github.com/useparagon/paragon-mcp
       - type: Example
@@ -142,12 +120,10 @@ apis:
       - type: Example
         url: examples/actionkit-run-action-example.json
     description: >-
-      "ActionKit is an API to give your AI agent or app access to Paragon's
-      catalog of pre-built Integration Tools and Triggers." Exposes a Universal
-      API for listing and executing synchronous CRUD actions across 130+ SaaS
-      integrations, and is paired with the Paragon MCP server (github.com/useparagon/paragon-mcp)
-      so agents can call these tools via the Model Context Protocol. Rate
-      limited to 50 requests per second per workspace.
+      "ActionKit is an API to give your AI agent or app access to Paragon's catalog of pre-built Integration Tools and
+      Triggers." Exposes a Universal API for listing and executing synchronous CRUD actions across 130+ SaaS
+      integrations, and is paired with the Paragon MCP server (github.com/useparagon/paragon-mcp) so agents can call
+      these tools via the Model Context Protocol. Rate limited to 50 requests per second per workspace.
   - aid: paragon:triggers-api
     name: Triggers API
     tags:
@@ -168,16 +144,13 @@ apis:
         url: json-schema/trigger-subscription.json
       - type: JSONLD
         url: json-ld/paragon-context.jsonld
-      - type: NaftikoCapability
-        url: capabilities/actionkit-triggers.yaml
       - type: Example
         url: examples/triggers-subscribe-example.json
     description: >-
-      The Triggers API (Beta) lets you "subscribe to events from your users'
-      integrations, using our catalog of pre-built triggers or Custom Webhooks."
-      Exposes discovery, subscription, update, and unsubscribe operations for
-      events such as `SLACK_MESSAGE_RECEIVED` or `GOOGLE_CALENDAR_NEW_EVENT`
-      across 130+ integrations. Authenticates with the Paragon User Token JWT.
+      The Triggers API (Beta) lets you "subscribe to events from your users' integrations, using our catalog of
+      pre-built triggers or Custom Webhooks." Exposes discovery, subscription, update, and unsubscribe operations for
+      events such as `SLACK_MESSAGE_RECEIVED` or `GOOGLE_CALENDAR_NEW_EVENT` across 130+ integrations. Authenticates
+      with the Paragon User Token JWT.
   - aid: paragon:managed-sync-api
     name: Managed Sync API
     tags:
@@ -199,50 +172,46 @@ apis:
         url: json-schema/access-check.json
       - type: JSONLD
         url: json-ld/paragon-context.jsonld
-      - type: NaftikoCapability
-        url: capabilities/managed-sync-sync.yaml
-      - type: NaftikoCapability
-        url: capabilities/managed-sync-permissions.yaml
       - type: Example
         url: examples/managed-sync-pull-records-example.json
       - type: Example
         url: examples/permissions-check-access-example.json
     description: >-
-      "Managed Sync provides pipelines to sync data from your users' integration
-      sources to your app or RAG pipeline." Covers File Storage (Google Drive,
-      Box, OneDrive, S3, Dropbox, SharePoint), CRM, and Ticketing sources, with
-      normalized schemas and a ReBAC-style permissions graph (check-access,
-      batch-check, list-users, list-objects, expand) so applications can enforce
-      source-system permissions when retrieving content for retrieval-augmented
+      "Managed Sync provides pipelines to sync data from your users' integration sources to your app or RAG pipeline."
+      Covers File Storage (Google Drive, Box, OneDrive, S3, Dropbox, SharePoint), CRM, and Ticketing sources, with
+      normalized schemas and a ReBAC-style permissions graph (check-access, batch-check, list-users, list-objects,
+      expand) so applications can enforce source-system permissions when retrieving content for retrieval-augmented
       generation.
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/paragon/overview
   - type: ArazzoWorkflows
     url: arazzo/
     workflows:
-    - url: arazzo/paragon-disconnect-integration-workflow.yml
-      name: Paragon Disconnect a User Integration and Confirm
-      summary: Find an enabled integration for a Connected User, disconnect it, then confirm it is gone.
-    - url: arazzo/paragon-discover-and-run-action-workflow.yml
-      name: Paragon Discover and Run an ActionKit Action
-      summary: List the Integration Tools available to a Connected User, then execute one synchronously.
-    - url: arazzo/paragon-enable-sync-and-pull-records-workflow.yml
-      name: Paragon Enable a Sync and Pull Records
-      summary: Enable a Managed Sync pipeline, poll until it has run, then read the normalized records.
-    - url: arazzo/paragon-find-and-replay-failed-execution-workflow.yml
-      name: Paragon Find and Replay a Failed Workflow Execution
-      summary: Search Task History for failed executions, then replay the most recent failure.
-    - url: arazzo/paragon-manage-trigger-subscription-workflow.yml
-      name: Paragon Find and Manage a Trigger Subscription
-      summary: Look up a Connected User's subscriptions and branch to update or unsubscribe.
-    - url: arazzo/paragon-permissioned-record-retrieval-workflow.yml
-      name: Paragon Permissioned Synced Record Retrieval
-      summary: Pull a synced record, check the requester's access, and download its file content only if allowed.
-    - url: arazzo/paragon-subscribe-to-trigger-workflow.yml
-      name: Paragon Preview and Subscribe to a Trigger
-      summary: Resolve a trigger from the catalog, preview its example payload, then subscribe the user to it.
-    - url: arazzo/paragon-verify-integration-and-proxy-request-workflow.yml
-      name: Paragon Verify Integration then Proxy a Request
-      summary: Confirm the Connected User has the integration enabled, then proxy a live API call to it.
+      - url: arazzo/paragon-disconnect-integration-workflow.yml
+        name: Paragon Disconnect a User Integration and Confirm
+        summary: Find an enabled integration for a Connected User, disconnect it, then confirm it is gone.
+      - url: arazzo/paragon-discover-and-run-action-workflow.yml
+        name: Paragon Discover and Run an ActionKit Action
+        summary: List the Integration Tools available to a Connected User, then execute one synchronously.
+      - url: arazzo/paragon-enable-sync-and-pull-records-workflow.yml
+        name: Paragon Enable a Sync and Pull Records
+        summary: Enable a Managed Sync pipeline, poll until it has run, then read the normalized records.
+      - url: arazzo/paragon-find-and-replay-failed-execution-workflow.yml
+        name: Paragon Find and Replay a Failed Workflow Execution
+        summary: Search Task History for failed executions, then replay the most recent failure.
+      - url: arazzo/paragon-manage-trigger-subscription-workflow.yml
+        name: Paragon Find and Manage a Trigger Subscription
+        summary: Look up a Connected User's subscriptions and branch to update or unsubscribe.
+      - url: arazzo/paragon-permissioned-record-retrieval-workflow.yml
+        name: Paragon Permissioned Synced Record Retrieval
+        summary: Pull a synced record, check the requester's access, and download its file content only if allowed.
+      - url: arazzo/paragon-subscribe-to-trigger-workflow.yml
+        name: Paragon Preview and Subscribe to a Trigger
+        summary: Resolve a trigger from the catalog, preview its example payload, then subscribe the user to it.
+      - url: arazzo/paragon-verify-integration-and-proxy-request-workflow.yml
+        name: Paragon Verify Integration then Proxy a Request
+        summary: Confirm the Connected User has the integration enabled, then proxy a live API call to it.
   - type: LinkedIn
     url: https://www.linkedin.com/company/paragon
   - type: GitHubOrganization
