@@ -36,7 +36,7 @@ apis:
         url: openapi/paragon-proxy-api-openapi.yml
       - type: JSONLD
         url: json-ld/paragon-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/proxy-request-example.json
     description: >-
       Send requests directly to an integration provider, on behalf of Connected Users. The Proxy API allows you to
@@ -63,7 +63,7 @@ apis:
         url: json-schema/credential.json
       - type: JSONLD
         url: json-ld/paragon-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/users-get-user-example.json
     description: >-
       The Users API allows you to query and modify the state of your Connected Users and their integrations. Endpoints
@@ -89,7 +89,7 @@ apis:
         url: json-schema/workflow-execution-list.json
       - type: JSONLD
         url: json-ld/paragon-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/task-history-workflow-executions-example.json
     description: >-
       The Task History API allows you to query your users' usage of integration workflows and access data from
@@ -115,9 +115,9 @@ apis:
         url: json-ld/paragon-context.jsonld
       - type: MCPServer
         url: https://github.com/useparagon/paragon-mcp
-      - type: Example
+      - type: Examples
         url: examples/actionkit-list-actions-example.json
-      - type: Example
+      - type: Examples
         url: examples/actionkit-run-action-example.json
     description: >-
       "ActionKit is an API to give your AI agent or app access to Paragon's catalog of pre-built Integration Tools and
@@ -144,7 +144,7 @@ apis:
         url: json-schema/trigger-subscription.json
       - type: JSONLD
         url: json-ld/paragon-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/triggers-subscribe-example.json
     description: >-
       The Triggers API (Beta) lets you "subscribe to events from your users' integrations, using our catalog of
@@ -172,9 +172,9 @@ apis:
         url: json-schema/access-check.json
       - type: JSONLD
         url: json-ld/paragon-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/managed-sync-pull-records-example.json
-      - type: Example
+      - type: Examples
         url: examples/permissions-check-access-example.json
     description: >-
       "Managed Sync provides pipelines to sync data from your users' integration sources to your app or RAG pipeline."
@@ -185,33 +185,30 @@ apis:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/paragon/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/paragon-disconnect-integration-workflow.yml
-        name: Paragon Disconnect a User Integration and Confirm
-        summary: Find an enabled integration for a Connected User, disconnect it, then confirm it is gone.
-      - url: arazzo/paragon-discover-and-run-action-workflow.yml
-        name: Paragon Discover and Run an ActionKit Action
-        summary: List the Integration Tools available to a Connected User, then execute one synchronously.
-      - url: arazzo/paragon-enable-sync-and-pull-records-workflow.yml
-        name: Paragon Enable a Sync and Pull Records
-        summary: Enable a Managed Sync pipeline, poll until it has run, then read the normalized records.
-      - url: arazzo/paragon-find-and-replay-failed-execution-workflow.yml
-        name: Paragon Find and Replay a Failed Workflow Execution
-        summary: Search Task History for failed executions, then replay the most recent failure.
-      - url: arazzo/paragon-manage-trigger-subscription-workflow.yml
-        name: Paragon Find and Manage a Trigger Subscription
-        summary: Look up a Connected User's subscriptions and branch to update or unsubscribe.
-      - url: arazzo/paragon-permissioned-record-retrieval-workflow.yml
-        name: Paragon Permissioned Synced Record Retrieval
-        summary: Pull a synced record, check the requester's access, and download its file content only if allowed.
-      - url: arazzo/paragon-subscribe-to-trigger-workflow.yml
-        name: Paragon Preview and Subscribe to a Trigger
-        summary: Resolve a trigger from the catalog, preview its example payload, then subscribe the user to it.
-      - url: arazzo/paragon-verify-integration-and-proxy-request-workflow.yml
-        name: Paragon Verify Integration then Proxy a Request
-        summary: Confirm the Connected User has the integration enabled, then proxy a live API call to it.
+  - type: Arazzo
+    url: arazzo/paragon-disconnect-integration-workflow.yml
+    name: Paragon Disconnect a User Integration and Confirm
+  - type: Arazzo
+    url: arazzo/paragon-discover-and-run-action-workflow.yml
+    name: Paragon Discover and Run an ActionKit Action
+  - type: Arazzo
+    url: arazzo/paragon-enable-sync-and-pull-records-workflow.yml
+    name: Paragon Enable a Sync and Pull Records
+  - type: Arazzo
+    url: arazzo/paragon-find-and-replay-failed-execution-workflow.yml
+    name: Paragon Find and Replay a Failed Workflow Execution
+  - type: Arazzo
+    url: arazzo/paragon-manage-trigger-subscription-workflow.yml
+    name: Paragon Find and Manage a Trigger Subscription
+  - type: Arazzo
+    url: arazzo/paragon-permissioned-record-retrieval-workflow.yml
+    name: Paragon Permissioned Synced Record Retrieval
+  - type: Arazzo
+    url: arazzo/paragon-subscribe-to-trigger-workflow.yml
+    name: Paragon Preview and Subscribe to a Trigger
+  - type: Arazzo
+    url: arazzo/paragon-verify-integration-and-proxy-request-workflow.yml
+    name: Paragon Verify Integration then Proxy a Request
   - type: LinkedIn
     url: https://www.linkedin.com/company/paragon
   - type: GitHubOrganization
@@ -274,13 +271,13 @@ common:
   - type: Support
     name: Contacting Support
     url: https://docs.useparagon.com/support/contacting-support
-  - type: Workflows
+  - type: Workflow
     name: Workflows Overview
     url: https://docs.useparagon.com/workflows/overview
   - type: ChangeLog
     name: Product Updates
     url: https://docs.useparagon.com/changelog/product-updates
-  - type: SignUp
+  - type: Signup
     name: Paragon Sign Up
     url: https://dashboard.useparagon.com/signup
   - type: Login
@@ -298,7 +295,7 @@ common:
   - type: MCPServer
     name: Paragon MCP Server
     url: https://github.com/useparagon/paragon-mcp
-  - type: AgentSkill
+  - type: AgentSkills
     name: Paragon AI Skills (paragon-setup-skill, actionkit, managed-sync)
     url: https://github.com/useparagon/paragon-ai-skills
   - type: SampleCode
@@ -507,7 +504,7 @@ common:
       - name: Zoho CRM
       - name: Zoho People
       - name: Zoom
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.useparagon.com/llms.txt
 integrations:
   - name: Salesforce
