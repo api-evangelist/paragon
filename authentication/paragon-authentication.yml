@@ -1,0 +1,20 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/paragon-actionkit-api-openapi.yml, openapi/paragon-managed-sync-api-openapi.yml,
+  openapi/paragon-proxy-api-openapi.yml, openapi/paragon-task-history-api-openapi.yml, openapi/paragon-triggers-api-openapi.yml,
+  openapi/paragon-users-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Paragon User Token. A signed JWT token used to authenticate a Connected User.
+  sources:
+  - openapi/paragon-actionkit-api-openapi.yml
+  - openapi/paragon-managed-sync-api-openapi.yml
+  - openapi/paragon-proxy-api-openapi.yml
+  - openapi/paragon-task-history-api-openapi.yml
+  - openapi/paragon-triggers-api-openapi.yml
+  - openapi/paragon-users-api-openapi.yml

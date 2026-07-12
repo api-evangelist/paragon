@@ -183,6 +183,12 @@ apis:
       expand) so applications can enforce source-system permissions when retrieving content for retrieval-augmented
       generation.
 common:
+  - type: TrustCenter
+    url: security/paragon-trust-center.yml
+  - type: DomainSecurity
+    url: security/paragon-domain-security.yml
+  - type: Authentication
+    url: authentication/paragon-authentication.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/paragon/overview
   - type: Arazzo

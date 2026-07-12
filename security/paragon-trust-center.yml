@@ -1,0 +1,12 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://docs.useparagon.com/security/security
+url: https://docs.useparagon.com/security/security
+certifications:
+- GDPR
+evidence:
+- source: https://docs.useparagon.com/security/security
+  keywords:
+  - trust center
+  - gdpr
