@@ -183,6 +183,8 @@ apis:
       expand) so applications can enforce source-system permissions when retrieving content for retrieval-augmented
       generation.
 common:
+  - type: AgenticAccess
+    url: agentic-access/paragon-agentic-access.yml
   - type: TrustCenter
     url: security/paragon-trust-center.yml
   - type: DomainSecurity
