@@ -1,0 +1,109 @@
+openapi: 3.1.0
+info:
+  title: Paragon ActionKit Credentials Custom Integrations API
+  description: ActionKit is an API to give your AI agent or app access to Paragon's catalog of pre-built Integration Tools across 130+ SaaS applications. ActionKit exposes a Universal API (Tools API) for listing and executing synchronous CRUD actions, and is paired with a Triggers API for event subscriptions. Paragon also publishes an MCP server (github.com/useparagon/paragon-mcp) that wraps ActionKit so agents can call integration tools via the Model Context Protocol. Requests are scoped to a Connected User via Paragon User Token (JWT) Bearer authentication.
+  version: 1.0.0
+  contact:
+    name: Paragon
+    url: https://www.useparagon.com
+  license:
+    name: Proprietary
+    url: https://www.useparagon.com/terms-of-service
+servers:
+- url: https://actionkit.useparagon.com
+  description: Paragon ActionKit API (Cloud)
+security:
+- bearerAuth: []
+tags:
+- name: Custom Integrations
+  description: Proxy requests to custom integration APIs.
+paths:
+  /projects/{projectId}/sdk/proxy/custom/{integrationId}/{apiPath}:
+    get:
+      operationId: proxyCustomGetRequest
+      summary: Paragon Proxy GET request to custom integration
+      description: Send a GET request to a custom integration API on behalf of a Connected User.
+      tags:
+      - Custom Integrations
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        description: Your Paragon Project ID.
+        schema:
+          type: string
+      - name: integrationId
+        in: path
+        required: true
+        description: The ID of the custom integration.
+        schema:
+          type: string
+      - name: apiPath
+        in: path
+        required: true
+        description: The API path of the custom integration to send the request to.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful proxy response from the custom integration.
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized. Invalid or missing Paragon User Token.
+        '404':
+          description: Integration not found or not enabled for the user.
+        '429':
+          description: Rate limit exceeded.
+    post:
+      operationId: proxyCustomPostRequest
+      summary: Paragon Proxy POST request to custom integration
+      description: Send a POST request to a custom integration API on behalf of a Connected User.
+      tags:
+      - Custom Integrations
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        description: Your Paragon Project ID.
+        schema:
+          type: string
+      - name: integrationId
+        in: path
+        required: true
+        description: The ID of the custom integration.
+        schema:
+          type: string
+      - name: apiPath
+        in: path
+        required: true
+        description: The API path of the custom integration to send the request to.
+        schema:
+          type: string
+      requestBody:
+        description: The request body to send to the custom integration API.
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Successful proxy response from the custom integration.
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized. Invalid or missing Paragon User Token.
+        '404':
+          description: Integration not found or not enabled for the user.
+        '429':
+          description: Rate limit exceeded.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Paragon User Token. A signed JWT token used to authenticate a Connected User.

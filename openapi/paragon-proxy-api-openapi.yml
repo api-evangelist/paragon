@@ -1,13 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Paragon Proxy API
-  description: >-
-    The Proxy API allows you to directly access any of the third-party
-    provider's API methods on behalf of your Connected Users. Along with
-    Workflows, the Proxy API is one of two primary ways to build integrations
-    with Paragon. The Proxy API accepts requests with body contents specified as
-    application/json and supports any HTTP verb including GET, POST, PUT, PATCH,
-    and DELETE.
+  title: Paragon ActionKit Credentials Proxy API
+  description: ActionKit is an API to give your AI agent or app access to Paragon's catalog of pre-built Integration Tools across 130+ SaaS applications. ActionKit exposes a Universal API (Tools API) for listing and executing synchronous CRUD actions, and is paired with a Triggers API for event subscriptions. Paragon also publishes an MCP server (github.com/useparagon/paragon-mcp) that wraps ActionKit so agents can call integration tools via the Model Context Protocol. Requests are scoped to a Connected User via Paragon User Token (JWT) Bearer authentication.
   version: 1.0.0
   contact:
     name: Paragon
@@ -16,43 +10,40 @@ info:
     name: Proprietary
     url: https://www.useparagon.com/terms-of-service
 servers:
-  - url: https://proxy.useparagon.com
-    description: Paragon Proxy API (Cloud)
+- url: https://actionkit.useparagon.com
+  description: Paragon ActionKit API (Cloud)
 security:
-  - bearerAuth: []
+- bearerAuth: []
+tags:
+- name: Proxy
+  description: Proxy requests to third-party integration APIs.
 paths:
   /projects/{projectId}/sdk/proxy/{integrationType}/{apiPath}:
     get:
       operationId: proxyGetRequest
       summary: Paragon Proxy GET request to integration
-      description: >-
-        Send a GET request to a third-party integration API on behalf of a
-        Connected User. The request is proxied through Paragon to the
-        integration provider.
+      description: Send a GET request to a third-party integration API on behalf of a Connected User. The request is proxied through Paragon to the integration provider.
       tags:
-        - Proxy
+      - Proxy
       parameters:
-        - name: projectId
-          in: path
-          required: true
-          description: Your Paragon Project ID.
-          schema:
-            type: string
-        - name: integrationType
-          in: path
-          required: true
-          description: >-
-            The type of integration to proxy the request to (e.g., salesforce,
-            hubspot, slack).
-          schema:
-            type: string
-        - name: apiPath
-          in: path
-          required: true
-          description: >-
-            The API path of the third-party provider to send the request to.
-          schema:
-            type: string
+      - name: projectId
+        in: path
+        required: true
+        description: Your Paragon Project ID.
+        schema:
+          type: string
+      - name: integrationType
+        in: path
+        required: true
+        description: The type of integration to proxy the request to (e.g., salesforce, hubspot, slack).
+        schema:
+          type: string
+      - name: apiPath
+        in: path
+        required: true
+        description: The API path of the third-party provider to send the request to.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful proxy response from the integration provider.
@@ -69,32 +60,28 @@ paths:
     post:
       operationId: proxyPostRequest
       summary: Paragon Proxy POST request to integration
-      description: >-
-        Send a POST request to a third-party integration API on behalf of a
-        Connected User.
+      description: Send a POST request to a third-party integration API on behalf of a Connected User.
       tags:
-        - Proxy
+      - Proxy
       parameters:
-        - name: projectId
-          in: path
-          required: true
-          description: Your Paragon Project ID.
-          schema:
-            type: string
-        - name: integrationType
-          in: path
-          required: true
-          description: >-
-            The type of integration to proxy the request to.
-          schema:
-            type: string
-        - name: apiPath
-          in: path
-          required: true
-          description: >-
-            The API path of the third-party provider to send the request to.
-          schema:
-            type: string
+      - name: projectId
+        in: path
+        required: true
+        description: Your Paragon Project ID.
+        schema:
+          type: string
+      - name: integrationType
+        in: path
+        required: true
+        description: The type of integration to proxy the request to.
+        schema:
+          type: string
+      - name: apiPath
+        in: path
+        required: true
+        description: The API path of the third-party provider to send the request to.
+        schema:
+          type: string
       requestBody:
         description: The request body to send to the third-party provider API.
         content:
@@ -117,32 +104,28 @@ paths:
     put:
       operationId: proxyPutRequest
       summary: Paragon Proxy PUT request to integration
-      description: >-
-        Send a PUT request to a third-party integration API on behalf of a
-        Connected User.
+      description: Send a PUT request to a third-party integration API on behalf of a Connected User.
       tags:
-        - Proxy
+      - Proxy
       parameters:
-        - name: projectId
-          in: path
-          required: true
-          description: Your Paragon Project ID.
-          schema:
-            type: string
-        - name: integrationType
-          in: path
-          required: true
-          description: >-
-            The type of integration to proxy the request to.
-          schema:
-            type: string
-        - name: apiPath
-          in: path
-          required: true
-          description: >-
-            The API path of the third-party provider to send the request to.
-          schema:
-            type: string
+      - name: projectId
+        in: path
+        required: true
+        description: Your Paragon Project ID.
+        schema:
+          type: string
+      - name: integrationType
+        in: path
+        required: true
+        description: The type of integration to proxy the request to.
+        schema:
+          type: string
+      - name: apiPath
+        in: path
+        required: true
+        description: The API path of the third-party provider to send the request to.
+        schema:
+          type: string
       requestBody:
         description: The request body to send to the third-party provider API.
         content:
@@ -165,32 +148,28 @@ paths:
     patch:
       operationId: proxyPatchRequest
       summary: Paragon Proxy PATCH request to integration
-      description: >-
-        Send a PATCH request to a third-party integration API on behalf of a
-        Connected User.
+      description: Send a PATCH request to a third-party integration API on behalf of a Connected User.
       tags:
-        - Proxy
+      - Proxy
       parameters:
-        - name: projectId
-          in: path
-          required: true
-          description: Your Paragon Project ID.
-          schema:
-            type: string
-        - name: integrationType
-          in: path
-          required: true
-          description: >-
-            The type of integration to proxy the request to.
-          schema:
-            type: string
-        - name: apiPath
-          in: path
-          required: true
-          description: >-
-            The API path of the third-party provider to send the request to.
-          schema:
-            type: string
+      - name: projectId
+        in: path
+        required: true
+        description: Your Paragon Project ID.
+        schema:
+          type: string
+      - name: integrationType
+        in: path
+        required: true
+        description: The type of integration to proxy the request to.
+        schema:
+          type: string
+      - name: apiPath
+        in: path
+        required: true
+        description: The API path of the third-party provider to send the request to.
+        schema:
+          type: string
       requestBody:
         description: The request body to send to the third-party provider API.
         content:
@@ -213,32 +192,28 @@ paths:
     delete:
       operationId: proxyDeleteRequest
       summary: Paragon Proxy DELETE request to integration
-      description: >-
-        Send a DELETE request to a third-party integration API on behalf of a
-        Connected User.
+      description: Send a DELETE request to a third-party integration API on behalf of a Connected User.
       tags:
-        - Proxy
+      - Proxy
       parameters:
-        - name: projectId
-          in: path
-          required: true
-          description: Your Paragon Project ID.
-          schema:
-            type: string
-        - name: integrationType
-          in: path
-          required: true
-          description: >-
-            The type of integration to proxy the request to.
-          schema:
-            type: string
-        - name: apiPath
-          in: path
-          required: true
-          description: >-
-            The API path of the third-party provider to send the request to.
-          schema:
-            type: string
+      - name: projectId
+        in: path
+        required: true
+        description: Your Paragon Project ID.
+        schema:
+          type: string
+      - name: integrationType
+        in: path
+        required: true
+        description: The type of integration to proxy the request to.
+        schema:
+          type: string
+      - name: apiPath
+        in: path
+        required: true
+        description: The API path of the third-party provider to send the request to.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful proxy response from the integration provider.
@@ -256,31 +231,28 @@ paths:
     get:
       operationId: proxyCustomGetRequest
       summary: Paragon Proxy GET request to custom integration
-      description: >-
-        Send a GET request to a custom integration API on behalf of a Connected
-        User.
+      description: Send a GET request to a custom integration API on behalf of a Connected User.
       tags:
-        - Custom Integrations
-        - Proxy
+      - Proxy
       parameters:
-        - name: projectId
-          in: path
-          required: true
-          description: Your Paragon Project ID.
-          schema:
-            type: string
-        - name: integrationId
-          in: path
-          required: true
-          description: The ID of the custom integration.
-          schema:
-            type: string
-        - name: apiPath
-          in: path
-          required: true
-          description: The API path of the custom integration to send the request to.
-          schema:
-            type: string
+      - name: projectId
+        in: path
+        required: true
+        description: Your Paragon Project ID.
+        schema:
+          type: string
+      - name: integrationId
+        in: path
+        required: true
+        description: The ID of the custom integration.
+        schema:
+          type: string
+      - name: apiPath
+        in: path
+        required: true
+        description: The API path of the custom integration to send the request to.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful proxy response from the custom integration.
@@ -297,31 +269,28 @@ paths:
     post:
       operationId: proxyCustomPostRequest
       summary: Paragon Proxy POST request to custom integration
-      description: >-
-        Send a POST request to a custom integration API on behalf of a Connected
-        User.
+      description: Send a POST request to a custom integration API on behalf of a Connected User.
       tags:
-        - Custom Integrations
-        - Proxy
+      - Proxy
       parameters:
-        - name: projectId
-          in: path
-          required: true
-          description: Your Paragon Project ID.
-          schema:
-            type: string
-        - name: integrationId
-          in: path
-          required: true
-          description: The ID of the custom integration.
-          schema:
-            type: string
-        - name: apiPath
-          in: path
-          required: true
-          description: The API path of the custom integration to send the request to.
-          schema:
-            type: string
+      - name: projectId
+        in: path
+        required: true
+        description: Your Paragon Project ID.
+        schema:
+          type: string
+      - name: integrationId
+        in: path
+        required: true
+        description: The ID of the custom integration.
+        schema:
+          type: string
+      - name: apiPath
+        in: path
+        required: true
+        description: The API path of the custom integration to send the request to.
+        schema:
+          type: string
       requestBody:
         description: The request body to send to the custom integration API.
         content:
@@ -346,11 +315,4 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-      description: >-
-        Paragon User Token. Authenticate with a signed JWT token for the
-        Connected User.
-tags:
-  - name: Custom Integrations
-    description: Proxy requests to custom integration APIs.
-  - name: Proxy
-    description: Proxy requests to third-party integration APIs.
+      description: Paragon User Token. A signed JWT token used to authenticate a Connected User.

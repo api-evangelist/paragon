@@ -1,0 +1,187 @@
+openapi: 3.1.0
+info:
+  title: Paragon ActionKit Credentials Permissions API
+  description: ActionKit is an API to give your AI agent or app access to Paragon's catalog of pre-built Integration Tools across 130+ SaaS applications. ActionKit exposes a Universal API (Tools API) for listing and executing synchronous CRUD actions, and is paired with a Triggers API for event subscriptions. Paragon also publishes an MCP server (github.com/useparagon/paragon-mcp) that wraps ActionKit so agents can call integration tools via the Model Context Protocol. Requests are scoped to a Connected User via Paragon User Token (JWT) Bearer authentication.
+  version: 1.0.0
+  contact:
+    name: Paragon
+    url: https://www.useparagon.com
+  license:
+    name: Proprietary
+    url: https://www.useparagon.com/terms-of-service
+servers:
+- url: https://actionkit.useparagon.com
+  description: Paragon ActionKit API (Cloud)
+security:
+- bearerAuth: []
+tags:
+- name: Permissions
+  description: ReBAC-style access checks over synced objects and subjects.
+paths:
+  /projects/{projectId}/permissions/check-access:
+    post:
+      operationId: checkAccess
+      summary: Paragon Check Access
+      description: Checks whether a subject (user, group) has a given relation to a synced object (file, contact, ticket). Useful for enforcing source-system permissions in RAG retrieval.
+      tags:
+      - Permissions
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessCheck'
+      responses:
+        '200':
+          description: Access decision.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allowed:
+                    type: boolean
+  /projects/{projectId}/permissions/batch-check-access:
+    post:
+      operationId: batchCheckAccess
+      summary: Paragon Batch Check Access
+      description: Performs multiple access checks in a single call.
+      tags:
+      - Permissions
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                checks:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/AccessCheck'
+      responses:
+        '200':
+          description: Per-check access decisions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        allowed:
+                          type: boolean
+  /projects/{projectId}/permissions/list-users:
+    post:
+      operationId: listUsers
+      summary: Paragon List Users With Access
+      description: Returns the subjects that have access to a given object.
+      tags:
+      - Permissions
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                object:
+                  type: string
+                relation:
+                  type: string
+      responses:
+        '200':
+          description: Subjects with the requested relation.
+  /projects/{projectId}/permissions/list-objects:
+    post:
+      operationId: listObjects
+      summary: Paragon List Objects With Access
+      description: Returns the objects a subject has the requested relation to.
+      tags:
+      - Permissions
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subject:
+                  type: string
+                relation:
+                  type: string
+      responses:
+        '200':
+          description: Objects with the requested relation.
+  /projects/{projectId}/permissions/expand:
+    post:
+      operationId: expandRelationships
+      summary: Paragon Expand Permission Relationships
+      description: Expands the relationship tree for a (subject, relation, object) tuple.
+      tags:
+      - Permissions
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessCheck'
+      responses:
+        '200':
+          description: Expanded relationship graph.
+components:
+  schemas:
+    AccessCheck:
+      type: object
+      required:
+      - subject
+      - relation
+      - object
+      properties:
+        subject:
+          type: string
+          description: The actor (e.g., user@example.com).
+        relation:
+          type: string
+          description: The relation to check (e.g., viewer, editor, owner).
+        object:
+          type: string
+          description: The object identifier (e.g., file:abc123).
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Paragon User Token. A signed JWT token used to authenticate a Connected User.
