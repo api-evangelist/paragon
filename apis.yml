@@ -9,7 +9,20 @@ tags:
   - MCP
   - Integrations
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/paragon.png
 access: 3rd-Party
 position: Consuming
 created: '2025-06-05T00:00:00.000Z'
@@ -22,166 +35,293 @@ description: >-
   Managed Sync (normalized RAG-grade data ingestion with a permissions graph), the Proxy API (direct passthrough to
   third-party APIs on behalf of Connected Users), the Users API, and the Task History API.
 apis:
-  - aid: paragon:proxy-api
-    name: Proxy API
-    tags:
-      - Embedded Integrations
-      - Proxy
-      - Integrations
-    humanURL: https://docs.useparagon.com/apis/making-api-requests
-    properties:
-      - type: Documentation
-        url: https://docs.useparagon.com/apis/making-api-requests
-      - type: OpenAPI
-        url: openapi/paragon-proxy-api-openapi.yml
-      - type: JSONLD
-        url: json-ld/paragon-context.jsonld
-      - type: Examples
-        url: examples/proxy-request-example.json
-    description: >-
-      Send requests directly to an integration provider, on behalf of Connected Users. The Proxy API allows you to
-      access any third-party provider's API methods via Paragon's managed credential handling. Supports any HTTP verb
-      and accepts JSON request bodies. Along with Workflows, the Proxy API is one of two primary ways to build
-      integrations with Paragon.
-  - aid: paragon:users-api
-    name: Users API
-    tags:
-      - Embedded Integrations
-      - Users
-      - Integrations
-    humanURL: https://docs.useparagon.com/apis/users
-    properties:
-      - type: Documentation
-        url: https://docs.useparagon.com/apis/users
-      - type: OpenAPI
-        url: openapi/paragon-users-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/user.json
-      - type: JSONSchema
-        url: json-schema/integration.json
-      - type: JSONSchema
-        url: json-schema/credential.json
-      - type: JSONLD
-        url: json-ld/paragon-context.jsonld
-      - type: Examples
-        url: examples/users-get-user-example.json
-    description: >-
-      The Users API allows you to query and modify the state of your Connected Users and their integrations. Endpoints
-      cover retrieving user info, setting metadata, listing and disconnecting integrations, and managing Connect
-      credentials. SDK functions like paragon.authenticate(), paragon.setMetadata(), and paragon.uninstallIntegration()
-      map to these endpoints.
-  - aid: paragon:task-history-api
-    name: Task History API
-    tags:
-      - Embedded Integrations
-      - Task History
-      - Workflows
-      - Integrations
-    humanURL: https://docs.useparagon.com/apis/task-history
-    properties:
-      - type: Documentation
-        url: https://docs.useparagon.com/apis/task-history
-      - type: OpenAPI
-        url: openapi/paragon-task-history-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/workflow-execution.json
-      - type: JSONSchema
-        url: json-schema/workflow-execution-list.json
-      - type: JSONLD
-        url: json-ld/paragon-context.jsonld
-      - type: Examples
-        url: examples/task-history-workflow-executions-example.json
-    description: >-
-      The Task History API allows you to query your users' usage of integration workflows and access data from
-      historical workflow executions. Includes endpoints to list and inspect workflow executions, drill into step
-      executions, and replay failed runs. Available on Enterprise plans; rate limited to 1,000 requests per 10 minutes.
-  - aid: paragon:actionkit-api
-    name: ActionKit API
-    tags:
-      - ActionKit
-      - AI Agents
-      - MCP
-      - Tools
-      - Integrations
-    humanURL: https://docs.useparagon.com/actionkit/overview
-    properties:
-      - type: Documentation
-        url: https://docs.useparagon.com/actionkit/overview
-      - type: OpenAPI
-        url: openapi/paragon-actionkit-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/action.json
-      - type: JSONLD
-        url: json-ld/paragon-context.jsonld
-      - type: MCPServer
-        url: https://github.com/useparagon/paragon-mcp
-      - type: Examples
-        url: examples/actionkit-list-actions-example.json
-      - type: Examples
-        url: examples/actionkit-run-action-example.json
-    description: >-
-      "ActionKit is an API to give your AI agent or app access to Paragon's catalog of pre-built Integration Tools and
-      Triggers." Exposes a Universal API for listing and executing synchronous CRUD actions across 130+ SaaS
-      integrations, and is paired with the Paragon MCP server (github.com/useparagon/paragon-mcp) so agents can call
-      these tools via the Model Context Protocol. Rate limited to 50 requests per second per workspace.
-  - aid: paragon:triggers-api
-    name: Triggers API
-    tags:
-      - ActionKit
-      - Triggers
-      - Webhooks
-      - AI Agents
-      - Integrations
-    humanURL: https://docs.useparagon.com/actionkit/triggers/overview
-    properties:
-      - type: Documentation
-        url: https://docs.useparagon.com/actionkit/triggers/overview
-      - type: OpenAPI
-        url: openapi/paragon-triggers-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/trigger.json
-      - type: JSONSchema
-        url: json-schema/trigger-subscription.json
-      - type: JSONLD
-        url: json-ld/paragon-context.jsonld
-      - type: Examples
-        url: examples/triggers-subscribe-example.json
-    description: >-
-      The Triggers API (Beta) lets you "subscribe to events from your users' integrations, using our catalog of
-      pre-built triggers or Custom Webhooks." Exposes discovery, subscription, update, and unsubscribe operations for
-      events such as `SLACK_MESSAGE_RECEIVED` or `GOOGLE_CALENDAR_NEW_EVENT` across 130+ integrations. Authenticates
-      with the Paragon User Token JWT.
-  - aid: paragon:managed-sync-api
-    name: Managed Sync API
-    tags:
-      - Managed Sync
-      - RAG
-      - Data Ingestion
-      - Integrations
-    humanURL: https://docs.useparagon.com/managed-sync/overview
-    properties:
-      - type: Documentation
-        url: https://docs.useparagon.com/managed-sync/overview
-      - type: OpenAPI
-        url: openapi/paragon-managed-sync-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/synced-record.json
-      - type: JSONSchema
-        url: json-schema/sync-status.json
-      - type: JSONSchema
-        url: json-schema/access-check.json
-      - type: JSONLD
-        url: json-ld/paragon-context.jsonld
-      - type: Examples
-        url: examples/managed-sync-pull-records-example.json
-      - type: Examples
-        url: examples/permissions-check-access-example.json
-    description: >-
-      "Managed Sync provides pipelines to sync data from your users' integration sources to your app or RAG pipeline."
-      Covers File Storage (Google Drive, Box, OneDrive, S3, Dropbox, SharePoint), CRM, and Ticketing sources, with
-      normalized schemas and a ReBAC-style permissions graph (check-access, batch-check, list-users, list-objects,
-      expand) so applications can enforce source-system permissions when retrieving content for retrieval-augmented
-      generation.
+- aid: paragon:proxy-api
+  name: Proxy API
+  tags:
+  - Embedded Integrations
+  - Proxy
+  - Integrations
+  humanURL: https://docs.useparagon.com/apis/making-api-requests
+  properties:
+  - type: Documentation
+    url: https://docs.useparagon.com/apis/making-api-requests
+  - type: OpenAPI
+    url: openapi/paragon-proxy-api-openapi.yml
+  - type: JSONLD
+    url: json-ld/paragon-context.jsonld
+  - type: Examples
+    url: examples/proxy-request-example.json
+  description: >-
+    Send requests directly to an integration provider, on behalf of Connected Users. The Proxy API allows
+    you to access any third-party provider's API methods via Paragon's managed credential handling. Supports
+    any HTTP verb and accepts JSON request bodies. Along with Workflows, the Proxy API is one of two primary
+    ways to build integrations with Paragon.
+- aid: paragon:users-api
+  name: Users API
+  tags:
+  - Embedded Integrations
+  - Users
+  - Integrations
+  humanURL: https://docs.useparagon.com/apis/users
+  properties:
+  - type: Documentation
+    url: https://docs.useparagon.com/apis/users
+  - type: OpenAPI
+    url: openapi/paragon-users-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/user.json
+  - type: JSONSchema
+    url: json-schema/integration.json
+  - type: JSONSchema
+    url: json-schema/credential.json
+  - type: JSONLD
+    url: json-ld/paragon-context.jsonld
+  - type: Examples
+    url: examples/users-get-user-example.json
+  description: >-
+    The Users API allows you to query and modify the state of your Connected Users and their integrations.
+    Endpoints cover retrieving user info, setting metadata, listing and disconnecting integrations, and
+    managing Connect credentials. SDK functions like paragon.authenticate(), paragon.setMetadata(), and
+    paragon.uninstallIntegration() map to these endpoints.
+- aid: paragon:task-history-api
+  name: Task History API
+  tags:
+  - Embedded Integrations
+  - Task History
+  - Workflows
+  - Integrations
+  humanURL: https://docs.useparagon.com/apis/task-history
+  properties:
+  - type: Documentation
+    url: https://docs.useparagon.com/apis/task-history
+  - type: OpenAPI
+    url: openapi/paragon-task-history-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/workflow-execution.json
+  - type: JSONSchema
+    url: json-schema/workflow-execution-list.json
+  - type: JSONLD
+    url: json-ld/paragon-context.jsonld
+  - type: Examples
+    url: examples/task-history-workflow-executions-example.json
+  description: >-
+    The Task History API allows you to query your users' usage of integration workflows and access data
+    from historical workflow executions. Includes endpoints to list and inspect workflow executions, drill
+    into step executions, and replay failed runs. Available on Enterprise plans; rate limited to 1,000
+    requests per 10 minutes.
+- aid: paragon:triggers-api
+  name: Triggers API
+  tags:
+  - ActionKit
+  - Triggers
+  - Webhooks
+  - AI Agents
+  - Integrations
+  humanURL: https://docs.useparagon.com/actionkit/triggers/overview
+  properties:
+  - type: Documentation
+    url: https://docs.useparagon.com/actionkit/triggers/overview
+  - type: OpenAPI
+    url: openapi/paragon-triggers-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/trigger.json
+  - type: JSONSchema
+    url: json-schema/trigger-subscription.json
+  - type: JSONLD
+    url: json-ld/paragon-context.jsonld
+  - type: Examples
+    url: examples/triggers-subscribe-example.json
+  description: >-
+    The Triggers API (Beta) lets you "subscribe to events from your users' integrations, using our catalog
+    of pre-built triggers or Custom Webhooks." Exposes discovery, subscription, update, and unsubscribe
+    operations for events such as `SLACK_MESSAGE_RECEIVED` or `GOOGLE_CALENDAR_NEW_EVENT` across 130+
+    integrations. Authenticates with the Paragon User Token JWT.
+- aid: paragon:paragon-credentials-api
+  name: Paragon Credentials API
+  description: Manage user Connect credentials.
+  humanURL: https://docs.useparagon.com/apis/making-api-requests
+  tags:
+  - Credentials
+  properties:
+  - type: OpenAPI
+    url: openapi/paragon-credentials-api-openapi.yml
+  - type: Documentation
+    url: https://docs.useparagon.com/actionkit/overview
+  - type: JSONSchema
+    url: json-schema/action.json
+  - type: JSONLD
+    url: json-ld/paragon-context.jsonld
+  - type: Examples
+    url: examples/actionkit-list-actions-example.json
+  - type: Examples
+    url: examples/actionkit-run-action-example.json
+  - type: Documentation
+    url: https://docs.useparagon.com/managed-sync/overview
+  - type: JSONSchema
+    url: json-schema/synced-record.json
+  - type: JSONSchema
+    url: json-schema/sync-status.json
+  - type: JSONSchema
+    url: json-schema/access-check.json
+  - type: Examples
+    url: examples/managed-sync-pull-records-example.json
+  - type: Examples
+    url: examples/permissions-check-access-example.json
+- aid: paragon:paragon-custom-integrations-api
+  name: Paragon Custom Integrations API
+  description: Proxy requests to custom integration APIs.
+  humanURL: https://docs.useparagon.com/apis/making-api-requests
+  tags:
+  - Custom Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/paragon-custom-integrations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.useparagon.com/actionkit/overview
+  - type: JSONSchema
+    url: json-schema/action.json
+  - type: JSONLD
+    url: json-ld/paragon-context.jsonld
+  - type: Examples
+    url: examples/actionkit-list-actions-example.json
+  - type: Examples
+    url: examples/actionkit-run-action-example.json
+  - type: Documentation
+    url: https://docs.useparagon.com/managed-sync/overview
+  - type: JSONSchema
+    url: json-schema/synced-record.json
+  - type: JSONSchema
+    url: json-schema/sync-status.json
+  - type: JSONSchema
+    url: json-schema/access-check.json
+  - type: Examples
+    url: examples/managed-sync-pull-records-example.json
+  - type: Examples
+    url: examples/permissions-check-access-example.json
+- aid: paragon:paragon-integrations-api
+  name: Paragon Integrations API
+  description: Query and manage user integrations.
+  humanURL: https://docs.useparagon.com/apis/making-api-requests
+  tags:
+  - Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/paragon-integrations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.useparagon.com/actionkit/overview
+  - type: JSONSchema
+    url: json-schema/action.json
+  - type: JSONLD
+    url: json-ld/paragon-context.jsonld
+  - type: Examples
+    url: examples/actionkit-list-actions-example.json
+  - type: Examples
+    url: examples/actionkit-run-action-example.json
+  - type: Documentation
+    url: https://docs.useparagon.com/managed-sync/overview
+  - type: JSONSchema
+    url: json-schema/synced-record.json
+  - type: JSONSchema
+    url: json-schema/sync-status.json
+  - type: JSONSchema
+    url: json-schema/access-check.json
+  - type: Examples
+    url: examples/managed-sync-pull-records-example.json
+  - type: Examples
+    url: examples/permissions-check-access-example.json
+- aid: paragon:paragon-permissions-api
+  name: Paragon Permissions API
+  description: ReBAC-style access checks over synced objects and subjects.
+  humanURL: https://docs.useparagon.com/apis/making-api-requests
+  tags:
+  - Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/paragon-permissions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.useparagon.com/actionkit/overview
+  - type: JSONSchema
+    url: json-schema/action.json
+  - type: JSONLD
+    url: json-ld/paragon-context.jsonld
+  - type: Examples
+    url: examples/actionkit-list-actions-example.json
+  - type: Examples
+    url: examples/actionkit-run-action-example.json
+  - type: Documentation
+    url: https://docs.useparagon.com/managed-sync/overview
+  - type: JSONSchema
+    url: json-schema/synced-record.json
+  - type: JSONSchema
+    url: json-schema/sync-status.json
+  - type: JSONSchema
+    url: json-schema/access-check.json
+  - type: Examples
+    url: examples/managed-sync-pull-records-example.json
+  - type: Examples
+    url: examples/permissions-check-access-example.json
+- aid: paragon:paragon-sync-api
+  name: Paragon Sync API
+  description: Enable, monitor, and read records from Managed Sync pipelines.
+  humanURL: https://docs.useparagon.com/apis/making-api-requests
+  tags:
+  - Sync
+  properties:
+  - type: OpenAPI
+    url: openapi/paragon-sync-api-openapi.yml
+  - type: Documentation
+    url: https://docs.useparagon.com/actionkit/overview
+  - type: JSONSchema
+    url: json-schema/action.json
+  - type: JSONLD
+    url: json-ld/paragon-context.jsonld
+  - type: Examples
+    url: examples/actionkit-list-actions-example.json
+  - type: Examples
+    url: examples/actionkit-run-action-example.json
+  - type: Documentation
+    url: https://docs.useparagon.com/managed-sync/overview
+  - type: JSONSchema
+    url: json-schema/synced-record.json
+  - type: JSONSchema
+    url: json-schema/sync-status.json
+  - type: JSONSchema
+    url: json-schema/access-check.json
+  - type: Examples
+    url: examples/managed-sync-pull-records-example.json
+  - type: Examples
+    url: examples/permissions-check-access-example.json
+- aid: paragon:paragon-tools-api
+  name: Paragon Tools API
+  description: List and execute ActionKit Integration Tools for AI agents and apps.
+  humanURL: https://docs.useparagon.com/apis/making-api-requests
+  tags:
+  - Tools
+  properties:
+  - type: OpenAPI
+    url: openapi/paragon-tools-api-openapi.yml
+  - type: Documentation
+    url: https://docs.useparagon.com/actionkit/overview
+  - type: JSONSchema
+    url: json-schema/action.json
+  - type: JSONLD
+    url: json-ld/paragon-context.jsonld
+  - type: Examples
+    url: examples/actionkit-list-actions-example.json
+  - type: Examples
+    url: examples/actionkit-run-action-example.json
+  - type: Documentation
+    url: https://docs.useparagon.com/managed-sync/overview
+  - type: JSONSchema
+    url: json-schema/synced-record.json
+  - type: JSONSchema
+    url: json-schema/sync-status.json
+  - type: JSONSchema
+    url: json-schema/access-check.json
+  - type: Examples
+    url: examples/managed-sync-pull-records-example.json
+  - type: Examples
+    url: examples/permissions-check-access-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/paragon-agentic-access.yml
