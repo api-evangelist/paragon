@@ -1,0 +1,32 @@
+{
+  "provider": "paragon",
+  "sources": [
+    "paragon-credentials-api-openapi.yml",
+    "paragon-custom-integrations-api-openapi.yml",
+    "paragon-integrations-api-openapi.yml",
+    "paragon-permissions-api-openapi.yml",
+    "paragon-proxy-api-openapi.yml",
+    "paragon-sync-api-openapi.yml",
+    "paragon-task-history-api-openapi.yml",
+    "paragon-tools-api-openapi.yml",
+    "paragon-triggers-api-openapi.yml",
+    "paragon-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "paragon-credentials-api-openapi.yml",
+    "paragon-custom-integrations-api-openapi.yml",
+    "paragon-integrations-api-openapi.yml",
+    "paragon-permissions-api-openapi.yml",
+    "paragon-proxy-api-openapi.yml",
+    "paragon-sync-api-openapi.yml",
+    "paragon-task-history-api-openapi.yml",
+    "paragon-tools-api-openapi.yml",
+    "paragon-triggers-api-openapi.yml",
+    "paragon-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

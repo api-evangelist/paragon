@@ -1,0 +1,407 @@
+openapi: 3.1.0
+info:
+  title: Paragon Managed Sync API
+  description: >-
+    Managed Sync provides pipelines to sync data from your users' integration
+    sources (File Storage, CRM, Ticketing) into your app or RAG pipeline. The
+    service handles sync scheduling, normalization to standardized schemas, and
+    enforcement of source-system permissions. Managed Sync exposes a Sync API
+    for record ingestion and a Permissions API for ReBAC-style access checks
+    over synced objects.
+  version: 1.0.0
+  contact:
+    name: Paragon
+    url: https://www.useparagon.com
+  license:
+    name: Proprietary
+    url: https://www.useparagon.com/terms-of-service
+servers:
+  - url: https://managed-sync.useparagon.com
+    description: Paragon Managed Sync API (Cloud)
+security:
+  - bearerAuth: []
+paths:
+  /projects/{projectId}/sync/enable:
+    post:
+      operationId: enableSync
+      summary: Paragon Enable A Sync
+      description: >-
+        Enables a sync pipeline for a Connected User and integration. Paragon
+        begins fetching records on a configurable schedule.
+      tags:
+        - Sync
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - integration
+                - syncType
+              properties:
+                integration:
+                  type: string
+                  description: Integration identifier (e.g., googleDrive, salesforce).
+                syncType:
+                  type: string
+                  description: The sync pipeline type (e.g., files, contacts, deals, tickets).
+                frequency:
+                  type: string
+                  description: Sync frequency (e.g., 1m, 15m, 1h, 1d).
+      responses:
+        '201':
+          description: Sync enabled.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncStatus'
+  /projects/{projectId}/sync/status:
+    get:
+      operationId: getSyncStatus
+      summary: Paragon Get Sync Status
+      description: Returns the state of a sync pipeline for the Connected User.
+      tags:
+        - Sync
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: integration
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: syncType
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Sync status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncStatus'
+  /projects/{projectId}/sync/records:
+    get:
+      operationId: pullSyncedRecords
+      summary: Paragon Pull Synced Records
+      description: >-
+        Returns a paginated list of normalized records for a given integration
+        and sync type (e.g., Files, Contacts, Deals, Tickets).
+      tags:
+        - Sync
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: integration
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: syncType
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: cursor
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of synced records.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SyncedRecord'
+                  nextCursor:
+                    type: string
+  /projects/{projectId}/sync/records/{recordId}:
+    get:
+      operationId: getSyncedRecord
+      summary: Paragon Get Synced Record
+      description: Returns a single normalized synced record by ID.
+      tags:
+        - Sync
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: recordId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The synced record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncedRecord'
+  /projects/{projectId}/sync/records/{recordId}/content:
+    get:
+      operationId: downloadContent
+      summary: Paragon Download File Content
+      description: >-
+        Downloads the binary content of a file-type synced record. Returns the
+        raw file bytes with the appropriate Content-Type for the source file.
+      tags:
+        - Sync
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: recordId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: File content.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+  /projects/{projectId}/permissions/check-access:
+    post:
+      operationId: checkAccess
+      summary: Paragon Check Access
+      description: >-
+        Checks whether a subject (user, group) has a given relation to a
+        synced object (file, contact, ticket). Useful for enforcing
+        source-system permissions in RAG retrieval.
+      tags:
+        - Permissions
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessCheck'
+      responses:
+        '200':
+          description: Access decision.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allowed:
+                    type: boolean
+  /projects/{projectId}/permissions/batch-check-access:
+    post:
+      operationId: batchCheckAccess
+      summary: Paragon Batch Check Access
+      description: Performs multiple access checks in a single call.
+      tags:
+        - Permissions
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                checks:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/AccessCheck'
+      responses:
+        '200':
+          description: Per-check access decisions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        allowed:
+                          type: boolean
+  /projects/{projectId}/permissions/list-users:
+    post:
+      operationId: listUsers
+      summary: Paragon List Users With Access
+      description: Returns the subjects that have access to a given object.
+      tags:
+        - Permissions
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                object:
+                  type: string
+                relation:
+                  type: string
+      responses:
+        '200':
+          description: Subjects with the requested relation.
+  /projects/{projectId}/permissions/list-objects:
+    post:
+      operationId: listObjects
+      summary: Paragon List Objects With Access
+      description: Returns the objects a subject has the requested relation to.
+      tags:
+        - Permissions
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subject:
+                  type: string
+                relation:
+                  type: string
+      responses:
+        '200':
+          description: Objects with the requested relation.
+  /projects/{projectId}/permissions/expand:
+    post:
+      operationId: expandRelationships
+      summary: Paragon Expand Permission Relationships
+      description: Expands the relationship tree for a (subject, relation, object) tuple.
+      tags:
+        - Permissions
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessCheck'
+      responses:
+        '200':
+          description: Expanded relationship graph.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Paragon User Token (JWT) Bearer.
+  schemas:
+    SyncStatus:
+      type: object
+      properties:
+        integration:
+          type: string
+        syncType:
+          type: string
+        status:
+          type: string
+          enum:
+            - SYNCING
+            - IDLE
+            - ERROR
+            - DISABLED
+        lastSyncedAt:
+          type: string
+          format: date-time
+        recordCount:
+          type: integer
+    SyncedRecord:
+      type: object
+      description: A normalized record produced by a Managed Sync pipeline.
+      properties:
+        id:
+          type: string
+        integration:
+          type: string
+        syncType:
+          type: string
+        sourceId:
+          type: string
+        data:
+          type: object
+          additionalProperties: true
+        permissions:
+          type: object
+          description: Source-system permissions captured for this record.
+          additionalProperties: true
+        updatedAt:
+          type: string
+          format: date-time
+    AccessCheck:
+      type: object
+      required:
+        - subject
+        - relation
+        - object
+      properties:
+        subject:
+          type: string
+          description: The actor (e.g., user@example.com).
+        relation:
+          type: string
+          description: The relation to check (e.g., viewer, editor, owner).
+        object:
+          type: string
+          description: The object identifier (e.g., file:abc123).
+tags:
+  - name: Sync
+    description: Enable, monitor, and read records from Managed Sync pipelines.
+  - name: Permissions
+    description: ReBAC-style access checks over synced objects and subjects.

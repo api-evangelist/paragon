@@ -1,0 +1,170 @@
+openapi: 3.1.0
+info:
+  title: Paragon ActionKit API
+  description: >-
+    ActionKit is an API to give your AI agent or app access to Paragon's catalog
+    of pre-built Integration Tools across 130+ SaaS applications. ActionKit
+    exposes a Universal API (Tools API) for listing and executing synchronous
+    CRUD actions, and is paired with a Triggers API for event subscriptions.
+    Paragon also publishes an MCP server (github.com/useparagon/paragon-mcp)
+    that wraps ActionKit so agents can call integration tools via the Model
+    Context Protocol. Requests are scoped to a Connected User via Paragon User
+    Token (JWT) Bearer authentication.
+  version: 1.0.0
+  contact:
+    name: Paragon
+    url: https://www.useparagon.com
+  license:
+    name: Proprietary
+    url: https://www.useparagon.com/terms-of-service
+servers:
+  - url: https://actionkit.useparagon.com
+    description: Paragon ActionKit API (Cloud)
+security:
+  - bearerAuth: []
+paths:
+  /projects/{projectId}/actions:
+    get:
+      operationId: listActions
+      summary: Paragon List Available Actions
+      description: >-
+        Returns the catalog of pre-built Integration Tools available to the
+        Connected User. Tools are scoped to the integrations the user has
+        enabled in the Connect Portal. Each tool describes its name, JSON Schema
+        input parameters, and which integration it belongs to.
+      tags:
+        - Tools
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: Your Paragon Project ID.
+          schema:
+            type: string
+        - name: integration
+          in: query
+          required: false
+          description: Optional integration filter (e.g., salesforce, slack).
+          schema:
+            type: string
+        - name: format
+          in: query
+          required: false
+          description: >-
+            Tool format. Use `openai` for OpenAI tool schema or `anthropic` for
+            Claude tool schema. Defaults to JSON Schema.
+          schema:
+            type: string
+            enum:
+              - openai
+              - anthropic
+              - json-schema
+      responses:
+        '200':
+          description: Successfully retrieved the list of available actions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Action'
+        '401':
+          description: Unauthorized. Invalid or missing Paragon User Token.
+  /projects/{projectId}/actions/{action}:
+    post:
+      operationId: runAction
+      summary: Paragon Run Action
+      description: >-
+        Executes a named Integration Tool on behalf of the Connected User.
+        Action names follow the pattern `{INTEGRATION}_{ACTION_NAME}` (e.g.,
+        `SALESFORCE_CREATE_RECORD`, `SLACK_SEND_MESSAGE`). The action runs
+        synchronously and returns the third-party provider's response payload.
+      tags:
+        - Tools
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          description: Your Paragon Project ID.
+          schema:
+            type: string
+        - name: action
+          in: path
+          required: true
+          description: The ActionKit action name (e.g., SLACK_SEND_MESSAGE).
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: The parameters required by the action.
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+              example:
+                channelId: C0123456789
+                text: Hello from ActionKit
+      responses:
+        '200':
+          description: Action executed successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
+        '400':
+          description: Invalid parameters for the action.
+        '401':
+          description: Unauthorized. Invalid or missing Paragon User Token.
+        '404':
+          description: Unknown action or action not available for this user.
+        '429':
+          description: Rate limited. ActionKit enforces 50 requests per second per workspace.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Paragon User Token. A signed JWT token used to authenticate a Connected
+        User.
+  schemas:
+    Action:
+      type: object
+      description: >-
+        A pre-built Integration Tool exposed by ActionKit. Each action wraps a
+        specific third-party operation (e.g., create a Salesforce record, send a
+        Slack message).
+      properties:
+        name:
+          type: string
+          description: The action identifier (e.g., SLACK_SEND_MESSAGE).
+        description:
+          type: string
+          description: Human-readable description suitable for an LLM tool definition.
+        integration:
+          type: string
+          description: The integration this action belongs to.
+        parameters:
+          type: object
+          description: JSON Schema describing the input parameters for the action.
+    ActionResult:
+      type: object
+      description: The response returned by an executed action.
+      properties:
+        output:
+          type: object
+          description: The action's output (varies by action / integration).
+          additionalProperties: true
+        integration:
+          type: string
+          description: The integration the action ran against.
+        action:
+          type: string
+          description: The action name that was executed.
+tags:
+  - name: Tools
+    description: List and execute ActionKit Integration Tools for AI agents and apps.
