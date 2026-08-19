@@ -1,82 +1,36 @@
 {
   "item": [
     {
-      "id": "879a6d40-af83-4c45-8560-3a1be0639ed0",
-      "name": "Task History",
+      "id": "d8539bd4-8454-4d94-8a37-8fcb16fc6c9f",
+      "name": "Custom Integrations",
       "description": {
-        "content": "Query historical workflow executions and replay specific executions.",
+        "content": "Proxy requests to custom integration APIs.",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "67a26b97-f413-4841-bbb0-14e435ac83d3",
-          "name": "Paragon Get workflow executions",
+          "id": "d90ca586-fc5a-411a-b42f-9b3c98d0b0e0",
+          "name": "Paragon Proxy GET request to custom integration",
           "request": {
-            "name": "Paragon Get workflow executions",
+            "name": "Paragon Proxy GET request to custom integration",
             "description": {
-              "content": "Search through historical workflow executions with filtering options. Returns paginated results with up to 100 records per page. If additional pages are available, the response will include a nextLink URL to retrieve the next page.",
+              "content": "Send a GET request to a custom integration API on behalf of a Connected User.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "projects",
                 ":projectId",
-                "task-history",
-                "workflow-executions"
+                "sdk",
+                "proxy",
+                "custom",
+                ":integrationId",
+                ":apiPath"
               ],
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "integration",
-                  "value": "<string>",
-                  "description": "Filter by integration name (e.g., salesforce, hubspot)."
-                },
-                {
-                  "disabled": false,
-                  "key": "workflowId",
-                  "value": "<string>",
-                  "description": "Filter by workflow ID."
-                },
-                {
-                  "disabled": false,
-                  "key": "userId",
-                  "value": "<string>",
-                  "description": "Filter by Connected User ID."
-                },
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>",
-                  "description": "Filter by execution status."
-                },
-                {
-                  "disabled": false,
-                  "key": "afterDate",
-                  "value": "<dateTime>",
-                  "description": "Filter executions that started after this date (ISO 8601 format)."
-                },
-                {
-                  "disabled": false,
-                  "key": "beforeDate",
-                  "value": "<dateTime>",
-                  "description": "Filter executions that started before this date (ISO 8601 format)."
-                },
-                {
-                  "disabled": false,
-                  "key": "sortBy",
-                  "value": "<string>",
-                  "description": "Sort order for the results."
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "<integer>",
-                  "description": "Pagination offset for retrieving additional pages."
-                }
-              ],
+              "query": [],
               "variable": [
                 {
                   "disabled": false,
@@ -84,6 +38,20 @@
                   "value": "<string>",
                   "key": "projectId",
                   "description": "(Required) Your Paragon Project ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "integrationId",
+                  "description": "(Required) The ID of the custom integration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "apiPath",
+                  "description": "(Required) The API path of the custom integration to send the request to."
                 }
               ]
             },
@@ -98,53 +66,23 @@
           },
           "response": [
             {
-              "id": "302acc4c-2051-4098-9eaf-7006a78f9c38",
-              "name": "Successfully retrieved workflow executions.",
+              "id": "2c5f6803-11fe-492f-b567-e298c2ce66a6",
+              "name": "Successful proxy response from the custom integration.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "projects",
                     ":projectId",
-                    "task-history",
-                    "workflow-executions"
+                    "sdk",
+                    "proxy",
+                    "custom",
+                    ":integrationId",
+                    ":apiPath"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
-                    {
-                      "key": "integration",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "workflowId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "userId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "afterDate",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "beforeDate",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "sortBy",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
-                    }
-                  ],
+                  "query": [],
                   "variable": [
                     {
                       "disabled": false,
@@ -152,6 +90,20 @@
                       "value": "<string>",
                       "key": "projectId",
                       "description": "(Required) Your Paragon Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The ID of the custom integration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiPath",
+                      "description": "(Required) The API path of the custom integration to send the request to."
                     }
                   ]
                 },
@@ -180,58 +132,28 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"workflowId\": \"string\",\n      \"status\": \"FAILED\",\n      \"taskCount\": 6948,\n      \"runDuration\": 8834,\n      \"dateStarted\": \"1967-08-28T11:43:20.238Z\",\n      \"dateEnded\": \"1998-02-08T11:25:13.038Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"workflowId\": \"string\",\n      \"status\": \"SUCCEEDED\",\n      \"taskCount\": 8705,\n      \"runDuration\": 4748,\n      \"dateStarted\": \"2023-04-24T18:27:03.551Z\",\n      \"dateEnded\": \"1958-12-02T22:03:21.753Z\"\n    }\n  ],\n  \"total\": 7452,\n  \"nextLink\": \"string\"\n}",
+              "body": "{}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "5cb542a6-c8c2-4f56-a3bf-03dae19f88c3",
-              "name": "Unauthorized. Invalid or missing API Key.",
+              "id": "100181fd-27f0-4ada-a594-bff7dd6704f5",
+              "name": "Unauthorized. Invalid or missing Paragon User Token.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "projects",
                     ":projectId",
-                    "task-history",
-                    "workflow-executions"
+                    "sdk",
+                    "proxy",
+                    "custom",
+                    ":integrationId",
+                    ":apiPath"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
-                    {
-                      "key": "integration",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "workflowId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "userId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "afterDate",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "beforeDate",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "sortBy",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
-                    }
-                  ],
+                  "query": [],
                   "variable": [
                     {
                       "disabled": false,
@@ -239,6 +161,20 @@
                       "value": "<string>",
                       "key": "projectId",
                       "description": "(Required) Your Paragon Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The ID of the custom integration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiPath",
+                      "description": "(Required) The API path of the custom integration to send the request to."
                     }
                   ]
                 },
@@ -268,53 +204,23 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "a72f807c-c54d-4e19-b399-12ac253ce32c",
-              "name": "Rate limit exceeded. The Task History API has a rate limit of 1,000 requests per 10 minutes.",
+              "id": "67957707-9da7-42bc-95a2-e495e5262573",
+              "name": "Integration not found or not enabled for the user.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "projects",
                     ":projectId",
-                    "task-history",
-                    "workflow-executions"
+                    "sdk",
+                    "proxy",
+                    "custom",
+                    ":integrationId",
+                    ":apiPath"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
-                    {
-                      "key": "integration",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "workflowId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "userId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "afterDate",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "beforeDate",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "sortBy",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
-                    }
-                  ],
+                  "query": [],
                   "variable": [
                     {
                       "disabled": false,
@@ -322,6 +228,87 @@
                       "value": "<string>",
                       "key": "projectId",
                       "description": "(Required) Your Paragon Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The ID of the custom integration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiPath",
+                      "description": "(Required) The API path of the custom integration to send the request to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8e65fcc5-524f-4047-a07b-11d116b2266e",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "sdk",
+                    "proxy",
+                    "custom",
+                    ":integrationId",
+                    ":apiPath"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Your Paragon Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "integrationId",
+                      "description": "(Required) The ID of the custom integration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiPath",
+                      "description": "(Required) The API path of the custom integration to send the request to."
                     }
                   ]
                 },
@@ -357,22 +344,23 @@
           }
         },
         {
-          "id": "4248d198-4259-43b5-8fd1-1740c945a2a4",
-          "name": "Paragon Replay a workflow execution",
+          "id": "e8c94628-e3ec-4a81-8ed4-4819b5a5650f",
+          "name": "Paragon Proxy POST request to custom integration",
           "request": {
-            "name": "Paragon Replay a workflow execution",
+            "name": "Paragon Proxy POST request to custom integration",
             "description": {
-              "content": "Replays a specific workflow execution using the same version of the workflow that the execution originally ran with. This endpoint is in beta and may not be suitable for use in production applications.",
+              "content": "Send a POST request to a custom integration API on behalf of a Connected User.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "projects",
                 ":projectId",
-                "task-history",
-                "workflow-executions",
-                ":executionId",
-                "replay"
+                "sdk",
+                "proxy",
+                "custom",
+                ":integrationId",
+                ":apiPath"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -390,33 +378,54 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "executionId",
-                  "description": "(Required) The ID of the workflow execution to replay."
+                  "key": "integrationId",
+                  "description": "(Required) The ID of the custom integration."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "apiPath",
+                  "description": "(Required) The API path of the custom integration to send the request to."
                 }
               ]
             },
             "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
             "method": "POST",
-            "auth": null
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
           },
           "response": [
             {
-              "id": "0e179840-98c3-4b29-9c80-1440a558efc6",
-              "name": "Successfully replayed the workflow execution.",
+              "id": "65ab1136-d82e-4dc0-b170-94d650fd00ae",
+              "name": "Successful proxy response from the custom integration.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "projects",
                     ":projectId",
-                    "task-history",
-                    "workflow-executions",
-                    ":executionId",
-                    "replay"
+                    "sdk",
+                    "proxy",
+                    "custom",
+                    ":integrationId",
+                    ":apiPath"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -434,8 +443,15 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "executionId",
-                      "description": "(Required) The ID of the workflow execution to replay."
+                      "key": "integrationId",
+                      "description": "(Required) The ID of the custom integration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiPath",
+                      "description": "(Required) The API path of the custom integration to send the request to."
                     }
                   ]
                 },
@@ -454,7 +470,15 @@
                   }
                 ],
                 "method": "POST",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
               },
               "status": "OK",
               "code": 200,
@@ -464,22 +488,23 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"workflowId\": \"string\",\n  \"status\": \"FAILED\",\n  \"taskCount\": 3724,\n  \"runDuration\": 2015,\n  \"dateStarted\": \"1986-12-31T18:30:27.330Z\",\n  \"dateEnded\": \"1966-01-01T05:15:54.476Z\"\n}",
+              "body": "{}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "5618e8b9-0030-4d45-9320-02bc7921b8da",
-              "name": "Unauthorized. Invalid or missing API Key.",
+              "id": "4b8b32f3-a0fa-44f2-baa4-69f47c13262d",
+              "name": "Unauthorized. Invalid or missing Paragon User Token.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "projects",
                     ":projectId",
-                    "task-history",
-                    "workflow-executions",
-                    ":executionId",
-                    "replay"
+                    "sdk",
+                    "proxy",
+                    "custom",
+                    ":integrationId",
+                    ":apiPath"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -497,8 +522,15 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "executionId",
-                      "description": "(Required) The ID of the workflow execution to replay."
+                      "key": "integrationId",
+                      "description": "(Required) The ID of the custom integration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiPath",
+                      "description": "(Required) The API path of the custom integration to send the request to."
                     }
                   ]
                 },
@@ -513,7 +545,15 @@
                   }
                 ],
                 "method": "POST",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
               },
               "status": "Unauthorized",
               "code": 401,
@@ -528,17 +568,18 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "b04b5d6c-0183-4d94-b846-aa696e9887f4",
-              "name": "Workflow execution not found.",
+              "id": "4fdb4f88-91e5-4694-8667-fcdf0951d2c6",
+              "name": "Integration not found or not enabled for the user.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "projects",
                     ":projectId",
-                    "task-history",
-                    "workflow-executions",
-                    ":executionId",
-                    "replay"
+                    "sdk",
+                    "proxy",
+                    "custom",
+                    ":integrationId",
+                    ":apiPath"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -556,8 +597,15 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "executionId",
-                      "description": "(Required) The ID of the workflow execution to replay."
+                      "key": "integrationId",
+                      "description": "(Required) The ID of the custom integration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiPath",
+                      "description": "(Required) The API path of the custom integration to send the request to."
                     }
                   ]
                 },
@@ -572,7 +620,15 @@
                   }
                 ],
                 "method": "POST",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
               },
               "status": "Not Found",
               "code": 404,
@@ -587,17 +643,18 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "f6a6d39e-bc36-4335-a104-7be5a66f8899",
-              "name": "Rate limit exceeded. The Task History API has a rate limit of 1,000 requests per 10 minutes.",
+              "id": "a85a4b14-8e80-4254-a465-4e96e8e71d93",
+              "name": "Rate limit exceeded.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "projects",
                     ":projectId",
-                    "task-history",
-                    "workflow-executions",
-                    ":executionId",
-                    "replay"
+                    "sdk",
+                    "proxy",
+                    "custom",
+                    ":integrationId",
+                    ":apiPath"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -615,8 +672,15 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "executionId",
-                      "description": "(Required) The ID of the workflow execution to replay."
+                      "key": "integrationId",
+                      "description": "(Required) The ID of the custom integration."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "apiPath",
+                      "description": "(Required) The API path of the custom integration to send the request to."
                     }
                   ]
                 },
@@ -631,7 +695,15 @@
                   }
                 ],
                 "method": "POST",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
               },
               "status": "Too Many Requests",
               "code": 429,
@@ -673,8 +745,8 @@
     ]
   },
   "info": {
-    "_postman_id": "c93395c4-9eb6-4b20-aa76-e580920e3efc",
-    "name": "Paragon ActionKit Credentials Task History API",
+    "_postman_id": "0c7402f9-c637-418d-8cbf-c0027b64f024",
+    "name": "Paragon ActionKit Credentials Custom Integrations API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "ActionKit is an API to give your AI agent or app access to Paragon's catalog of pre-built Integration Tools across 130+ SaaS applications. ActionKit exposes a Universal API (Tools API) for listing and executing synchronous CRUD actions, and is paired with a Triggers API for event subscriptions. Paragon also publishes an MCP server (github.com/useparagon/paragon-mcp) that wraps ActionKit so agents can call integration tools via the Model Context Protocol. Requests are scoped to a Connected User via Paragon User Token (JWT) Bearer authentication.\n\nContact Support:\n Name: Paragon",

@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Paragon Proxy API",
+    "name": "Paragon ActionKit Credentials Proxy API",
     "version": "1.0.0"
   },
   "request": {
@@ -24,7 +24,7 @@
           },
           "http": {
             "method": "GET",
-            "url": "https://proxy.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
             "params": [
               {
                 "name": "projectId",
@@ -55,7 +55,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://proxy.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
             "params": [
               {
                 "name": "projectId",
@@ -90,7 +90,7 @@
           },
           "http": {
             "method": "PUT",
-            "url": "https://proxy.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
             "params": [
               {
                 "name": "projectId",
@@ -125,7 +125,7 @@
           },
           "http": {
             "method": "PATCH",
-            "url": "https://proxy.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
             "params": [
               {
                 "name": "projectId",
@@ -160,7 +160,7 @@
           },
           "http": {
             "method": "DELETE",
-            "url": "https://proxy.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/sdk/proxy/:integrationType/:apiPath",
             "params": [
               {
                 "name": "projectId",
@@ -183,15 +183,7 @@
             ]
           },
           "docs": "Send a DELETE request to a third-party integration API on behalf of a Connected User."
-        }
-      ]
-    },
-    {
-      "info": {
-        "name": "Custom Integrations",
-        "type": "folder"
-      },
-      "items": [
+        },
         {
           "info": {
             "name": "Paragon Proxy GET request to custom integration",
@@ -199,7 +191,7 @@
           },
           "http": {
             "method": "GET",
-            "url": "https://proxy.useparagon.com/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
             "params": [
               {
                 "name": "projectId",
@@ -230,7 +222,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://proxy.useparagon.com/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
             "params": [
               {
                 "name": "projectId",

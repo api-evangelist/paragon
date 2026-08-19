@@ -1,733 +1,7 @@
 {
   "item": [
     {
-      "id": "4f5e319b-336f-443c-9522-e06bdec6c2cc",
-      "name": "Custom Integrations",
-      "description": {
-        "content": "Proxy requests to custom integration APIs.",
-        "type": "text/plain"
-      },
-      "item": [
-        {
-          "id": "c7df6081-ada5-4987-aca5-8748eecd51e4",
-          "name": "Paragon Proxy GET request to custom integration",
-          "request": {
-            "name": "Paragon Proxy GET request to custom integration",
-            "description": {
-              "content": "Send a GET request to a custom integration API on behalf of a Connected User.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectId",
-                "sdk",
-                "proxy",
-                "custom",
-                ":integrationId",
-                ":apiPath"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectId",
-                  "description": "(Required) Your Paragon Project ID."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "integrationId",
-                  "description": "(Required) The ID of the custom integration."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "apiPath",
-                  "description": "(Required) The API path of the custom integration to send the request to."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "7ba4842f-2ba7-4947-906c-5587661408d8",
-              "name": "Successful proxy response from the custom integration.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectId",
-                    "sdk",
-                    "proxy",
-                    "custom",
-                    ":integrationId",
-                    ":apiPath"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectId",
-                      "description": "(Required) Your Paragon Project ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The ID of the custom integration."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "apiPath",
-                      "description": "(Required) The API path of the custom integration to send the request to."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "425f9bbe-2fda-47e7-83f9-05c34cb8e15e",
-              "name": "Unauthorized. Invalid or missing Paragon User Token.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectId",
-                    "sdk",
-                    "proxy",
-                    "custom",
-                    ":integrationId",
-                    ":apiPath"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectId",
-                      "description": "(Required) Your Paragon Project ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The ID of the custom integration."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "apiPath",
-                      "description": "(Required) The API path of the custom integration to send the request to."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "094cc934-82ea-44d1-8ac1-80f40c83fb8f",
-              "name": "Integration not found or not enabled for the user.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectId",
-                    "sdk",
-                    "proxy",
-                    "custom",
-                    ":integrationId",
-                    ":apiPath"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectId",
-                      "description": "(Required) Your Paragon Project ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The ID of the custom integration."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "apiPath",
-                      "description": "(Required) The API path of the custom integration to send the request to."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c2499c2c-6780-467e-bfe3-616de0b9d586",
-              "name": "Rate limit exceeded.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectId",
-                    "sdk",
-                    "proxy",
-                    "custom",
-                    ":integrationId",
-                    ":apiPath"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectId",
-                      "description": "(Required) Your Paragon Project ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The ID of the custom integration."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "apiPath",
-                      "description": "(Required) The API path of the custom integration to send the request to."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "828af9d6-84e4-4378-b41e-154d9000f28f",
-          "name": "Paragon Proxy POST request to custom integration",
-          "request": {
-            "name": "Paragon Proxy POST request to custom integration",
-            "description": {
-              "content": "Send a POST request to a custom integration API on behalf of a Connected User.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "projects",
-                ":projectId",
-                "sdk",
-                "proxy",
-                "custom",
-                ":integrationId",
-                ":apiPath"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "projectId",
-                  "description": "(Required) Your Paragon Project ID."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "integrationId",
-                  "description": "(Required) The ID of the custom integration."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "apiPath",
-                  "description": "(Required) The API path of the custom integration to send the request to."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<object>",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "4eead461-ec31-4b7f-9046-fd285726bc33",
-              "name": "Successful proxy response from the custom integration.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectId",
-                    "sdk",
-                    "proxy",
-                    "custom",
-                    ":integrationId",
-                    ":apiPath"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectId",
-                      "description": "(Required) Your Paragon Project ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The ID of the custom integration."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "apiPath",
-                      "description": "(Required) The API path of the custom integration to send the request to."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<object>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d908a1ce-5bc9-4a7c-a00e-1b2186cfa09c",
-              "name": "Unauthorized. Invalid or missing Paragon User Token.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectId",
-                    "sdk",
-                    "proxy",
-                    "custom",
-                    ":integrationId",
-                    ":apiPath"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectId",
-                      "description": "(Required) Your Paragon Project ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The ID of the custom integration."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "apiPath",
-                      "description": "(Required) The API path of the custom integration to send the request to."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<object>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bfb92e7c-47ef-4e82-b1af-3001f3694bb5",
-              "name": "Integration not found or not enabled for the user.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectId",
-                    "sdk",
-                    "proxy",
-                    "custom",
-                    ":integrationId",
-                    ":apiPath"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectId",
-                      "description": "(Required) Your Paragon Project ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The ID of the custom integration."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "apiPath",
-                      "description": "(Required) The API path of the custom integration to send the request to."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<object>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e26c11a3-54f5-440e-ba09-9d28114e47a1",
-              "name": "Rate limit exceeded.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectId",
-                    "sdk",
-                    "proxy",
-                    "custom",
-                    ":integrationId",
-                    ":apiPath"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectId",
-                      "description": "(Required) Your Paragon Project ID."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "integrationId",
-                      "description": "(Required) The ID of the custom integration."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "apiPath",
-                      "description": "(Required) The API path of the custom integration to send the request to."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<object>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        }
-      ],
-      "event": []
-    },
-    {
-      "id": "e1dcbfca-d510-49b5-a129-430416c8c33c",
+      "id": "afc4abf7-62e7-4ca9-8773-a084ba253a0f",
       "name": "Proxy",
       "description": {
         "content": "Proxy requests to third-party integration APIs.",
@@ -735,7 +9,7 @@
       },
       "item": [
         {
-          "id": "b05cfbad-401c-4e60-8697-5eab68d00aaa",
+          "id": "e7112153-a510-4294-976c-d22f99b73237",
           "name": "Paragon Proxy GET request to integration",
           "request": {
             "name": "Paragon Proxy GET request to integration",
@@ -791,7 +65,7 @@
           },
           "response": [
             {
-              "id": "6aceb501-6da0-48ec-9875-f20f0fa77755",
+              "id": "7db5f093-a579-4907-a393-03de0b42c034",
               "name": "Successful proxy response from the integration provider.",
               "originalRequest": {
                 "url": {
@@ -861,7 +135,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "4548cf84-d364-4f46-a993-b1cffedcbb06",
+              "id": "9fed9015-fae1-4154-a2f8-9f83ed875f16",
               "name": "Unauthorized. Invalid or missing Paragon User Token.",
               "originalRequest": {
                 "url": {
@@ -927,7 +201,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "d33c770b-c66e-4475-820c-1c163a2b9f29",
+              "id": "f0fdd644-0730-4415-8d83-4f077ec3475c",
               "name": "Integration not found or not enabled for the user.",
               "originalRequest": {
                 "url": {
@@ -993,7 +267,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "5914586d-9ca8-4f1b-a957-0c78eedef1cb",
+              "id": "2e14a9dd-488f-414e-a690-14551a774495",
               "name": "Rate limit exceeded.",
               "originalRequest": {
                 "url": {
@@ -1065,7 +339,7 @@
           }
         },
         {
-          "id": "39368369-05f2-456a-8ecb-8f9063648c49",
+          "id": "bd8cef13-2e8e-45cc-a989-7ad44f23ad15",
           "name": "Paragon Proxy POST request to integration",
           "request": {
             "name": "Paragon Proxy POST request to integration",
@@ -1134,7 +408,7 @@
           },
           "response": [
             {
-              "id": "b2c107b7-1cdd-40d3-b7fa-503f6e39bd4a",
+              "id": "c41cf8eb-b0aa-499e-b20c-e89e2256af97",
               "name": "Successful proxy response from the integration provider.",
               "originalRequest": {
                 "url": {
@@ -1212,7 +486,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "426f5b9c-953f-4d7c-9bab-fdda9fbcc24d",
+              "id": "fbb3e065-e266-4ab8-87d7-319d21d09fb7",
               "name": "Unauthorized. Invalid or missing Paragon User Token.",
               "originalRequest": {
                 "url": {
@@ -1286,7 +560,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "f5915fe7-17c1-447c-b8ba-e91639360514",
+              "id": "7938eac3-38d2-441a-a3d2-f6d42418fe6d",
               "name": "Integration not found or not enabled for the user.",
               "originalRequest": {
                 "url": {
@@ -1360,7 +634,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "d75699e3-5920-4ed2-ad9f-dda04f012c23",
+              "id": "531ec014-2dd9-45c5-b268-5f92836f01a1",
               "name": "Rate limit exceeded.",
               "originalRequest": {
                 "url": {
@@ -1440,7 +714,7 @@
           }
         },
         {
-          "id": "967d2959-4879-4141-9f0f-2963251d93d0",
+          "id": "58dc5a0e-f17d-4b53-b2ac-09f630645fc0",
           "name": "Paragon Proxy PUT request to integration",
           "request": {
             "name": "Paragon Proxy PUT request to integration",
@@ -1509,7 +783,7 @@
           },
           "response": [
             {
-              "id": "8992113e-8167-4c1d-9c55-bc6ae8f5bdcd",
+              "id": "bc7a1190-d514-48fa-aa26-9b09a3fd7347",
               "name": "Successful proxy response from the integration provider.",
               "originalRequest": {
                 "url": {
@@ -1587,7 +861,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "a70f3822-dc4d-4c7f-a29f-17d32a6ebc4a",
+              "id": "89be578c-8578-4c34-b24d-50a7f09f73f8",
               "name": "Unauthorized. Invalid or missing Paragon User Token.",
               "originalRequest": {
                 "url": {
@@ -1661,7 +935,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "19938209-3b43-4e4c-99dc-e9d31698ea8e",
+              "id": "cbcd4002-19c2-4150-9cf6-c0b74e7dc586",
               "name": "Integration not found or not enabled for the user.",
               "originalRequest": {
                 "url": {
@@ -1735,7 +1009,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "d5fda465-b8c3-4099-b2d0-d927c563fe25",
+              "id": "7b1763f5-d714-4454-9c3c-3cf23d221226",
               "name": "Rate limit exceeded.",
               "originalRequest": {
                 "url": {
@@ -1815,7 +1089,7 @@
           }
         },
         {
-          "id": "a24e1aa1-26ec-4f5e-9d1c-6f3f363534c1",
+          "id": "9016cfa6-ea9c-4e78-9172-7dcd8347f8de",
           "name": "Paragon Proxy PATCH request to integration",
           "request": {
             "name": "Paragon Proxy PATCH request to integration",
@@ -1884,7 +1158,7 @@
           },
           "response": [
             {
-              "id": "e8e00694-4c31-4ca6-8592-ecc95f99c95d",
+              "id": "886cde25-0084-4415-97ab-ca781e93286b",
               "name": "Successful proxy response from the integration provider.",
               "originalRequest": {
                 "url": {
@@ -1962,7 +1236,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "331ddc79-302d-4ae0-940f-7d03beefb1d6",
+              "id": "6b9f34ad-99a9-4b03-9552-fa79e1690e38",
               "name": "Unauthorized. Invalid or missing Paragon User Token.",
               "originalRequest": {
                 "url": {
@@ -2036,7 +1310,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "430c3bbe-a4f6-4f5c-920e-535bbfbe5b8d",
+              "id": "a3a9af3c-49f2-439f-bc38-999494f2eb7d",
               "name": "Integration not found or not enabled for the user.",
               "originalRequest": {
                 "url": {
@@ -2110,7 +1384,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "a68c4efd-859c-414a-b65e-1bb2e3734bd6",
+              "id": "614748ab-5c97-42ef-a039-0f1c6efe9177",
               "name": "Rate limit exceeded.",
               "originalRequest": {
                 "url": {
@@ -2190,7 +1464,7 @@
           }
         },
         {
-          "id": "f4b05eee-de40-444f-924a-0ce7f1dce8f5",
+          "id": "0a8dbd56-3a46-4d17-aa67-53531d9454ae",
           "name": "Paragon Proxy DELETE request to integration",
           "request": {
             "name": "Paragon Proxy DELETE request to integration",
@@ -2246,7 +1520,7 @@
           },
           "response": [
             {
-              "id": "d98d3e34-1821-477b-bb2f-4e48677337b3",
+              "id": "9d1a51e7-3449-440b-b082-22c372e3dbc9",
               "name": "Successful proxy response from the integration provider.",
               "originalRequest": {
                 "url": {
@@ -2316,7 +1590,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "83998bc3-5b63-4a25-83dd-ac9726ef002e",
+              "id": "82d72836-b62d-4d96-8670-8524d3fd2ac3",
               "name": "Unauthorized. Invalid or missing Paragon User Token.",
               "originalRequest": {
                 "url": {
@@ -2382,7 +1656,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "350f2ccb-3718-4855-b34d-fb381dc3f13a",
+              "id": "5bab8bcb-06de-44bf-a852-2f6ac4fac547",
               "name": "Integration not found or not enabled for the user.",
               "originalRequest": {
                 "url": {
@@ -2448,7 +1722,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "eb69a912-e72a-4c68-a35b-dc99c020c38a",
+              "id": "3ce849fb-22eb-4a94-a2fa-e0d16564cf25",
               "name": "Rate limit exceeded.",
               "originalRequest": {
                 "url": {
@@ -2520,7 +1794,7 @@
           }
         },
         {
-          "id": "30172754-c9c3-47ac-9a87-8ee3ad33b89f",
+          "id": "4e6afcb2-3896-4806-bec1-dea349aa4661",
           "name": "Paragon Proxy GET request to custom integration",
           "request": {
             "name": "Paragon Proxy GET request to custom integration",
@@ -2577,7 +1851,7 @@
           },
           "response": [
             {
-              "id": "d8445767-6bed-4ce4-afbd-844ef964fce4",
+              "id": "2db548e3-93a0-439a-b922-898d02729d0f",
               "name": "Successful proxy response from the custom integration.",
               "originalRequest": {
                 "url": {
@@ -2648,7 +1922,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "9c345bfc-7b74-45e9-a7d0-bd0a44a98413",
+              "id": "b0d566e3-bd40-40d9-839a-9badec9b4128",
               "name": "Unauthorized. Invalid or missing Paragon User Token.",
               "originalRequest": {
                 "url": {
@@ -2715,7 +1989,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "dbf12971-f620-4c07-a77b-c671c7c82bff",
+              "id": "20b5b848-dbcc-4093-a443-8f399454efea",
               "name": "Integration not found or not enabled for the user.",
               "originalRequest": {
                 "url": {
@@ -2782,7 +2056,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "aa984a46-1e75-4725-8eed-876f13c2b7c9",
+              "id": "94fccbbf-978f-4549-9ad6-efccfd452916",
               "name": "Rate limit exceeded.",
               "originalRequest": {
                 "url": {
@@ -2855,7 +2129,7 @@
           }
         },
         {
-          "id": "c671adbe-7db6-48e0-9688-b58c77582a6b",
+          "id": "f9a03f8f-fa9c-494a-b361-2b98cdf2127f",
           "name": "Paragon Proxy POST request to custom integration",
           "request": {
             "name": "Paragon Proxy POST request to custom integration",
@@ -2925,7 +2199,7 @@
           },
           "response": [
             {
-              "id": "1b268cee-f3fc-4ed4-bbcb-f8654f3b037b",
+              "id": "09057def-aa2f-48b7-8239-3c501886e404",
               "name": "Successful proxy response from the custom integration.",
               "originalRequest": {
                 "url": {
@@ -3004,7 +2278,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "60da5b7a-1a31-4ea3-83f8-b731ece3ea23",
+              "id": "4ef5bb70-4aa1-4d80-9955-c1f5f90faa4e",
               "name": "Unauthorized. Invalid or missing Paragon User Token.",
               "originalRequest": {
                 "url": {
@@ -3079,7 +2353,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "d4c384aa-6530-48fb-b3a1-9854dec59ddd",
+              "id": "39909985-5e0d-4654-85e2-7e65cb4b53b7",
               "name": "Integration not found or not enabled for the user.",
               "originalRequest": {
                 "url": {
@@ -3154,7 +2428,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "b1f3f7b4-f5fc-4a8f-ac0d-2172f7e37ebc",
+              "id": "1db908c7-3978-4847-824d-0acec4290b72",
               "name": "Rate limit exceeded.",
               "originalRequest": {
                 "url": {
@@ -3242,7 +2516,7 @@
   "variable": [
     {
       "type": "string",
-      "value": "https://proxy.useparagon.com",
+      "value": "https://actionkit.useparagon.com",
       "key": "baseUrl"
     }
   ],
@@ -3256,11 +2530,11 @@
     ]
   },
   "info": {
-    "_postman_id": "61467c91-b20a-494e-9109-adb0625e00ec",
-    "name": "Paragon Proxy API",
+    "_postman_id": "ed203ead-37c2-450a-ae2e-9aeb6fe7816c",
+    "name": "Paragon ActionKit Credentials Proxy API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "The Proxy API allows you to directly access any of the third-party provider's API methods on behalf of your Connected Users. Along with Workflows, the Proxy API is one of two primary ways to build integrations with Paragon. The Proxy API accepts requests with body contents specified as application/json and supports any HTTP verb including GET, POST, PUT, PATCH, and DELETE.\n\nContact Support:\n Name: Paragon",
+      "content": "ActionKit is an API to give your AI agent or app access to Paragon's catalog of pre-built Integration Tools across 130+ SaaS applications. ActionKit exposes a Universal API (Tools API) for listing and executing synchronous CRUD actions, and is paired with a Triggers API for event subscriptions. Paragon also publishes an MCP server (github.com/useparagon/paragon-mcp) that wraps ActionKit so agents can call integration tools via the Model Context Protocol. Requests are scoped to a Connected User via Paragon User Token (JWT) Bearer authentication.\n\nContact Support:\n Name: Paragon",
       "type": "text/plain"
     }
   }

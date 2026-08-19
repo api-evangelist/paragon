@@ -1,28 +1,27 @@
 {
   "item": [
     {
-      "id": "879a6d40-af83-4c45-8560-3a1be0639ed0",
-      "name": "Task History",
+      "id": "ca98f929-9efd-45ea-b169-705a8878ab51",
+      "name": "Tools",
       "description": {
-        "content": "Query historical workflow executions and replay specific executions.",
+        "content": "List and execute ActionKit Integration Tools for AI agents and apps.",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "67a26b97-f413-4841-bbb0-14e435ac83d3",
-          "name": "Paragon Get workflow executions",
+          "id": "cd3dcb27-7d0f-419b-a627-a476eaeccb89",
+          "name": "Paragon List Available Actions",
           "request": {
-            "name": "Paragon Get workflow executions",
+            "name": "Paragon List Available Actions",
             "description": {
-              "content": "Search through historical workflow executions with filtering options. Returns paginated results with up to 100 records per page. If additional pages are available, the response will include a nextLink URL to retrieve the next page.",
+              "content": "Returns the catalog of pre-built Integration Tools available to the Connected User. Tools are scoped to the integrations the user has enabled in the Connect Portal. Each tool describes its name, JSON Schema input parameters, and which integration it belongs to.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "projects",
                 ":projectId",
-                "task-history",
-                "workflow-executions"
+                "actions"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -32,49 +31,13 @@
                   "disabled": false,
                   "key": "integration",
                   "value": "<string>",
-                  "description": "Filter by integration name (e.g., salesforce, hubspot)."
+                  "description": "Optional integration filter (e.g., salesforce, slack)."
                 },
                 {
                   "disabled": false,
-                  "key": "workflowId",
+                  "key": "format",
                   "value": "<string>",
-                  "description": "Filter by workflow ID."
-                },
-                {
-                  "disabled": false,
-                  "key": "userId",
-                  "value": "<string>",
-                  "description": "Filter by Connected User ID."
-                },
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>",
-                  "description": "Filter by execution status."
-                },
-                {
-                  "disabled": false,
-                  "key": "afterDate",
-                  "value": "<dateTime>",
-                  "description": "Filter executions that started after this date (ISO 8601 format)."
-                },
-                {
-                  "disabled": false,
-                  "key": "beforeDate",
-                  "value": "<dateTime>",
-                  "description": "Filter executions that started before this date (ISO 8601 format)."
-                },
-                {
-                  "disabled": false,
-                  "key": "sortBy",
-                  "value": "<string>",
-                  "description": "Sort order for the results."
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "<integer>",
-                  "description": "Pagination offset for retrieving additional pages."
+                  "description": "Tool format. Use `openai` for OpenAI tool schema or `anthropic` for Claude tool schema. Defaults to JSON Schema."
                 }
               ],
               "variable": [
@@ -98,15 +61,14 @@
           },
           "response": [
             {
-              "id": "302acc4c-2051-4098-9eaf-7006a78f9c38",
-              "name": "Successfully retrieved workflow executions.",
+              "id": "1327f5ad-3c2a-472e-a0ec-f1f05f1fea45",
+              "name": "Successfully retrieved the list of available actions.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "projects",
                     ":projectId",
-                    "task-history",
-                    "workflow-executions"
+                    "actions"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -117,32 +79,8 @@
                       "value": "<string>"
                     },
                     {
-                      "key": "workflowId",
+                      "key": "format",
                       "value": "<string>"
-                    },
-                    {
-                      "key": "userId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "afterDate",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "beforeDate",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "sortBy",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
                     }
                   ],
                   "variable": [
@@ -180,20 +118,19 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"workflowId\": \"string\",\n      \"status\": \"FAILED\",\n      \"taskCount\": 6948,\n      \"runDuration\": 8834,\n      \"dateStarted\": \"1967-08-28T11:43:20.238Z\",\n      \"dateEnded\": \"1998-02-08T11:25:13.038Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"workflowId\": \"string\",\n      \"status\": \"SUCCEEDED\",\n      \"taskCount\": 8705,\n      \"runDuration\": 4748,\n      \"dateStarted\": \"2023-04-24T18:27:03.551Z\",\n      \"dateEnded\": \"1958-12-02T22:03:21.753Z\"\n    }\n  ],\n  \"total\": 7452,\n  \"nextLink\": \"string\"\n}",
+              "body": "{\n  \"actions\": [\n    {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"integration\": \"string\",\n      \"parameters\": {}\n    },\n    {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"integration\": \"string\",\n      \"parameters\": {}\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "5cb542a6-c8c2-4f56-a3bf-03dae19f88c3",
-              "name": "Unauthorized. Invalid or missing API Key.",
+              "id": "c77dfe9e-5c7d-4715-ab89-c48088fabe49",
+              "name": "Unauthorized. Invalid or missing Paragon User Token.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "projects",
                     ":projectId",
-                    "task-history",
-                    "workflow-executions"
+                    "actions"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -204,32 +141,8 @@
                       "value": "<string>"
                     },
                     {
-                      "key": "workflowId",
+                      "key": "format",
                       "value": "<string>"
-                    },
-                    {
-                      "key": "userId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "afterDate",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "beforeDate",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "sortBy",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
                     }
                   ],
                   "variable": [
@@ -257,89 +170,6 @@
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a72f807c-c54d-4e19-b399-12ac253ce32c",
-              "name": "Rate limit exceeded. The Task History API has a rate limit of 1,000 requests per 10 minutes.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "projects",
-                    ":projectId",
-                    "task-history",
-                    "workflow-executions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "integration",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "workflowId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "userId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "afterDate",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "beforeDate",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "sortBy",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "projectId",
-                      "description": "(Required) Your Paragon Project ID."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
               "header": [
                 {
                   "key": "Content-Type",
@@ -357,22 +187,20 @@
           }
         },
         {
-          "id": "4248d198-4259-43b5-8fd1-1740c945a2a4",
-          "name": "Paragon Replay a workflow execution",
+          "id": "e80e770f-7222-4841-8890-13dfa244d688",
+          "name": "Paragon Run Action",
           "request": {
-            "name": "Paragon Replay a workflow execution",
+            "name": "Paragon Run Action",
             "description": {
-              "content": "Replays a specific workflow execution using the same version of the workflow that the execution originally ran with. This endpoint is in beta and may not be suitable for use in production applications.",
+              "content": "Executes a named Integration Tool on behalf of the Connected User. Action names follow the pattern `{INTEGRATION}_{ACTION_NAME}` (e.g., `SALESFORCE_CREATE_RECORD`, `SLACK_SEND_MESSAGE`). The action runs synchronously and returns the third-party provider's response payload.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "projects",
                 ":projectId",
-                "task-history",
-                "workflow-executions",
-                ":executionId",
-                "replay"
+                "actions",
+                ":action"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -390,33 +218,44 @@
                   "disabled": false,
                   "type": "any",
                   "value": "<string>",
-                  "key": "executionId",
-                  "description": "(Required) The ID of the workflow execution to replay."
+                  "key": "action",
+                  "description": "(Required) The ActionKit action name (e.g., SLACK_SEND_MESSAGE)."
                 }
               ]
             },
             "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
             "method": "POST",
-            "auth": null
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 610,\n  \"key_1\": 5480\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
           },
           "response": [
             {
-              "id": "0e179840-98c3-4b29-9c80-1440a558efc6",
-              "name": "Successfully replayed the workflow execution.",
+              "id": "d33c2d04-fbe8-4a86-8d02-3c7d9b33bd2b",
+              "name": "Action executed successfully.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "projects",
                     ":projectId",
-                    "task-history",
-                    "workflow-executions",
-                    ":executionId",
-                    "replay"
+                    "actions",
+                    ":action"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -434,8 +273,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "executionId",
-                      "description": "(Required) The ID of the workflow execution to replay."
+                      "key": "action",
+                      "description": "(Required) The ActionKit action name (e.g., SLACK_SEND_MESSAGE)."
                     }
                   ]
                 },
@@ -454,7 +293,15 @@
                   }
                 ],
                 "method": "POST",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelId\": \"C0123456789\",\n  \"text\": \"Hello from ActionKit\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
               },
               "status": "OK",
               "code": 200,
@@ -464,22 +311,20 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"workflowId\": \"string\",\n  \"status\": \"FAILED\",\n  \"taskCount\": 3724,\n  \"runDuration\": 2015,\n  \"dateStarted\": \"1986-12-31T18:30:27.330Z\",\n  \"dateEnded\": \"1966-01-01T05:15:54.476Z\"\n}",
+              "body": "{\n  \"output\": {\n    \"key_0\": 6707.791972212322,\n    \"key_1\": \"string\",\n    \"key_2\": 1127,\n    \"key_3\": 3226\n  },\n  \"integration\": \"string\",\n  \"action\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "5618e8b9-0030-4d45-9320-02bc7921b8da",
-              "name": "Unauthorized. Invalid or missing API Key.",
+              "id": "e3d00a03-f02d-4ef6-aae5-8a1dbe30729e",
+              "name": "Invalid parameters for the action.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "projects",
                     ":projectId",
-                    "task-history",
-                    "workflow-executions",
-                    ":executionId",
-                    "replay"
+                    "actions",
+                    ":action"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -497,8 +342,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "executionId",
-                      "description": "(Required) The ID of the workflow execution to replay."
+                      "key": "action",
+                      "description": "(Required) The ActionKit action name (e.g., SLACK_SEND_MESSAGE)."
                     }
                   ]
                 },
@@ -513,7 +358,80 @@
                   }
                 ],
                 "method": "POST",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelId\": \"C0123456789\",\n  \"text\": \"Hello from ActionKit\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "662bdeac-dd2d-4ef1-a53d-fbe6bac440e5",
+              "name": "Unauthorized. Invalid or missing Paragon User Token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "actions",
+                    ":action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) Your Paragon Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "action",
+                      "description": "(Required) The ActionKit action name (e.g., SLACK_SEND_MESSAGE)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelId\": \"C0123456789\",\n  \"text\": \"Hello from ActionKit\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
               },
               "status": "Unauthorized",
               "code": 401,
@@ -528,17 +446,15 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "b04b5d6c-0183-4d94-b846-aa696e9887f4",
-              "name": "Workflow execution not found.",
+              "id": "ec6fe9f0-4711-4e55-a631-f7c91ed7a024",
+              "name": "Unknown action or action not available for this user.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "projects",
                     ":projectId",
-                    "task-history",
-                    "workflow-executions",
-                    ":executionId",
-                    "replay"
+                    "actions",
+                    ":action"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -556,8 +472,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "executionId",
-                      "description": "(Required) The ID of the workflow execution to replay."
+                      "key": "action",
+                      "description": "(Required) The ActionKit action name (e.g., SLACK_SEND_MESSAGE)."
                     }
                   ]
                 },
@@ -572,7 +488,15 @@
                   }
                 ],
                 "method": "POST",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelId\": \"C0123456789\",\n  \"text\": \"Hello from ActionKit\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
               },
               "status": "Not Found",
               "code": 404,
@@ -587,17 +511,15 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "f6a6d39e-bc36-4335-a104-7be5a66f8899",
-              "name": "Rate limit exceeded. The Task History API has a rate limit of 1,000 requests per 10 minutes.",
+              "id": "bbb6aa78-d4f1-44d2-8ea7-75d0bca3e6ea",
+              "name": "Rate limited. ActionKit enforces 50 requests per second per workspace.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "projects",
                     ":projectId",
-                    "task-history",
-                    "workflow-executions",
-                    ":executionId",
-                    "replay"
+                    "actions",
+                    ":action"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -615,8 +537,8 @@
                       "disabled": false,
                       "type": "any",
                       "value": "<string>",
-                      "key": "executionId",
-                      "description": "(Required) The ID of the workflow execution to replay."
+                      "key": "action",
+                      "description": "(Required) The ActionKit action name (e.g., SLACK_SEND_MESSAGE)."
                     }
                   ]
                 },
@@ -631,7 +553,15 @@
                   }
                 ],
                 "method": "POST",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channelId\": \"C0123456789\",\n  \"text\": \"Hello from ActionKit\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
               },
               "status": "Too Many Requests",
               "code": 429,
@@ -673,8 +603,8 @@
     ]
   },
   "info": {
-    "_postman_id": "c93395c4-9eb6-4b20-aa76-e580920e3efc",
-    "name": "Paragon ActionKit Credentials Task History API",
+    "_postman_id": "d77260e1-5c4a-4649-a4fd-4a595d2741ca",
+    "name": "Paragon ActionKit Credentials Tools API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "ActionKit is an API to give your AI agent or app access to Paragon's catalog of pre-built Integration Tools across 130+ SaaS applications. ActionKit exposes a Universal API (Tools API) for listing and executing synchronous CRUD actions, and is paired with a Triggers API for event subscriptions. Paragon also publishes an MCP server (github.com/useparagon/paragon-mcp) that wraps ActionKit so agents can call integration tools via the Model Context Protocol. Requests are scoped to a Connected User via Paragon User Token (JWT) Bearer authentication.\n\nContact Support:\n Name: Paragon",

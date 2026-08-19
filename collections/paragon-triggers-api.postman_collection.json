@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "b13cbb0b-e687-4e97-b0c4-d906ccfb3b75",
+      "id": "824ed1c5-8fea-4975-95ed-e76be5af535b",
       "name": "Triggers",
       "description": {
         "content": "Subscribe to integration events for AI agents and apps.",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "5dbb2ea5-85c3-47f2-934a-216c8fad4196",
+          "id": "b34df024-63ff-4b55-94a5-bfce7e5b067d",
           "name": "Paragon List Available Triggers",
           "request": {
             "name": "Paragon List Available Triggers",
@@ -55,7 +55,7 @@
           },
           "response": [
             {
-              "id": "4d8680aa-045f-4752-a34c-824634e51f37",
+              "id": "1156c06d-b4a6-4a92-8747-dd2d35bc63ac",
               "name": "Successfully retrieved the catalog of triggers.",
               "originalRequest": {
                 "url": {
@@ -113,7 +113,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3f07bc3a-0322-4c2e-b430-e2c4311a3ec8",
+              "id": "a7498a3a-521e-47db-9acc-8557bb505123",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
@@ -173,7 +173,7 @@
           }
         },
         {
-          "id": "45e46cf7-d89f-40d9-bff7-5e6ea9530a69",
+          "id": "ec954a47-11cc-41f6-81a8-1b4c74817040",
           "name": "Paragon List Subscribed Triggers",
           "request": {
             "name": "Paragon List Subscribed Triggers",
@@ -213,7 +213,7 @@
           },
           "response": [
             {
-              "id": "e6e71513-6884-44b3-a359-5a8b1847cce5",
+              "id": "15506451-b602-4aa7-929c-7dcd7af74e09",
               "name": "Successfully retrieved subscriptions.",
               "originalRequest": {
                 "url": {
@@ -262,12 +262,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  {\n    \"id\": \"string\",\n    \"userId\": \"string\",\n    \"trigger\": \"string\",\n    \"integration\": \"string\",\n    \"parameters\": {\n      \"key_0\": true\n    },\n    \"deliveryUrl\": \"http://DZV.pkqJJTCLRMuHJ0Bwg8Rbt7p3bUvRuAPstL7Y9kLcRPiQ\",\n    \"createdAt\": \"1981-02-27T15:42:10.401Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"userId\": \"string\",\n    \"trigger\": \"string\",\n    \"integration\": \"string\",\n    \"parameters\": {\n      \"key_0\": \"string\",\n      \"key_1\": 4141.647161234559\n    },\n    \"deliveryUrl\": \"https://zgtrKvRnEOiB.hisz1A2qSR2u8pYCgUrn2Sx3NUU5nekpoKMU5+-gG\",\n    \"createdAt\": \"2019-01-16T20:15:12.140Z\"\n  }\n]",
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"userId\": \"string\",\n    \"trigger\": \"string\",\n    \"integration\": \"string\",\n    \"parameters\": {\n      \"key_0\": 9204.753186892773,\n      \"key_1\": 9567.177547045765\n    },\n    \"deliveryUrl\": \"https://aqpJQCdsDRkzXyO.vuwhM+tnKpfWnHMKw\",\n    \"createdAt\": \"2020-01-29T04:05:40.817Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"userId\": \"string\",\n    \"trigger\": \"string\",\n    \"integration\": \"string\",\n    \"parameters\": {\n      \"key_0\": 6351.292429215163\n    },\n    \"deliveryUrl\": \"http://pKBdxnRJitvMSBGvYjbpdyvZCoOLKSvK.ubivZKhwe,BJ4,hFyiz9C5jRAi+cLvvP-hI6hSUmSdFqiLqiU324C4SN5k7\",\n    \"createdAt\": \"1956-07-18T09:36:41.701Z\"\n  }\n]",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "6e088d56-dfc7-47f3-a712-1d19f22c8945",
+              "id": "349b1839-c928-4007-b0ad-13976240bd1e",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
@@ -323,7 +323,7 @@
           }
         },
         {
-          "id": "92815630-c478-4578-9df5-09876645fb96",
+          "id": "114aedce-5241-415b-a9b5-04def5fd9f8f",
           "name": "Paragon Subscribe To Trigger",
           "request": {
             "name": "Paragon Subscribe To Trigger",
@@ -366,7 +366,7 @@
             "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": 9148,\n    \"key_1\": 18,\n    \"key_2\": 9962.252106200487,\n    \"key_3\": 4132.815855627666,\n    \"key_4\": \"string\"\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
+              "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": 884\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -376,7 +376,7 @@
           },
           "response": [
             {
-              "id": "bcf51344-85eb-49db-baf6-1b93ecd616b4",
+              "id": "09e103b2-2baa-47a9-bf51-0f3e5b9c0bf8",
               "name": "Subscription created.",
               "originalRequest": {
                 "url": {
@@ -417,7 +417,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": 6638,\n    \"key_1\": \"string\",\n    \"key_2\": 929,\n    \"key_3\": 2781.068326476489\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
+                  "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": \"string\"\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -433,12 +433,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"trigger\": \"string\",\n  \"integration\": \"string\",\n  \"parameters\": {\n    \"key_0\": \"string\",\n    \"key_1\": 9601.193208228702\n  },\n  \"deliveryUrl\": \"https://NQSC.waoOtvxBdzdcsHoixf8V.sEYKg5XoPbd.zcxcyAtzfCjx2VDm8RUvaPvAZqU\",\n  \"createdAt\": \"1975-08-09T03:19:58.253Z\"\n}",
+              "body": "{\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"trigger\": \"string\",\n  \"integration\": \"string\",\n  \"parameters\": {\n    \"key_0\": \"string\"\n  },\n  \"deliveryUrl\": \"http://QjwjlZnuufUcALO.vteRbrVl51ReL+\",\n  \"createdAt\": \"1952-02-27T13:31:44.051Z\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "328bb352-18dc-4af9-996e-81b24a534098",
+              "id": "330a4018-8da8-4e9b-b208-06c2281a1c61",
               "name": "Invalid subscription request.",
               "originalRequest": {
                 "url": {
@@ -475,7 +475,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": 6638,\n    \"key_1\": \"string\",\n    \"key_2\": 929,\n    \"key_3\": 2781.068326476489\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
+                  "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": \"string\"\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -496,7 +496,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "6f51fa78-a15c-430d-b9a5-939171be8a2c",
+              "id": "f9074f5a-f999-4419-b03c-864461c5a6d8",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
@@ -533,7 +533,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": 6638,\n    \"key_1\": \"string\",\n    \"key_2\": 929,\n    \"key_3\": 2781.068326476489\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
+                  "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": \"string\"\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -560,7 +560,7 @@
           }
         },
         {
-          "id": "25410d29-3671-4ec1-985f-1100fd932b5e",
+          "id": "6ed5915c-7fb6-4f7c-8288-31a8cab9a74a",
           "name": "Paragon Update Trigger Subscription",
           "request": {
             "name": "Paragon Update Trigger Subscription",
@@ -611,7 +611,7 @@
             "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": 9148,\n    \"key_1\": 18,\n    \"key_2\": 9962.252106200487,\n    \"key_3\": 4132.815855627666,\n    \"key_4\": \"string\"\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
+              "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": 884\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -621,7 +621,7 @@
           },
           "response": [
             {
-              "id": "e53b9225-6d48-465b-853c-55c40a3a0688",
+              "id": "53a0c2a5-29ed-4553-bda3-d478dee7de95",
               "name": "Subscription updated.",
               "originalRequest": {
                 "url": {
@@ -670,7 +670,7 @@
                 "method": "PATCH",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": 6638,\n    \"key_1\": \"string\",\n    \"key_2\": 929,\n    \"key_3\": 2781.068326476489\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
+                  "raw": "{\n  \"trigger\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": \"string\"\n  },\n  \"deliveryUrl\": \"<uri>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -686,7 +686,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"trigger\": \"string\",\n  \"integration\": \"string\",\n  \"parameters\": {\n    \"key_0\": \"string\",\n    \"key_1\": 9601.193208228702\n  },\n  \"deliveryUrl\": \"https://NQSC.waoOtvxBdzdcsHoixf8V.sEYKg5XoPbd.zcxcyAtzfCjx2VDm8RUvaPvAZqU\",\n  \"createdAt\": \"1975-08-09T03:19:58.253Z\"\n}",
+              "body": "{\n  \"id\": \"string\",\n  \"userId\": \"string\",\n  \"trigger\": \"string\",\n  \"integration\": \"string\",\n  \"parameters\": {\n    \"key_0\": \"string\"\n  },\n  \"deliveryUrl\": \"http://QjwjlZnuufUcALO.vteRbrVl51ReL+\",\n  \"createdAt\": \"1952-02-27T13:31:44.051Z\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -697,7 +697,7 @@
           }
         },
         {
-          "id": "ba779e79-e698-4fe8-9aa5-959bbcf905b9",
+          "id": "9d352303-fcb0-45f9-8f48-ef074f735285",
           "name": "Paragon Unsubscribe From Trigger",
           "request": {
             "name": "Paragon Unsubscribe From Trigger",
@@ -739,7 +739,7 @@
           },
           "response": [
             {
-              "id": "056f0200-e799-4667-8356-0c9f0a35ee57",
+              "id": "3aa63926-fb53-4f8d-ac87-c363411c9fa8",
               "name": "Subscription deleted.",
               "originalRequest": {
                 "url": {
@@ -797,7 +797,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "ce4a3f0f-dd4e-44e0-b03e-ca4bc6c81bb7",
+              "id": "2a855d62-1fc6-4d18-8ca7-2f6f7964cda7",
               "name": "Unauthorized.",
               "originalRequest": {
                 "url": {
@@ -855,7 +855,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "ac433691-a83d-4ef9-b5d6-77d5e440c836",
+              "id": "58a48a8d-087c-4424-a78f-77731abe069c",
               "name": "Subscription not found.",
               "originalRequest": {
                 "url": {
@@ -919,7 +919,7 @@
           }
         },
         {
-          "id": "e08670ed-3496-40a9-8e14-3c367261ab77",
+          "id": "17fea267-b95f-423f-bf65-66cac1996baa",
           "name": "Paragon Get Example Trigger Payload",
           "request": {
             "name": "Paragon Get Example Trigger Payload",
@@ -967,7 +967,7 @@
           },
           "response": [
             {
-              "id": "ba448da9-542c-4458-9c4b-13ebcc82d3ea",
+              "id": "6d7c1f9a-c501-427a-a6d5-447a5741766f",
               "name": "Returns an example event payload.",
               "originalRequest": {
                 "url": {
@@ -1024,7 +1024,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"key_0\": false\n}",
+              "body": "{\n  \"key_0\": \"string\",\n  \"key_1\": false,\n  \"key_2\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -1056,11 +1056,11 @@
     ]
   },
   "info": {
-    "_postman_id": "f7b60157-10ae-4016-b0db-e38df167d2b2",
-    "name": "Paragon Triggers API",
+    "_postman_id": "e09b40b5-1d4e-41a8-a522-1784c09349de",
+    "name": "Paragon ActionKit Credentials Triggers API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "The Triggers API (Beta) lets you subscribe to events from your users' integrations using Paragon's catalog of pre-built triggers across 130+ SaaS applications, or custom webhooks. Use it to give your app or AI agent real-time visibility into third-party events such as `Slack: Message Received`, `Google Calendar: New Event`, or `Salesforce: Record Updated`. Subscriptions are scoped per Connected User via Paragon User Token (JWT).\n\nContact Support:\n Name: Paragon",
+      "content": "ActionKit is an API to give your AI agent or app access to Paragon's catalog of pre-built Integration Tools across 130+ SaaS applications. ActionKit exposes a Universal API (Tools API) for listing and executing synchronous CRUD actions, and is paired with a Triggers API for event subscriptions. Paragon also publishes an MCP server (github.com/useparagon/paragon-mcp) that wraps ActionKit so agents can call integration tools via the Model Context Protocol. Requests are scoped to a Connected User via Paragon User Token (JWT) Bearer authentication.\n\nContact Support:\n Name: Paragon",
       "type": "text/plain"
     }
   }

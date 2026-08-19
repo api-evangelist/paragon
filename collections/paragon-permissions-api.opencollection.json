@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paragon ActionKit Credentials Permissions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Permissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paragon Check Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/permissions/check-access",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Checks whether a subject (user, group) has a given relation to a synced object (file, contact, ticket). Useful for enforcing source-system permissions in RAG retrieval."
+        },
+        {
+          "info": {
+            "name": "Paragon Batch Check Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/permissions/batch-check-access",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Performs multiple access checks in a single call."
+        },
+        {
+          "info": {
+            "name": "Paragon List Users With Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/permissions/list-users",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the subjects that have access to a given object."
+        },
+        {
+          "info": {
+            "name": "Paragon List Objects With Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/permissions/list-objects",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the objects a subject has the requested relation to."
+        },
+        {
+          "info": {
+            "name": "Paragon Expand Permission Relationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/permissions/expand",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Expands the relationship tree for a (subject, relation, object) tuple."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

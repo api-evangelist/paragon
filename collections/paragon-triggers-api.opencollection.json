@@ -1,8 +1,8 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Paragon Triggers API",
-    "version": "1.0.0-beta"
+    "name": "Paragon ActionKit Credentials Triggers API",
+    "version": "1.0.0"
   },
   "request": {
     "auth": {

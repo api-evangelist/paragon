@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paragon ActionKit Credentials Custom Integrations API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Integrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Paragon Proxy GET request to custom integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "integrationId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the custom integration."
+              },
+              {
+                "name": "apiPath",
+                "value": "",
+                "type": "path",
+                "description": "The API path of the custom integration to send the request to."
+              }
+            ]
+          },
+          "docs": "Send a GET request to a custom integration API on behalf of a Connected User."
+        },
+        {
+          "info": {
+            "name": "Paragon Proxy POST request to custom integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://actionkit.useparagon.com/projects/:projectId/sdk/proxy/custom/:integrationId/:apiPath",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Your Paragon Project ID."
+              },
+              {
+                "name": "integrationId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the custom integration."
+              },
+              {
+                "name": "apiPath",
+                "value": "",
+                "type": "path",
+                "description": "The API path of the custom integration to send the request to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a POST request to a custom integration API on behalf of a Connected User."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
