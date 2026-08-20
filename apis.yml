@@ -7,6 +7,13 @@ tags:
   - iPaaS
   - AI Agents
   - MCP
+  - Integration
+tags_raw:
+  - Embedded Integrations
+  - Integration Infrastructure
+  - iPaaS
+  - AI Agents
+  - MCP
   - Integrations
 kind: contract
 accessModel:
@@ -40,6 +47,10 @@ apis:
   tags:
   - Embedded Integrations
   - Proxy
+  - Integration
+  tags_raw:
+  - Embedded Integrations
+  - Proxy
   - Integrations
   humanURL: https://docs.useparagon.com/apis/making-api-requests
   properties:
@@ -59,6 +70,10 @@ apis:
 - aid: paragon:users-api
   name: Users API
   tags:
+  - Embedded Integrations
+  - User
+  - Integration
+  tags_raw:
   - Embedded Integrations
   - Users
   - Integrations
@@ -89,6 +104,11 @@ apis:
   - Embedded Integrations
   - Task History
   - Workflows
+  - Integration
+  tags_raw:
+  - Embedded Integrations
+  - Task History
+  - Workflows
   - Integrations
   humanURL: https://docs.useparagon.com/apis/task-history
   properties:
@@ -112,6 +132,12 @@ apis:
 - aid: paragon:triggers-api
   name: Triggers API
   tags:
+  - ActionKit
+  - Triggers
+  - Webhook
+  - AI Agents
+  - Integration
+  tags_raw:
   - ActionKit
   - Triggers
   - Webhooks
@@ -203,6 +229,8 @@ apis:
   description: Query and manage user integrations.
   humanURL: https://docs.useparagon.com/apis/making-api-requests
   tags:
+  - Integration
+  tags_raw:
   - Integrations
   properties:
   - type: OpenAPI
