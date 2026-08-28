@@ -11,6 +11,9 @@ info:
     be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
+- name: integrationsApi
+  url: ../openapi/paragon-integrations-api-openapi.yml
+  type: openapi
 - name: usersApi
   url: ../openapi/paragon-users-api-openapi.yml
   type: openapi

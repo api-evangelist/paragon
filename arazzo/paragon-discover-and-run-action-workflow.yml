@@ -11,8 +11,8 @@ info:
     and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: actionKitApi
-  url: ../openapi/paragon-actionkit-api-openapi.yml
+- name: toolsApi
+  url: ../openapi/paragon-tools-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: discover-and-run-action

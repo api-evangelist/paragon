@@ -11,8 +11,11 @@ info:
     and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: managedSyncApi
-  url: ../openapi/paragon-managed-sync-api-openapi.yml
+- name: permissionsApi
+  url: ../openapi/paragon-permissions-api-openapi.yml
+  type: openapi
+- name: syncApi
+  url: ../openapi/paragon-sync-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: permissioned-record-retrieval

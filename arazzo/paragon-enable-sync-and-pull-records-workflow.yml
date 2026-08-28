@@ -11,8 +11,8 @@ info:
     and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: managedSyncApi
-  url: ../openapi/paragon-managed-sync-api-openapi.yml
+- name: syncApi
+  url: ../openapi/paragon-sync-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: enable-sync-and-pull-records
