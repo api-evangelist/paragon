@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Paragon ActionKit Credentials API
+  title: Paragon ActionKit Credentials Integrations API
   description: ActionKit is an API to give your AI agent or app access to Paragon's catalog of pre-built Integration Tools across 130+ SaaS applications. ActionKit exposes a Universal API (Tools API) for listing and executing synchronous CRUD actions, and is paired with a Triggers API for event subscriptions. Paragon also publishes an MCP server (github.com/useparagon/paragon-mcp) that wraps ActionKit so agents can call integration tools via the Model Context Protocol. Requests are scoped to a Connected User via Paragon User Token (JWT) Bearer authentication.
   version: 1.0.0
   contact:
@@ -15,16 +15,16 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: Credentials
-  description: Manage user Connect credentials.
+- name: Integrations
+  description: Query and manage user integrations.
 paths:
-  /projects/{projectId}/sdk/credentials:
+  /projects/{projectId}/sdk/integrations:
     get:
-      operationId: getCredentials
-      summary: Paragon Get user credentials
-      description: Returns the Connect credentials for the authenticated Connected User.
+      operationId: getIntegrations
+      summary: Paragon Get project integrations
+      description: Returns the list of integrations available in the project, including their enabled status for the authenticated Connected User.
       tags:
-      - Credentials
+      - Integrations
       parameters:
       - name: projectId
         in: path
@@ -34,22 +34,22 @@ paths:
           type: string
       responses:
         '200':
-          description: Successfully retrieved credentials.
+          description: Successfully retrieved integrations.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Credential'
+                  $ref: '#/components/schemas/Integration'
         '401':
           description: Unauthorized. Invalid or missing Paragon User Token.
-  /projects/{projectId}/sdk/credentials/{credentialId}:
-    patch:
-      operationId: updateCredential
-      summary: Paragon Update a credential
-      description: Updates a specific Connect credential for the authenticated Connected User.
+  /projects/{projectId}/sdk/integrations/{integrationId}:
+    delete:
+      operationId: disconnectIntegration
+      summary: Paragon Disconnect an integration
+      description: Disconnects an integration for the authenticated Connected User. When an integration is disconnected, workflows for that integration will stop running for the user and any saved User Settings will be cleared. Equivalent to the SDK function paragon.uninstallIntegration().
       tags:
-      - Credentials
+      - Integrations
       parameters:
       - name: projectId
         in: path
@@ -57,55 +57,39 @@ paths:
         description: Your Paragon Project ID.
         schema:
           type: string
-      - name: credentialId
+      - name: integrationId
         in: path
         required: true
-        description: The ID of the Connect credential to update.
+        description: The ID of the integration to disconnect.
         schema:
           type: string
-      requestBody:
-        required: true
-        description: The credential fields to update.
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                accessToken:
-                  type: string
-                  description: The new access token value.
-                refreshToken:
-                  type: string
-                  description: The new refresh token value.
       responses:
         '200':
-          description: Successfully updated the credential.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Credential'
+          description: Successfully disconnected the integration.
         '401':
           description: Unauthorized. Invalid or missing Paragon User Token.
         '404':
-          description: Credential not found.
+          description: Integration not found.
 components:
   schemas:
-    Credential:
+    Integration:
       type: object
       properties:
         id:
           type: string
-          description: The unique identifier for the credential.
-        integrationId:
+          description: The unique identifier for the integration.
+        name:
           type: string
-          description: The integration this credential belongs to.
-        status:
+          description: The display name of the integration.
+        type:
           type: string
-          description: The current status of the credential.
-          enum:
-          - VALID
-          - INVALID
-          - EXPIRED
+          description: The integration type identifier (e.g., salesforce, hubspot).
+        enabled:
+          type: boolean
+          description: Whether the integration is enabled for the authenticated user.
+        icon:
+          type: string
+          description: URL to the integration icon.
   securitySchemes:
     bearerAuth:
       type: http
