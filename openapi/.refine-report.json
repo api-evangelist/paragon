@@ -15,18 +15,12 @@
   "notes": [
     "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "paragon-actionkit-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "paragon-managed-sync-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+    "paragon-managed-sync-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
-    "paragon-credentials-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "paragon-custom-integrations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "paragon-integrations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "paragon-permissions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "paragon-proxy-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "paragon-sync-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "paragon-task-history-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "paragon-tools-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "paragon-triggers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "paragon-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "paragon-tools-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

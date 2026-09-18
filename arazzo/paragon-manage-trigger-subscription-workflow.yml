@@ -11,7 +11,7 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: triggersApi
-  url: ../openapi/paragon-triggers-api-openapi.yml
+  url: ../openapi/_superseded/paragon-triggers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: find-and-manage-subscription

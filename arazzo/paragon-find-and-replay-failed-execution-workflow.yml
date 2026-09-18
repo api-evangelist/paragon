@@ -12,7 +12,7 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: taskHistoryApi
-  url: ../openapi/paragon-task-history-api-openapi.yml
+  url: ../openapi/_superseded/paragon-task-history-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: find-and-replay-failed-execution

@@ -12,13 +12,13 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: integrationsApi
-  url: ../openapi/paragon-integrations-api-openapi.yml
+  url: ../openapi/_superseded/paragon-integrations-api-openapi.yml
   type: openapi
 - name: proxyApi
-  url: ../openapi/paragon-proxy-api-openapi.yml
+  url: ../openapi/_superseded/paragon-proxy-api-openapi.yml
   type: openapi
 - name: usersApi
-  url: ../openapi/paragon-users-api-openapi.yml
+  url: ../openapi/_superseded/paragon-users-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: verify-integration-and-proxy-request
